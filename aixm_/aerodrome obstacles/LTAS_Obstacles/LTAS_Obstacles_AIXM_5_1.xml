@@ -1,0 +1,2379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AIXMBasicMessage xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.aixm.aero/schema/5.1/message http://www.aixm.aero/schema/5.1/message/AIXM_BasicMessage.xsd" gml:id="gml.id1" xmlns="http://www.aixm.aero/schema/5.1/message" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id2">
+			<gml:identifier codeSpace="urn:uuid:">A4769A9E-DF7F-4135-AB0D-43302A48CE8E</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id3">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id4">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id5">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id6">
+							<aixm:verticalExtent uom="FT">164.04</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_1</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id7" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5175611111 32.0750805556</gml:pos>
+									<aixm:elevation uom="FT">262.46</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id8"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id9">
+			<gml:identifier codeSpace="urn:uuid:">9337D11D-D61B-4121-BD54-FB4D7DFC9A1E</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id10">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id11">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id12">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id13">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_2</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id14" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5180416667 32.0909777778</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id15"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id16">
+			<gml:identifier codeSpace="urn:uuid:">F6A46063-F973-4E23-9677-AC7974D0B21B</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id17">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id18">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id19">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id20">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_3</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id21" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5178666667 32.0907861111</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id22"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id23">
+			<gml:identifier codeSpace="urn:uuid:">57B83D04-C134-4225-90A1-931A7B457276</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id24">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id25">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id26">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id27">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_4</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id28" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5178611111 32.0921138889</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id29"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id30">
+			<gml:identifier codeSpace="urn:uuid:">556ACDAC-B5A1-4021-9DA3-35CACAC3C884</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id31">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id32">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id33">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id34">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_5</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id35" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5173972222 32.0912138889</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id36"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id37">
+			<gml:identifier codeSpace="urn:uuid:">C2D83B75-872C-4553-9FAC-FC91869A6739</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id38">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id39">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id40">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id41">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_6</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id42" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5174111111 32.0902833333</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id43"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id44">
+			<gml:identifier codeSpace="urn:uuid:">CF6AE1D5-8604-40B9-BA7E-7A66765DB370</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id45">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id46">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id47">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id48">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_7</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id49" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5168638889 32.0896805556</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id50"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id51">
+			<gml:identifier codeSpace="urn:uuid:">37D000D7-7958-4CF9-951E-E9F2E0E5CE6B</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id52">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id53">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id54">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id55">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_8</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id56" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5165083333 32.0915194444</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id57"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id58">
+			<gml:identifier codeSpace="urn:uuid:">53B35C2C-AF89-4FD4-9ACD-508B56230812</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id59">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id60">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id61">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id62">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_9</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id63" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5163722222 32.0891361111</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id64"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id65">
+			<gml:identifier codeSpace="urn:uuid:">28724AAA-5BFB-4DB0-9A29-56F41302EDCD</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id66">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id67">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id68">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id69">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_10</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id70" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5159222222 32.0886527778</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id71"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id72">
+			<gml:identifier codeSpace="urn:uuid:">ED8A6A8A-A365-4CE7-BFB8-E6D085F5D2D5</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id73">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id74">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id75">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id76">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_11</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id77" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5155222222 32.0882138889</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id78"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id79">
+			<gml:identifier codeSpace="urn:uuid:">A29B503C-D03C-4306-9469-8262206841C0</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id80">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id81">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id82">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id83">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_12</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id84" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5147972222 32.0880722222</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id85"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id86">
+			<gml:identifier codeSpace="urn:uuid:">54525063-41C4-4687-9F66-BA263A1C7B72</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id87">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id88">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id89">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id90">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_13</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id91" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5139055556 32.0879194444</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id92"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id93">
+			<gml:identifier codeSpace="urn:uuid:">AD23ACDE-A72F-45FB-9B05-49828E656B82</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id94">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id95">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id96">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id97">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_14</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id98" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5130861111 32.0877722222</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id99"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id100">
+			<gml:identifier codeSpace="urn:uuid:">64637D40-2C7B-4149-A0CA-9AEEC67BE1E8</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id101">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id102">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id103">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id104">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_15</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id105" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.51255 32.0876611111</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id106"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id107">
+			<gml:identifier codeSpace="urn:uuid:">4B70F882-ACE7-4AD4-8C31-DCCE43180B67</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id108">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id109">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id110">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id111">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_16</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id112" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5123166667 32.0876138889</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id113"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id114">
+			<gml:identifier codeSpace="urn:uuid:">B6DB0CD7-91D0-4695-945D-6987C97EED5B</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id115">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id116">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id117">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id118">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_17</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id119" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5114805556 32.087475</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id120"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id121">
+			<gml:identifier codeSpace="urn:uuid:">38C5489F-BB8A-4F82-BE86-C3CBDAB2A7C6</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id122">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id123">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id124">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id125">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_18</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id126" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5106472222 32.0872944444</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id127"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id128">
+			<gml:identifier codeSpace="urn:uuid:">5CF6F09D-6D11-421B-BE0C-64371A60D450</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id129">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id130">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id131">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id132">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_19</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id133" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5098666667 32.0871805556</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id134"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id135">
+			<gml:identifier codeSpace="urn:uuid:">A483DD89-EA15-462B-8004-8BB7EB6E2DC1</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id136">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id137">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id138">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id139">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_20</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id140" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5092416667 32.0870638889</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id141"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id142">
+			<gml:identifier codeSpace="urn:uuid:">2A7A7B55-3A0A-4C49-A4B0-0B8F106786A6</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id143">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id144">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id145">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id146">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_21</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id147" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5084833333 32.0869111111</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id148"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id149">
+			<gml:identifier codeSpace="urn:uuid:">3E943B1A-1BB7-424E-8DBE-544306DDDA9D</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id150">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id151">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id152">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id153">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_22</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id154" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5075944444 32.0867361111</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id155"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id156">
+			<gml:identifier codeSpace="urn:uuid:">7ABF2BCC-B949-45CF-9699-34CD5E18EA10</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id157">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id158">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id159">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id160">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_23</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id161" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5068555556 32.0866055556</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id162"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id163">
+			<gml:identifier codeSpace="urn:uuid:">2E4E3A53-BAE9-420F-8578-D0F448A78DB6</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id164">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id165">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id166">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id167">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_24</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id168" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5061638889 32.0864722222</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id169"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id170">
+			<gml:identifier codeSpace="urn:uuid:">25A86B52-266B-406D-AB50-6F28290E9FFA</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id171">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id172">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id173">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id174">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_25</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id175" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5056333333 32.086375</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id176"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id177">
+			<gml:identifier codeSpace="urn:uuid:">9A3B970D-8BF6-4387-85B3-095F17F2C6BE</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id178">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id179">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id180">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id181">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_26</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id182" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.505225 32.0862972222</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id183"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id184">
+			<gml:identifier codeSpace="urn:uuid:">8B140ADF-9E5A-41D3-957E-B1DB4D04B2C4</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id185">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id186">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id187">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id188">
+							<aixm:verticalExtent uom="FT">32.81</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_27</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id189" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5043305556 32.0861138889</gml:pos>
+									<aixm:elevation uom="FT">72.18</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id190"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id191">
+			<gml:identifier codeSpace="urn:uuid:">5CB74BC4-210F-4B10-BE7C-E8C47153D02D</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id192">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id193">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id194">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id195">
+							<aixm:verticalExtent uom="FT">26.25</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_28</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id196" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5180666667 32.0880638889</gml:pos>
+									<aixm:elevation uom="FT">65.62</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id197"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id198">
+			<gml:identifier codeSpace="urn:uuid:">FFBF7D36-5F3F-4852-A056-649808AC3DA4</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id199">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id200">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id201">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id202">
+							<aixm:verticalExtent uom="FT">26.26</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_29</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id203" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5169666667 32.0880055556</gml:pos>
+									<aixm:elevation uom="FT">65.63</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id204"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id205">
+			<gml:identifier codeSpace="urn:uuid:">8AEAE162-AF86-4E4F-9492-5F64A9A8A6F5</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id206">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id207">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id208">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id209">
+							<aixm:verticalExtent uom="FT">26.27</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_30</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id210" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5166805556 32.0914944444</gml:pos>
+									<aixm:elevation uom="FT">65.64</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id211"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id212">
+			<gml:identifier codeSpace="urn:uuid:">D219BB84-14C7-4398-A235-161EBC99CF72</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id213">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id214">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id215">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id216">
+							<aixm:verticalExtent uom="FT">26.28</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_31</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id217" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5165944444 32.0919638889</gml:pos>
+									<aixm:elevation uom="FT">65.65</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id218"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id219">
+			<gml:identifier codeSpace="urn:uuid:">EF2D1BD6-13FF-4CB9-8C53-EA1AF85A473B</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id220">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id221">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id222">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id223">
+							<aixm:verticalExtent uom="FT">26.29</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_32</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id224" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5055361111 32.0860416667</gml:pos>
+									<aixm:elevation uom="FT">65.66</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id225"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id226">
+			<gml:identifier codeSpace="urn:uuid:">387DC84D-A5D2-4DE4-8F22-591E8F2F6F57</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id227">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id228">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id229">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id230">
+							<aixm:verticalExtent uom="FT">26.3</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_33</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id231" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5033555556 32.0899305556</gml:pos>
+									<aixm:elevation uom="FT">65.67</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id232"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id233">
+			<gml:identifier codeSpace="urn:uuid:">8AC4CFA9-95FC-457D-A19C-69563F1D5CE7</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id234">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id235">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id236">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id237">
+							<aixm:verticalExtent uom="FT">22.97</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_34</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id238" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5149888889 32.0909833333</gml:pos>
+									<aixm:elevation uom="FT">62.34</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id239"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id240">
+			<gml:identifier codeSpace="urn:uuid:">3A842F78-25E1-46C8-B885-6FD0F9134445</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id241">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id242">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id243">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id244">
+							<aixm:verticalExtent uom="FT">22.97</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_35</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id245" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5147611111 32.0903722222</gml:pos>
+									<aixm:elevation uom="FT">62.34</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id246"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id247">
+			<gml:identifier codeSpace="urn:uuid:">3F266955-BDB7-4F35-889E-5A3C23E650C5</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id248">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id249">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id250">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id251">
+							<aixm:verticalExtent uom="FT">22.97</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_36</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id252" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5137777778 32.0885</gml:pos>
+									<aixm:elevation uom="FT">62.34</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id253"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id254">
+			<gml:identifier codeSpace="urn:uuid:">D70F646B-8D89-43FA-A4D0-2E9A142A343F</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id255">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id256">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id257">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id258">
+							<aixm:verticalExtent uom="FT">22.97</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_37</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id259" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5134277778 32.0881361111</gml:pos>
+									<aixm:elevation uom="FT">62.34</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id260"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id261">
+			<gml:identifier codeSpace="urn:uuid:">D3F98C96-02D0-4AFC-A29B-11521B4C2F54</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id262">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id263">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id264">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id265">
+							<aixm:verticalExtent uom="FT">22.97</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_38</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id266" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5130138889 32.0879138889</gml:pos>
+									<aixm:elevation uom="FT">62.34</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id267"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id268">
+			<gml:identifier codeSpace="urn:uuid:">6035A82E-2740-42DE-B3C2-882A1F0D3577</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id269">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id270">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id271">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id272">
+							<aixm:verticalExtent uom="FT">22.97</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_39</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id273" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5151416667 32.0915361111</gml:pos>
+									<aixm:elevation uom="FT">62.34</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id274"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id275">
+			<gml:identifier codeSpace="urn:uuid:">B1039C48-91B6-427A-A166-9CAB748D4C47</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id276">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id277">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id278">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id279">
+							<aixm:verticalExtent uom="FT">22.97</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_40</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id280" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.4983083333 32.0860027778</gml:pos>
+									<aixm:elevation uom="FT">62.34</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id281"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id282">
+			<gml:identifier codeSpace="urn:uuid:">8B5B675D-1E65-42E1-8E30-379BC0D2F8CC</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id283">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id284">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id285">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id286">
+							<aixm:verticalExtent uom="FT">26.25</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_41</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id287" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5031444444 32.0898694444</gml:pos>
+									<aixm:elevation uom="FT">65.62</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id288"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id289">
+			<gml:identifier codeSpace="urn:uuid:">66D9C6C3-C866-4298-A1AC-96088F51D3DC</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id290">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id291">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id292">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id293">
+							<aixm:verticalExtent uom="FT">26.25</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_42</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id294" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5029083333 32.0898361111</gml:pos>
+									<aixm:elevation uom="FT">65.62</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id295"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id296">
+			<gml:identifier codeSpace="urn:uuid:">113F7626-3AE6-4AB4-8817-A1CB8D075649</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id297">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id298">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id299">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id300">
+							<aixm:verticalExtent uom="FT">26.25</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_43</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id301" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5026194444 32.0898222222</gml:pos>
+									<aixm:elevation uom="FT">65.62</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id302"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id303">
+			<gml:identifier codeSpace="urn:uuid:">65935E20-F526-4A39-BAAD-4D73B45B7E8C</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id304">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id305">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id306">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id307">
+							<aixm:verticalExtent uom="FT">26.25</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_44</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id308" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.4967805556 32.0887388889</gml:pos>
+									<aixm:elevation uom="FT">68.90</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id309"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id310">
+			<gml:identifier codeSpace="urn:uuid:">BC09722B-68F9-40C6-9C54-1E4146D0D228</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id311">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id312">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id313">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id314">
+							<aixm:verticalExtent uom="FT">26.25</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTAS_45</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id315" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.494225 32.0888638889</gml:pos>
+									<aixm:elevation uom="FT">68.90</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id316"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id317">
+			<gml:identifier codeSpace="urn:uuid:">F773A362-DB50-4C62-B675-549EE835B674</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id318">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id319">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id320">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id321">
+							<aixm:verticalExtent uom="FT">37</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTAS_46</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id322" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.519975 32.0913944444</gml:pos>
+									<aixm:elevation uom="FT">78.74</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id323"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id324">
+			<gml:identifier codeSpace="urn:uuid:">67F49FD1-B089-471B-90B0-6CC751F94FEE</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id325">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id326">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id327">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id328">
+							<aixm:verticalExtent uom="FT">37</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTAS_47</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id329" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5188861111 32.0912055556</gml:pos>
+									<aixm:elevation uom="FT">78.74</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id330"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id331">
+			<gml:identifier codeSpace="urn:uuid:">E5A4DFED-B271-4B4B-954E-433CA346CEC9</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id332">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id333">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id334">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id335">
+							<aixm:verticalExtent uom="FT">37</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTAS_48</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id336" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5189333333 32.0913777778</gml:pos>
+									<aixm:elevation uom="FT">78.74</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id337"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id338">
+			<gml:identifier codeSpace="urn:uuid:">260C02E8-222B-4D36-9896-6664113D328C</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id339">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id340">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id341">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id342">
+							<aixm:verticalExtent uom="FT">37</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTAS_49</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id343" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5190027778 32.0916472222</gml:pos>
+									<aixm:elevation uom="FT">78.74</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id344"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id345">
+			<gml:identifier codeSpace="urn:uuid:">BF562C6B-8D79-4372-A353-D8DD21854095</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id346">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id347">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id348">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id349">
+							<aixm:verticalExtent uom="FT">37</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTAS_50</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id350" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5189055556 32.0923861111</gml:pos>
+									<aixm:elevation uom="FT">78.74</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id351"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id352">
+			<gml:identifier codeSpace="urn:uuid:">378BA2FA-3145-44C4-AFC0-21D4C5EB7C60</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id353">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id354">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id355">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id356">
+							<aixm:verticalExtent uom="FT">37</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTAS_51</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id357" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5173638889 32.0921722222</gml:pos>
+									<aixm:elevation uom="FT">78.74</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id358"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id359">
+			<gml:identifier codeSpace="urn:uuid:">090AC2D2-8D9B-4B91-AB59-5C5CC21DA822</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id360">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id361">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id362">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id363">
+							<aixm:verticalExtent uom="FT">37</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTAS_52</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id364" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5169805556 32.0918444444</gml:pos>
+									<aixm:elevation uom="FT">78.74</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id365"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id366">
+			<gml:identifier codeSpace="urn:uuid:">D2DCC80A-20CF-41E1-BC67-05D1F12ADEFC</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id367">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id368">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id369">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id370">
+							<aixm:verticalExtent uom="FT">27.74</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTAS_53</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id371" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5179944444 32.0922555556</gml:pos>
+									<aixm:elevation uom="FT">68.90</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id372"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id373">
+			<gml:identifier codeSpace="urn:uuid:">9EACE3E0-0106-4512-8427-2607C40880A1</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id374">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id375">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id376">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id377">
+							<aixm:verticalExtent uom="FT">18.5</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTAS_54</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id378" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>41.5171027778 32.0879833333</gml:pos>
+									<aixm:elevation uom="FT">59.05</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id379"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+</AIXMBasicMessage>
