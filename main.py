@@ -17,8 +17,6 @@ import dted
 import numpy as np
 from pathlib import Path
 
-
-
 ad_list = ['LTAC', 'LTAF', 'LTAI', 'LTAJ', 'LTAN', 'LTAP', 'LTAR', 'LTAS', 'LTAT', 'LTAU', 'LTAW', 'LTAY', 'LTAZ',
            'LTBA', 'LTBD', 'LTBF', 'LTBH', 'LTBJ', 'LTBO', 'LTBQ', 'LTBR', 'LTBS', 'LTBU', 'LTBY', 'LTBZ', 'LTCA',
            'LTCB', 'LTCC', 'LTCD', 'LTCE', 'LTCF', 'LTCG', 'LTCI', 'LTCJ', 'LTCK', 'LTCL', 'LTCM', 'LTCN', 'LTCO',
@@ -31,15 +29,22 @@ ad_df_list = ['LTAC_df', 'LTAF_df', 'LTAI_df', 'LTAJ_df', 'LTAN_df', 'LTAP_df', 
               'LTCM_df', 'LTCN_df', 'LTCO_df', 'LTCP_df', 'LTCR_df', 'LTCS_df', 'LTCT_df', 'LTCU_df', 'LTCV_df',
               'LTCW_df', 'LTDA_df', 'LTFB_df', 'LTFC_df', 'LTFD_df', 'LTFE_df', 'LTFG_df', 'LTFH_df', 'LTFJ_df',
               'LTFK_df', 'LTFM_df', 'LTFO_df', ]
-df = geopandas.read_file('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles/LTAC_Obstacles/LTAC_Obstacles_AIXM_5_1.xml',engine='pyogrio')
+df = geopandas.read_file(
+    '/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles/LTAC_Obstacles/LTAC_Obstacles_AIXM_5_1.xml',
+    engine='pyogrio')
 
 for i in range(1, len(ad_list)):
     ad_df_list[i] = geopandas.read_file(
         f'//Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles/{ad_list[i]}_Obstacles/{ad_list[i]}_Obstacles_AIXM_5_1.xml')
     df = pd.concat([df, ad_df_list[i]], ignore_index=True)
 
+
+print(df.shape[0])
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'fea4877a6edb053d1acc1f7841d78dca98f2d5bab0af7220522cf94ef685bc2d'
+
+
 #
 #
 # # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///obstacles.db'
@@ -51,406 +56,185 @@ def fullscreen():
     m = folium.Map(location=[39, 35], zoom_start=6)
     marker_cluster = MarkerCluster().add_to(m)
     for i in range(df.shape[0]):
+        coor = df.loc[i, 'geometry']
         if 'BUILDING' in df.loc[i, 'name'] or 'BULDING' in df.loc[i, 'name']:
             # kw = {"prefix": "fa", "color": "green", "icon": "building"}
             # icons = folium.Icon(**kw)
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/building.png')
 
-            coor = df.loc[i, 'geometry']
 
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
         elif 'MAST' in df.loc[i, 'name']:
             if df.loc[i, 'name'] == 'LIGHTING MAST':
                 # kw = {"prefix": "fa", "color": "red", "icon": "shower"}
                 # icons = folium.Icon(**kw)
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/street-light.png')
 
-                coor = df.loc[i, 'geometry']
-
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
             elif df.loc[i, 'name'] == 'APRON LIGHTING MAST' or df.loc[i, 'name'] == 'APRON LIGTHING MAST':
                 # kw = {"prefix": "fa", "color": "red", "icon": "shower"}
                 # icons = folium.Icon(**kw)
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/apron_lighting.png')
 
-                coor = df.loc[i, 'geometry']
-
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
             else:
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/mast.png')
                 # folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/aixm_mapping/icons8-pylon-64.png')
-                coor = df.loc[i, 'geometry']
 
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
 
 
         elif df.loc[i, 'name'] == 'MOSQUE' or df.loc[i, 'name'] == 'MOSQUE_DOME':
 
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/mosque.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'MINARET':
 
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/minaret.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
         elif 'SURVEILLANCE TOWER' in df.loc[i, 'name'] or 'TWR' in df.loc[i, 'name']:
             kw = {"prefix": "fa", "color": "pink", "icon": "tower-observation"}
             icons = folium.Icon(**kw)
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
         elif 'ANTENNA' in df.loc[i, 'name']:
             if df.loc[i, 'name'] == 'GSM ANTENNA':
-                kw = {"prefix": "fa", "color": "purple", "icon": "signal"}
-                icons = folium.Icon(**kw)
+                # kw = {"prefix": "fa", "color": "purple", "icon": "signal"}
+                # icons = folium.Icon(**kw)
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/gsm_anten.png')
-                coor = df.loc[i, 'geometry']
-
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
 
             elif df.loc[i, 'name'] == 'DME ANTENNA' or df.loc[i, 'name'] == 'DME ANTENNA(GP)':
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/dme_antenna.png')
 
-                coor = df.loc[i, 'geometry']
-
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
             elif df.loc[i, 'name'] == 'GLIDE PATH  ANTENNA' or df.loc[i, 'name'] == 'GLIDE PATH ANTENNA' \
                     or df.loc[i, 'name'] == 'GP ANTENNA' or df.loc[i, 'name'] == 'GLIDE PATH ANTENNA':
-                icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/glidepath_antenna.png')
+                icons = folium.CustomIcon(
+                    icon_image='/Users/dersim/PycharmProjects/mapping/icons/glidepath_antenna.png')
 
-                coor = df.loc[i, 'geometry']
-
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
             elif df.loc[i, 'name'] == 'LLZ ANTENNA':
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/llz_ant.png')
 
-                coor = df.loc[i, 'geometry']
-
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
             elif df.loc[i, 'name'] == 'NDB ANTENNA':
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/ndb_antenna.png')
 
-                coor = df.loc[i, 'geometry']
-
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
             elif df.loc[i, 'name'] == 'TACAN ANTENNA':
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/tacan_antenna.png')
 
-                coor = df.loc[i, 'geometry']
-
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
             elif df.loc[i, 'name'] == 'VOR ANTENNA':
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/vor_antenna.png')
 
-                coor = df.loc[i, 'geometry']
-
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
             elif df.loc[i, 'name'] == 'NF ANTENNA':
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/nf_antenna.png')
-
-                coor = df.loc[i, 'geometry']
-
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
 
             else:
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/antenna.png')
 
-                coor = df.loc[i, 'geometry']
-
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
         elif df.loc[i, 'name'] == 'CHIMNEY' or df.loc[i, 'name'] == 'SHAFT':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/chimney.png')
 
-            coor = df.loc[i, 'geometry']
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
-
         elif df.loc[i, 'name'] == 'ANM' or 'ANEMO' in df.loc[i, 'name']:
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/anemometer.png')
-            coor = df.loc[i, 'geometry']
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
+
 
         elif 'WIND' in df.loc[i, 'name']:
             if 'DIRECTION' in df.loc[i, 'name']:
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/wind-direction.png')
-                coor = df.loc[i, 'geometry']
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
-
 
             elif 'ROSE' in df.loc[i, 'name']:
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/wind-rose.png')
-                coor = df.loc[i, 'geometry']
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
+
 
             elif 'TURBINE' in df.loc[i, 'name'] or 'T' in df.loc[i, 'name']:
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/wind-turbine.png')
-                coor = df.loc[i, 'geometry']
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
+
 
             else:
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/windsock.png')
-                coor = df.loc[i, 'geometry']
-                folium.Marker(
-                    location=[coor.y, coor.x], icon=icons, popup=Popup(
-                        f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-                ).add_to(marker_cluster)
+
 
         elif 'WDI' in df.loc[i, 'name']:
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/wind-direction.png')
-            coor = df.loc[i, 'geometry']
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
+
         elif 'APPROACH' in df.loc[i, 'name']:
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/landing-track.png')
-            coor = df.loc[i, 'geometry']
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
+
         elif 'POLE' in df.loc[i, 'name']:
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/pole.png')
-            coor = df.loc[i, 'geometry']
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
+
 
         elif df.loc[i, 'name'] == 'LIGHTNING ROD' or df.loc[i, 'name'] == 'PARATONER' or df.loc[
             i, 'name'] == 'PARATONNERRE':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/lightning-rod.png')
-            coor = df.loc[i, 'geometry']
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
+
 
         elif df.loc[i, 'name'] == 'HOSPITAL':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/hospital.png')
-            coor = df.loc[i, 'geometry']
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
+
 
         elif df.loc[i, 'name'] == 'DME' or df.loc[i, 'name'] == 'DME ILS/GP':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/dme.png')
-            coor = df.loc[i, 'geometry']
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
+
 
         elif df.loc[i, 'name'] == 'NDB':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/ndb.png')
-            coor = df.loc[i, 'geometry']
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
+
 
         elif df.loc[i, 'name'] == 'TACAN' or df.loc[i, 'name'] == 'TACAN CONTAINER':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/tacan.png')
-            coor = df.loc[i, 'geometry']
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
+
 
         elif df.loc[i, 'name'] == 'VOR' or df.loc[i, 'name'] == 'VOR CONTAINER' or df.loc[i, 'name'] == 'VOR STATION':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/vor.png')
-            coor = df.loc[i, 'geometry']
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
+
 
         elif df.loc[i, 'name'] == 'VOR+DME' or df.loc[i, 'name'] == 'VOR/DME':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/vor_dme.png')
-            coor = df.loc[i, 'geometry']
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
+
 
         elif df.loc[i, 'name'] == 'ATC1_AERIAL' or df.loc[i, 'name'] == 'ATC2_AERIAL':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/nf_antenna.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif 'LIGHT' in df.loc[i, 'name']:
 
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/street-light.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'GREENHOUSE' or df.loc[i, 'name'] == 'GREEN HOUSE' or df.loc[
             i, 'name'] == 'PLANT-HOUSE' or df.loc[i, 'name'] == 'GARDEN FRAME':
 
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/greenhouse.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
         elif df.loc[i, 'name'] == 'SILO' or df.loc[i, 'name'] == 'GRAIN SILO':
 
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/silo.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'STADIUM':
 
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/stadium.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif 'HOOK BARRIER' in df.loc[i, 'name']:
 
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/hook.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif 'NET BARRIER' in df.loc[i, 'name']:
 
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/net.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'CONCRETE BARRIER' or df.loc[i, 'name'] == 'CONCRETE BLOCK' or df.loc[
             i, 'name'] == 'BETON BARIYER':
 
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/concrete_barrier.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif 'WALL' in df.loc[i, 'name']:
 
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/wall.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'ATC1_AERIAL' or df.loc[i, 'name'] == 'ATC2_AERIAL':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/nf_antenna.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif (df.loc[i, 'name'] == 'DVOR' or df.loc[i, 'name'] == 'DVOR_LC' or df.loc[i, 'name'] == 'DVOR_MONITOR'
               or df.loc[i, 'name'] == 'FFM_18' or df.loc[i, 'name'] == 'FFM_17L' or df.loc[i, 'name'] == 'FFM-35R'
@@ -476,352 +260,148 @@ def fullscreen():
                 or df.loc[i, 'name'] == 'NFM_34L':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/other_navigation_aid.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
         elif df.loc[i, 'name'] == 'GSM BASE STATION' or df.loc[i, 'name'] == 'GSM STATION':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/gsm_anten.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'GAS STATION':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/gas-station.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'RADAR_STATION':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/radar.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif (df.loc[i, 'name'] == 'CABIN' or df.loc[i, 'name'] == 'CONSTRUCTION' or df.loc[i, 'name'] == 'COTTAGE'
               or df.loc[i, 'name'] == 'GUARD COTTAGE' or df.loc[i, 'name'] == 'STRUCTURE'):
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/cabin.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'HANGAR':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/hangar.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'MILITARY TRENCH':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/trench.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'REFLECTOR':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/reflector.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'ROCK' or df.loc[i, 'name'] == 'STACK' \
                 or df.loc[i, 'name'] == 'CLIFF':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/rock_stack_cliff.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'TREE':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/tree.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'VAN CASTLE':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/castle.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'BRIDGE_DECK':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/bridge_deck.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'TRANSFORMER':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/transformer.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'TRAFFIC_SIGN' or df.loc[i, 'name'] == 'TRAFFIC BOARD' \
                 or df.loc[i, 'name'] == 'SIGNBOARD':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/sign_board.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'PYLON':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/pylon.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'CRANE':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/crane.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'ARFF POOL':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/arff_pool.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'ENERGY TRANSMISSION LINE' or df.loc[i, 'name'] == 'POWER_TRANSMISSION_LINE':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/transmission.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
-
         elif df.loc[i, 'name'] == 'CONTAINER':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/container.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif 'TERRAIN' in df.loc[i, 'name']:
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/terrain.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'BASE STATION':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/base_station.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'BILLBOARD':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/billboard.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'CAMERA PANEL':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/panel.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'FENCE' or df.loc[i, 'name'] == 'WIRE FENCE':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/fence.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'FUEL_TANK':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/fuel_tank.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'WATER TANK':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/water_tank.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'WATER ROSERVOIR':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/reservoir.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'ENERGY CABIN':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/energy_cabin.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'METEOROLOGY DEVICE':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/meteo_device.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'OKIS':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/okis.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'TERMINAL':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/terminal.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'VOICE BIRD SCARING SYSTEM':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/vbss.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'WATCH BOX':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/watch_box.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
         elif df.loc[i, 'name'] == 'GNSS_MEASUREMENT_POINT':
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/gnss.png')
 
-            coor = df.loc[i, 'geometry']
-
-            folium.Marker(
-                location=[coor.y, coor.x], icon=icons, popup=Popup(
-                    f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
-            ).add_to(marker_cluster)
 
 
         else:
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/laughing.png')
 
-            folium.Marker(
-                location=[39, 35], icon=icons, popup=Popup('AMK')
-            ).add_to(marker_cluster)
+        folium.Marker(
+            location=[coor.y, coor.x], icon=icons, popup=Popup(
+                f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
+        ).add_to(marker_cluster)
     """Simple example of a fullscreen map."""
 
     return marker_cluster.get_root().render()
@@ -879,7 +459,8 @@ def enr_obstacles():
 
         elif 'BRIDGE' in edf.loc[i, 'name']:
             if 'TOWER' and 'LINE' in edf.loc[i, 'name']:
-                icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/bridge_tower_line.png')
+                icons = folium.CustomIcon(
+                    icon_image='/Users/dersim/PycharmProjects/mapping/icons/bridge_tower_line.png')
 
                 coor = edf.loc[i, 'geometry']
 
@@ -1087,7 +668,7 @@ def enr_obstacles():
                     f"Elevation:{edf.loc[i, 'elevation']} FT Designator:{edf.loc[i, 'designator']} Type:{edf.loc[i, 'type']} Name:{edf.loc[i, 'name']}")
             ).add_to(marker_cluster2)
 
-        elif 'TELEPHONE/TELEGRAPH LINE MAST' in edf.loc[i, 'name'] :
+        elif 'TELEPHONE/TELEGRAPH LINE MAST' in edf.loc[i, 'name']:
             icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/telegraph.png')
 
             coor = edf.loc[i, 'geometry']
@@ -1164,6 +745,7 @@ def iframe():
         iframe=iframe,
     )
 
+
 @app.route('/are2a')
 def area_2a_obstacles():
     # Open DTED file using Rasterio
@@ -1176,9 +758,8 @@ def area_2a_obstacles():
     dted_file_path4 = '/Users/dersim/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles/LTAC_AREA_4/R1_AREA_4_03L/Terrain/DTED/DTED2/E032/N40.DT2'
     dted_data4 = rasterio.open(dted_file_path4)
 
-
-
-    attr = ('Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community')
+    attr = (
+        'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community')
     tiles = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}'
     # Create a folium map centered on the data
 
@@ -1208,22 +789,105 @@ def area_2a_obstacles():
         colormap=lambda x: (1, 0, 0, x),  # Adjust the colormap as needed
     ).add_to(m3)
 
-
-
-
-
     # Display the map
-    #m.save('map_with_dted.html')
+    # m.save('map_with_dted.html')
     return m3.get_root().render()
+
 
 @app.route('/area2a')
 def real_2a():
+    m4 = folium.Map(location=[41, 32], zoom_start=6)
+    marker_cluster4 = MarkerCluster().add_to(m4)
+    gdf = geopandas.read_file(
+        '/Users/dersim/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles/LTAC_AREA_4/R1_AREA_4_03L/R1 Area4 03L.gdb',
+        driver='OpenFileGDB')
 
-    gdb_file =geopandas.read_file('/Users/dersim/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles/LTAC_AREA_4/R1_AREA_4_03L/R1 Area4 03L.gdb', driver='OpenFileGDB')
-    m4 = gdb_file.geometry.explore()
+    for i in range(gdf.shape[0]):
+        coord = gdf.loc[i, 'geometry']
+        if 'ANTENNA' in gdf.loc[i, 'Obstacle_Type']:
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/antenna.png')
+            # folium.Marker(
+            #     location=[coord.y, coord.x], icon=icons, popup=Popup(
+            #         f"Elevation:{gdf.loc[i, 'Elevation']} Height:{gdf.loc[i, 'Height']} Type:{gdf.loc[i, 'Obstacle_Type']} Coordinates:{coord.y}N {coord.x}E")
+            # ).add_to(marker_cluster4)
 
+        elif 'BUILDING' in gdf.loc[i, 'Obstacle_Type']:
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/building.png')
+            # folium.Marker(
+            #     location=[coord.y, coord.x], icon=icons, popup=Popup(
+            #         f"Elevation:{gdf.loc[i, 'Elevation']} Height:{gdf.loc[i, 'Height']} Type:{gdf.loc[i, 'Obstacle_Type']} Coordinates:{coord.y}N {coord.x}E")
+            # ).add_to(marker_cluster4)
+
+        elif 'APPROACH' in gdf.loc[i, 'Obstacle_Type']:
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/landing-track.png')
+            # folium.Marker(
+            #     location=[coord.y, coord.x], icon=icons, popup=Popup(
+            #         f"Elevation:{gdf.loc[i, 'Elevation']} Height:{gdf.loc[i, 'Height']} Type:{gdf.loc[i, 'Obstacle_Type']} Coordinates:{coord.y}N {coord.x}E")
+            # ).add_to(marker_cluster4)
+
+        elif 'POLE' in gdf.loc[i, 'Obstacle_Type']:
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/pole.png')
+            # folium.Marker(
+            #     location=[coord.y, coord.x], icon=icons, popup=Popup(
+            #         f"Elevation:{gdf.loc[i, 'Elevation']} Height:{gdf.loc[i, 'Height']} Type:{gdf.loc[i, 'Obstacle_Type']} Coordinates:{coord.y}N {coord.x}E")
+            # ).add_to(marker_cluster4)
+
+        elif 'FENCE' in gdf.loc[i, 'Obstacle_Type']:
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/fence.png')
+            # folium.Marker(
+            #     location=[coord.y, coord.x], icon=icons, popup=Popup(
+            #     f"Elevation:{gdf.loc[i, 'Elevation']} Height:{gdf.loc[i, 'Height']} Type:{gdf.loc[i, 'Obstacle_Type']} Coordinates:{coord.y}N {coord.x}E")
+            # ).add_to(marker_cluster4)
+
+        elif 'TRANSMISSION' in gdf.loc[i, 'Obstacle_Type']:
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/transmission.png')
+            # folium.Marker(
+            #     location=[coord.y, coord.x], icon=icons, popup=Popup(
+            #         f"Elevation:{gdf.loc[i, 'Elevation']} Height:{gdf.loc[i, 'Height']} Type:{gdf.loc[i, 'Obstacle_Type']} Coordinates:{coord.y}N {coord.x}E")
+            # ).add_to(marker_cluster4)
+
+        elif 'SIGN' in gdf.loc[i, 'Obstacle_Type']:
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/sign_board.png')
+            # folium.Marker(
+            #     location=[coord.y, coord.x], icon=icons, popup=Popup(
+            #         f"Elevation:{gdf.loc[i, 'Elevation']} Height:{gdf.loc[i, 'Height']} Type:{gdf.loc[i, 'Obstacle_Type']} Coordinates:{coord.y}N {coord.x}E")
+            # ).add_to(marker_cluster4)
+
+        elif 'OTHER' in gdf.loc[i, 'Obstacle_Type']:
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/other_obs.png')
+            # folium.Marker(
+            #     location=[coord.y, coord.x], icon=icons, popup=Popup(
+            #         f"Elevation:{gdf.loc[i, 'Elevation']} Height:{gdf.loc[i, 'Height']} Type:{gdf.loc[i, 'Obstacle_Type']} Coordinates:{coord.y}N {coord.x}E")
+            # ).add_to(marker_cluster4)
+
+        elif 'ELECTRICAL' in gdf.loc[i, 'Obstacle_Type']:
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/electric-pole.png')
+            # folium.Marker(
+            #     location=[coord.y, coord.x], icon=icons, popup=Popup(
+            #         f"Elevation:{gdf.loc[i, 'Elevation']} Height:{gdf.loc[i, 'Height']} Type:{gdf.loc[i, 'Obstacle_Type']} Coordinates:{coord.y}N {coord.x}E")
+            # ).add_to(marker_cluster4)
+
+        elif 'TREE' in gdf.loc[i, 'Obstacle_Type']:
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/tree.png')
+            # folium.Marker(
+            #     location=[coord.y, coord.x], icon=icons, popup=Popup(
+            #         f"Elevation:{df.loc[i, 'elevation']} Designator:{df.loc[i, 'designator']} Type:{df.loc[i, 'type']} Name:{df.loc[i, 'name']}")
+            # ).add_to(marker_cluster4)
+
+        elif 'VEGETATION' in gdf.loc[i, 'Obstacle_Type']:
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/vegetation.png')
+            # folium.Marker(
+            #     location=[coord.y, coord.x], icon=icons, popup=Popup(
+            #         f"Elevation:{gdf.loc[i, 'Elevation']} Height:{gdf.loc[i, 'Height']} Type:{gdf.loc[i, 'Obstacle_Type']} Coordinates:{coord.y}N {coord.x}E")
+            # ).add_to(marker_cluster4)
+
+        folium.Marker(
+            location=[coord.y, coord.x], icon=icons, popup=Popup(
+                f"Elevation:{gdf.loc[i, 'Elevation']} Height:{gdf.loc[i, 'Height']} Type:{gdf.loc[i, 'Obstacle_Type']} Coordinates:{coord.y}N {coord.x}E")
+        ).add_to(marker_cluster4)
 
     return m4.get_root().render()
+
 
 @app.route("/components")
 def components():
@@ -1265,5 +929,7 @@ if __name__ == '__main__':
 #     '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml')
 
 
-gdb_file =geopandas.read_file('/Users/dersim/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles/LTAC_AREA_4/R1_AREA_4_03L/R1 Area4 03L.gdb', driver='OpenFileGDB')
+gdb_file = geopandas.read_file(
+    '/Users/dersim/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles/LTAC_AREA_4/R1_AREA_4_03L/R1 Area4 03L.gdb',
+    driver='OpenFileGDB')
 print(gdb_file.columns)
