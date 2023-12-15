@@ -2,5 +2,11 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/autoconf" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/automake" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/bison" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/flex" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libtool" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mdbtools" vcs="Git" />
   </component>
 </project>
