@@ -10,9 +10,9 @@ from sqlalchemy import create_engine
 import shapely as shp
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import text
-secret_key = os.environ.get('SECRET_KEY')
-app = Flask(__name__)
-app.config['SECRET_KEY'] = secret_key
+# secret_key = os.environ.get('SECRET_KEY')
+# app = Flask(__name__)
+# app.config['SECRET_KEY'] = secret_key
 
 
 path_list_ad = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
@@ -22,10 +22,70 @@ path_list_area_3 = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area
 path_list_area_4 = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles').rglob("*.gdb"))
 path_list_area_4_xml = sorted(
     Path('/Users/dersim/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles/LTFM_AREA_4').rglob("*.xml"))
+#
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ltac_obstacles.db'
+# db = SQLAlchemy()
+# db.init_app(app)
+def read_area_3_4_db(path_list, area: int, path_list_xml):
+    """
+    This function creates a database from .gdb files for area3a and area4a obstacles for every airport other than
+    LTFM. For LTFM we use the aixm format and different path. If data has crs type other than WGS84 transforms it to
+    WGS84. Also caution for file paths especially having space in it. Sometimes manually changing file names may be better:).
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///ltac_obstacles.db'
-db = SQLAlchemy()
-db.init_app(app)
+    """
+    if area == 3:
+        for i in path_list:
+            layer_name = str(i)[69:].replace('/', '_').replace('.gdb', '').lower()
+            engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/area3_obstacles.db', echo=False)
+            if path_list.index(i) == 0:
+                gdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+            else:
+                bdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+                gdf = pd.concat([gdf, bdf], ignore_index=True)
+
+    elif area == 4:
+        for j in path_list:
+            layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower()
+            engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/area4_obstacles.db', echo=False)
+            if path_list.index(j) == 0:
+                gdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+            else:
+                bdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+                gdf = pd.concat([gdf, bdf], ignore_index=True)
+
+        for k in path_list_xml:
+            layer_name = str(k)[69:].replace('/', '_').replace('_Obstacles_AIXM_5_1.xml', '').lower()
+            engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/area4_obstacles.db', echo=False)
+            if path_list_xml.index(k) == 0:
+                xdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+            else:
+                ydf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+                xdf = pd.concat([xdf, ydf], ignore_index=True)
+        gdf = pd.concat([gdf, xdf], ignore_index=True)
+    else:
+        print('Wrong area number. Please enter 3 or 4.')
+    return gdf
+
+
+def read_area2a():
+    path_list = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area2a_obstacles').rglob("*.gdb"))
+    for i in path_list:
+        engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/area2a_obstacles.db', echo=False)
+        layer_name = str(i)[61:].replace('/', '_').replace('.gdb', '').lower()
+        if path_list.index(i) == 0:
+            gdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+        else:
+            bdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+            gdf = pd.concat([gdf, bdf], ignore_index=True)
+
+    return gdf
+
+
+def read_enr_obs_db(db_path):
+    gdf = geopandas.read_file(db_path)
+    return gdf
+
+
 def chunks(xs, n):
     """
     This function splits a list into n sized chunks. Thanks to answer from
@@ -52,25 +112,24 @@ def chunks2(xs, n):
         ind = coordinate_list.index(t)
         coordinate_list[ind] = [float(t[0]), float(t[1])]
     return coordinate_list
+def read_ltac_area3():
+    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/ltac_obstacles.db', echo=True)
 
-with app.app_context():
-    result = db.session.execute(db.select(Point_Obstacle))
-    user = result.scalar()
-    print(point_df)
+    point_df = pd.read_sql('SELECT * FROM Point_Obstacle', engine)
 
     for i in range(point_df.shape[0]):
         point_df.loc[i, 'GEOMETRY'] = shp.Point(float(point_df.loc[i, 'Coordinate'].split(' ')[0]),
                                                 float(point_df.loc[i, 'Coordinate'].split(' ')[1]))
 
-    point_gdf = geopandas.GeoDataFrame(point_df, geometry='GEOMETRY', crs='EPSG:4326')
 
-    line_df = db.session.query(text('SELECT * FROM Line_Obstacle'))
+
+    line_df = pd.read_sql('SELECT * FROM Line_Obstacle', engine)
     for i in range(line_df.shape[0]):
         line_df.loc[i, 'GEOMETRY'] = shp.LineString(chunks(line_df.loc[i, 'Coordinate'].split(' '), 2))
 
-    line_gdf = geopandas.GeoDataFrame(line_df, geometry='GEOMETRY', crs='EPSG:4326')
 
-    polygon_df = db.session.query(text('SELECT * FROM Poligon_Obstacle'))
+
+    polygon_df = pd.read_sql('SELECT * FROM Poligon_Obstacle', engine)
     for i in range(polygon_df.shape[0]):
 
         if len(polygon_df.loc[i, 'Coordinate'].split(' ')) % 2 != 0:
@@ -78,40 +137,37 @@ with app.app_context():
             polygon_df.loc[i, 'Coordinate'] = polygon_df.loc[i, 'Coordinate'][:-1]
         else:
             polygon_df.loc[i, 'GEOMETRY'] = shp.Polygon(chunks(polygon_df.loc[i, 'Coordinate'].split(' '), 2))
-
-    polygon_gdf = geopandas.GeoDataFrame(polygon_df, geometry='GEOMETRY', crs='EPSG:4326')
-
-
-
-@app.route('/aqi')
-def trial():
-    maps = folium.Map(location=[39,35], zoom_start=6,)
-    mcg = folium.plugins.MarkerCluster(control=False)
-    maps.add_child(mcg)
-    g6 = folium.plugins.FeatureGroupSubGroup(mcg, 'LTAC_Area3_Obst')
-    maps.add_child(g6)
-    for e in range(line_df.shape[0]):
-        folium.PolyLine(locations=chunks2(line_df.loc[e, 'Coordinate'].split(' '), 2), color='red',
-                        popup=f"Elevation: {line_df.loc[e, 'Elevation']} FT  Type: {line_df.loc[e, 'Obstacle_Type']} "
-                              f" Coordinates(..N..E): {chunks2(line_df.loc[e, 'Coordinate'].split(' '), 2)}").add_to(g6)
-
-    for w in range(polygon_df.shape[0]):
-        folium.Polygon(locations=chunks2(polygon_df.loc[w, 'Coordinate'].split(' '), 2), color='red',
-                       popup=f"Elevation: {polygon_df.loc[w, 'Elevation']} FT  Type: {polygon_df.loc[w, 'Obstacle_Type']} "
-                             f" Coordinates(..N..E): {chunks2(polygon_df.loc[w, 'Coordinate'].split(' '), 2)}").add_to(
-            g6)
-
-    for c in range(point_gdf.shape[0]):
-        coords = point_gdf.loc[c, 'GEOMETRY']
-        icon_images = '/Users/dersim/PycharmProjects/mapping/icons/marker_dot.png'
-        folium.Marker(location=[coords.x, coords.y],
-                      icon=folium.CustomIcon(icon_image=icon_images, icon_size=(8, 8)), color='red',
-                      popup=f"Elevation: {point_gdf.loc[c, 'Elevation']} Type: {point_gdf.loc[c, 'Obstacle_Type']} "
-                            f" Coordinates: {coords.y}N, {coords.x}E").add_to(g6)
-
-    frame = maps.get_root()._repr_html_()
-    return render_template('mapping.html', frame=frame)
+    ltac_all = pd.concat([point_df,line_df, polygon_df], ignore_index=True)
+    return ltac_all
 
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+def read_ad_obs(path_to_ad):
+    layer_name = str(path_list_ad[1])[64:78].lower()
+    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/aerodrome_obstacles.db', echo=False)
+    gdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+    for p in path_list_ad[1:]:
+        layer_name = str(p)[64:78].lower()
+        engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/aerodrome_obstacles.db', echo=False)
+        gdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+        if path_list_ad.index(p) == 1:
+            pass
+        else:
+            cdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+            gdf = pd.concat([gdf, cdf], ignore_index=True)
+
+
+    return gdf
+
+#ad_df = read_ad_obs(path_list_ad)
+# read_area2a()
+# read_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
+# read_area_3_4_db(path_list_area_4, 4, path_list_area_4_xml)
+# read_ltac_area3()
+# read_enr_obs_db(path_to_enr)
+
+print(path_list_ad)
+
+
+
+
+
