@@ -23,9 +23,9 @@ secret_key = os.environ.get('SECRET_KEY')
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
 app.config.from_mapping(
-    SECRET_KEY=os.environ.get('SECRET_KEY') or 'dev_key',
-    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL') or \
-                            'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
+    SECRET_KEY='secret_key' or 'dev_key',
+    SQLALCHEMY_DATABASE_URI='postgresql://hrgigrfoqsjshn:f5d62edb2a1e5c81fad0de4bb4499d46baf7126753f69653fd182d7e05d9844e@ec2-44-206-204-65.compute-1.amazonaws.com:5432/d1hvskd1kbtl4v' or\
+                            'sqlite:///Users/dersim/PycharmProjects/mapping/instance/obstacles.db',
     SQLALCHEMY_TRACK_MODIFICATIONS=False
 )
 
