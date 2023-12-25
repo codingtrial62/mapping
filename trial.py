@@ -27,7 +27,8 @@ path_list_area_4 = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area
 path_list_area_4_xml = sorted(
     Path('/Users/dersim/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles/LTFM_AREA_4').rglob("*.xml"))
 
-
+secret_key = os.environ.get('SECRET_KEY')
+print(secret_key)
 # def read_area_3_4_db(path_list, area: int):
 #     """
 #     This function creates a database from .gdb files for area3a and area4a obstacles for every airport other than

@@ -12,6 +12,8 @@ from folium.plugins import FastMarkerCluster
 from sqlalchemy import create_engine
 import gunicorn
 from flask_migrate import Migrate
+from flask_caching import Cache
+cache = Cache()
 '''
 ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 792-35-A1-R1-40-5047.   Coordinates end with 38* manually changed on dbviewer. 
@@ -19,9 +21,9 @@ ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 
 secret_key = os.environ.get('SECRET_KEY')
 app = Flask(__name__)
-app.config['SECRET_KEY'] = secret_key
+app.config['SECRET_KEY'] = 'secret_key'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://hrgigrfoqsjshn:f5d62edb2a1e5c81fad0de4bb4499d46baf7126753f69653fd182d7e05d9844e@ec2-44-206-204-65.compute-1.amazonaws.com:5432/d1hvskd1kbtl4v'
 db = SQLAlchemy()
 migrate = Migrate()
 db.init_app(app)
@@ -34,7 +36,33 @@ path_list_area_4 = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area
 path_list_area_4_xml = sorted(
     Path('/Users/dersim/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles/LTFM_AREA_4').rglob("*.xml"))
 
-
+cache_servers = os.environ.get('MEMCACHIER_SERVERS')
+if cache_servers == None:
+    # Fall back to simple in memory cache (development)
+    cache.init_app(app, config={'CACHE_TYPE': 'simple'})
+else:
+    cache_user = os.environ.get('MEMCACHIER_USERNAME') or ''
+    cache_pass = os.environ.get('MEMCACHIER_PASSWORD') or ''
+    cache.init_app(app,
+                   config={'CACHE_TYPE': 'SASLMemcachedCache',
+                           'CACHE_MEMCACHED_SERVERS': cache_servers.split(','),
+                           'CACHE_MEMCACHED_USERNAME': cache_user,
+                           'CACHE_MEMCACHED_PASSWORD': cache_pass,
+                           'CACHE_OPTIONS': { 'behaviors': {
+                               # Faster IO
+                               'tcp_nodelay': True,
+                               # Keep connection alive
+                               'tcp_keepalive': True,
+                               # Timeout for set/get requests
+                               'connect_timeout': 2000, # ms
+                               'send_timeout': 750 * 1000, # us
+                               'receive_timeout': 750 * 1000, # us
+                               '_poll_timeout': 2000, # ms
+                               # Better failover
+                               'ketama': True,
+                               'remove_failed': 1,
+                               'retry_timeout': 2,
+                               'dead_timeout': 30}}})
 def chunks(xs, n):
     """
     This function splits a list into n sized chunks. Thanks to answer from
