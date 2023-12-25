@@ -4,109 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4d043c1f-a2e7-477f-9065-613e7213b8d5" name="Changes" comment="database changes starting">
-      <change afterPath="$PROJECT_DIR$/icons/abutment.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/anemometer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/antenna.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/apron_lighting.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/arff_pool.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/base_station.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/billboard.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/bridge_deck.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/bridge_mast.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/bridge_tower.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/bridge_tower2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/bridge_tower_line.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/building.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/cabin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/camlica_tv.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/castle.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/chimney.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/concrete_barrier.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/container.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/crane.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/dam.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/dme.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/dme_antenna.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/electric-pole.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/energy_cabin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/fence.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/flag_turkey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/fuel_tank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/gas-station.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/glidepath_antenna.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/gnss.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/greenhouse.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/gsm_anten.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/gsm_tower.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/hangar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/hook.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/hospital.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/icons8-pylon-64.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/landing-track.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/laughing.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/lightning-rod.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/llz_ant.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/mast.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/meteo_device.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/minaret.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/mosque.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/ndb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/ndb_antenna.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/net.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/nf_antenna.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/okis.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/other_navigation_aid.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/other_obs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/panel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/pole.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/power-line.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/pylon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/radar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/radio_tower.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/reflector.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/reservoir.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/rock_stack_cliff.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/rope_bridge.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/sign_board.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/silo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/stadium.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/steel_line.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/street-light.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/tacan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/tacan_antenna.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/telegraph.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/terminal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/terrain.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/torch_mast.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/tower-block.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/tower_crane.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/transformer.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/transmission.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/tree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/trench.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/tv-tower.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/tv_transmitter.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/vbss.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/vor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/vor_antenna.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/vor_dme.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/vortac.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/wall.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/watch_box.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/water_tank.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/weather-balloon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/wind-direction.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/wind-farm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/wind-rose.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/wind-turbine.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/wind_measure.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/windsock.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icons/zipline.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mapping.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mapping.html" afterDir="false" />
+    <list default="true" id="4d043c1f-a2e7-477f-9065-613e7213b8d5" name="Changes" comment="last commit before render">
       <change beforePath="$PROJECT_DIR$/trial.py" beforeDir="false" afterPath="$PROJECT_DIR$/trial.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -286,7 +184,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703255411798</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="last commit before render">
+      <option name="closed" value="true" />
+      <created>1703513595986</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1703513595986</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -337,7 +243,8 @@
     <MESSAGE value="some trials" />
     <MESSAGE value="compulsory" />
     <MESSAGE value="database changes starting" />
-    <option name="LAST_COMMIT_MESSAGE" value="database changes starting" />
+    <MESSAGE value="last commit before render" />
+    <option name="LAST_COMMIT_MESSAGE" value="last commit before render" />
     <option name="GROUP_MULTIFILE_MERGE_BY_DIRECTORY" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
