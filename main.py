@@ -1,4 +1,3 @@
-
 import os
 from pathlib import Path
 
@@ -13,6 +12,7 @@ from sqlalchemy import create_engine
 import gunicorn
 from flask_migrate import Migrate
 from flask_caching import Cache
+
 cache = Cache()
 '''
 ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
@@ -22,8 +22,13 @@ ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 secret_key = os.environ.get('SECRET_KEY')
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
+app.config.from_mapping(
+    SECRET_KEY=os.environ.get('SECRET_KEY') or 'dev_key',
+    SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL') or \
+                            'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
+    SQLALCHEMY_TRACK_MODIFICATIONS=False
+)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://')
 db = SQLAlchemy()
 migrate = Migrate()
 db.init_app(app)
@@ -48,21 +53,23 @@ else:
                            'CACHE_MEMCACHED_SERVERS': cache_servers.split(','),
                            'CACHE_MEMCACHED_USERNAME': cache_user,
                            'CACHE_MEMCACHED_PASSWORD': cache_pass,
-                           'CACHE_OPTIONS': { 'behaviors': {
+                           'CACHE_OPTIONS': {'behaviors': {
                                # Faster IO
                                'tcp_nodelay': True,
                                # Keep connection alive
                                'tcp_keepalive': True,
                                # Timeout for set/get requests
-                               'connect_timeout': 2000, # ms
-                               'send_timeout': 750 * 1000, # us
-                               'receive_timeout': 750 * 1000, # us
-                               '_poll_timeout': 2000, # ms
+                               'connect_timeout': 2000,  # ms
+                               'send_timeout': 750 * 1000,  # us
+                               'receive_timeout': 750 * 1000,  # us
+                               '_poll_timeout': 2000,  # ms
                                # Better failover
                                'ketama': True,
                                'remove_failed': 1,
                                'retry_timeout': 2,
                                'dead_timeout': 30}}})
+
+
 def chunks(xs, n):
     """
     This function splits a list into n sized chunks. Thanks to answer from
@@ -273,7 +280,6 @@ def read_area_3_4_db(path_list, area: int, path_list_xml):
     return gdf
 
 
-
 def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml, maps):
     """
     This function creates a database from .gdb files for area3a and area4a obstacles for every airport other than
@@ -411,7 +417,7 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
         maps.add_child(g4)
 
         for l in range(hdf.shape[0]):
-            if len(hdf.loc[l,'coordinate'])%2 != 0:
+            if len(hdf.loc[l, 'coordinate']) % 2 != 0:
                 hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
             coor = hdf.get_coordinates(ignore_index=True)
             if hdf.loc[l, 'GEOMETRY'].geom_type == 'Point':
@@ -461,7 +467,8 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
                                      f" Coordinates(..N..E): {chunks2(xdf.loc[e, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
                     g5)
 
-def marker_creator_ad(df,i):
+
+def marker_creator_ad(df, i):
     if 'BUILDING' in df.loc[i, 'name'] or 'BULDING' in df.loc[i, 'name']:
         # kw = {"prefix": "fa", "color": "green", "icon": "building"}
         # icons = folium.Icon(**kw)
@@ -817,6 +824,7 @@ def marker_creator_ad(df,i):
 
     return icons
 
+
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
 
@@ -834,10 +842,10 @@ def fullscreen():
         m.add_child(g1)
         for i in range(df.shape[0]):
             coor = df.get_coordinates(ignore_index=True)
-            icons=marker_creator_ad(df,i)
+            icons = marker_creator_ad(df, i)
             marker = folium.Marker(location=(coor.loc[i, 'y'], coor.loc[i, 'x']), icon=icons)
             popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
-                         f" Coordinates: {coor.loc[i, 'y']}N, {coor.loc[i, 'x']}E")
+                     f" Coordinates: {coor.loc[i, 'y']}N, {coor.loc[i, 'x']}E")
 
             folium.Popup(popup).add_to(marker)
             marker.add_to(g1)
@@ -881,12 +889,11 @@ def ad():
     return render_template('mapping.html', iframe=frame, title='AD Map | Folium')
 
 
-
-
 m50 = folium.Map(location=[39, 35], zoom_start=6)
+
+
 @app.route("/enrobs", methods=['GET', 'POST'])
 def enr_obstacles():
-
     engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
     layer_name_enr = 'enr_obstacles'
     edf = geopandas.read_postgis('SELECT * FROM ' + layer_name_enr, con=engine, geom_col='GEOMETRY')
@@ -895,11 +902,11 @@ def enr_obstacles():
         edf.loc[i, 'coordinate'] = f"{coords.loc[i, 'x']} {coords.loc[i, 'y']}"
 
     edf.explore(m=m50,
-        column='elevation',
-        tooltip=['name', 'type', 'elevation', 'elevation_uom', 'verticalextent', 'verticalextent_uom',
-                 'lighted', 'coordinate'],
-        cmap='terrain',
-        legend_kwds={'caption': 'Elevation'})
+                column='elevation',
+                tooltip=['name', 'type', 'elevation', 'elevation_uom', 'verticalextent', 'verticalextent_uom',
+                         'lighted', 'coordinate'],
+                cmap='terrain',
+                legend_kwds={'caption': 'Elevation'})
 
     folium.plugins.MousePosition().add_to(m50)
     # header = m.get_root().header.render()
@@ -1011,7 +1018,7 @@ def area_4():
 
         for l in range(hdf.shape[0]):
             coor = hdf.get_coordinates(ignore_index=True)
-            if len(hdf.loc[l,'coordinate'])%2 != 0:
+            if len(hdf.loc[l, 'coordinate']) % 2 != 0:
                 hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
             if hdf.loc[l, 'GEOMETRY'].geom_type == 'Point':
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/marker_dot.png')
@@ -1074,10 +1081,6 @@ def all():
     folium.plugins.MousePosition().add_to(mall)
     frame = mall.get_root()._repr_html_()
     return render_template('mapping.html', iframe=frame, title='All Obstacles | Folium')
-
-
-
-
 
 
 if __name__ == '__main__':
