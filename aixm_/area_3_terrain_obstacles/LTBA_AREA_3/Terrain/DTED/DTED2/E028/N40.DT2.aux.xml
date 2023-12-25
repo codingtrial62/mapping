@@ -1,0 +1,54 @@
+<PAMDataset>
+  <Metadata>
+    <MDI key="DTED_VerticalAccuracy_UHL">NA  </MDI>
+    <MDI key="DTED_VerticalAccuracy_ACC">NA  </MDI>
+    <MDI key="DTED_SecurityCode_UHL">U  </MDI>
+    <MDI key="DTED_SecurityCode_DSI">U</MDI>
+    <MDI key="DTED_UniqueRef_UHL"></MDI>
+    <MDI key="DTED_UniqueRef_DSI">000000000000000</MDI>
+    <MDI key="DTED_DataEdition">01</MDI>
+    <MDI key="DTED_MatchMergeVersion">A</MDI>
+    <MDI key="DTED_MaintenanceDate">0000</MDI>
+    <MDI key="DTED_MatchMergeDate">0000</MDI>
+    <MDI key="DTED_MaintenanceDescription">0000</MDI>
+    <MDI key="DTED_Producer"></MDI>
+    <MDI key="DTED_VerticalDatum">MSL</MDI>
+    <MDI key="DTED_HorizontalDatum">WGS84</MDI>
+    <MDI key="DTED_DigitizingSystem"></MDI>
+    <MDI key="DTED_CompilationDate"></MDI>
+    <MDI key="DTED_HorizontalAccuracy">NA  </MDI>
+    <MDI key="DTED_RelHorizontalAccuracy">NA  </MDI>
+    <MDI key="DTED_RelVerticalAccuracy">NA  </MDI>
+    <MDI key="DTED_OriginLatitude">0400000N</MDI>
+    <MDI key="DTED_OriginLongitude">0280000E</MDI>
+    <MDI key="DTED_NimaDesignator">DTED2</MDI>
+    <MDI key="AREA_OR_POINT">Point</MDI>
+    <MDI key="DataType">Generic</MDI>
+  </Metadata>
+  <Metadata domain="Esri">
+    <MDI key="PyramidResamplingType">NEAREST</MDI>
+  </Metadata>
+  <PAMRasterBand band="1">
+    <NoDataValue le_hex_equiv="000000A0FFFFEFC7">-3.40282306073710E+038</NoDataValue>
+    <Histograms>
+      <HistItem>
+        <HistMin>0</HistMin>
+        <HistMax>232</HistMax>
+        <BucketCount>256</BucketCount>
+        <IncludeOutOfRange>1</IncludeOutOfRange>
+        <Approximate>0</Approximate>
+        <HistCounts>12961080|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|0|1|0|1|0|0|2|0|1|3|3|1|4|1|1|1|2|1|0|2|0|3|7|4|3|5|5|2|2|0|6|3|4|10|6|9|15|20|50|97|0|84|117|160|218|275|207|235|182|108|107|0|57|56|41|28|29|31|49|34|40|32|0|34|56|55|38|39|37|38|39|43|51|0|47|50|44|40|31|35|33|32|44|33|30|0|45|62|43|35|41|36|33|51|36|41|0|42|30|35|52|30|39|39|43|59|61|0|80|135|69|72|86|72|61|67|78|77|0|72|65|51|74|102|82|40|46|48|57|0|38|44|29|38|26|25|10|23|11|18|0|18|22|94|28|10|9|8|4|4|6|0|7|11|7|5|9|11|2|6|5|4|0|2|3|8|2|2|7|3|3|6|0|0|3|3|3|4|4|4|2|3|2|2|0|3|2|0|0|1|1|1|0|1|3|0|1|1|1|0|3|0|1|0|2|0|1|0</HistCounts>
+      </HistItem>
+    </Histograms>
+    <Metadata>
+      <MDI key="STATISTICS_MINIMUM">0</MDI>
+      <MDI key="STATISTICS_MAXIMUM">232</MDI>
+      <MDI key="STATISTICS_MEAN">0,056658564943969</MDI>
+      <MDI key="STATISTICS_STDDEV">2,7029415468358</MDI>
+      <MDI key="STATISTICS_SKIPFACTORX">1</MDI>
+      <MDI key="STATISTICS_SKIPFACTORY">1</MDI>
+      <MDI key="STATISTICS_EXCLUDEDVALUES"></MDI>
+      <MDI key="STATISTICS_COVARIANCES">7,30589300561108</MDI>
+    </Metadata>
+  </PAMRasterBand>
+</PAMDataset>

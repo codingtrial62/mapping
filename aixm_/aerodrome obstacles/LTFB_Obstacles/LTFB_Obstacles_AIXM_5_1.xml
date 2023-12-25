@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AIXMBasicMessage xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.aixm.aero/schema/5.1/message http://www.aixm.aero/schema/5.1/message/AIXM_BasicMessage.xsd" gml:id="gml.id1" xmlns="http://www.aixm.aero/schema/5.1/message" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id2">
+			<gml:identifier codeSpace="urn:uuid:">70B66422-B06D-4FDA-A652-765EBE68EAD5</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id3">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id4">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id5">
+							<gml:beginPosition>2020-12-31T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id6">
+							<aixm:verticalExtent uom="FT">57.4</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTFB_1</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id7" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>37.9525 27.3375</gml:pos>
+									<aixm:elevation uom="FT">67.40</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id8"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+</AIXMBasicMessage>

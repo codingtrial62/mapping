@@ -1,0 +1,2593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AIXMBasicMessage xmlns:aixm="http://www.aixm.aero/schema/5.1" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gsr="http://www.isotc211.org/2005/gsr" xmlns:gss="http://www.isotc211.org/2005/gss" xmlns:gts="http://www.isotc211.org/2005/gts" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" xsi:schemaLocation="http://www.aixm.aero/schema/5.1/message https://www.aixm.aero/schema/5.1/message/AIXM_BasicMessage.xsd" gml:id="gml.id1" xmlns="http://www.aixm.aero/schema/5.1/message" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id2">
+			<gml:identifier codeSpace="urn:uuid:">E9C824C6-67DE-4C2A-9F1B-BDABDF6F8D6F</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id3">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id4">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id5">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>LIGHTNING ROD</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted nilReason="missing">OTHER</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id6">
+							<aixm:verticalExtent uom="FT">27.06</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR1</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id7" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2529361111 29.5443972222</gml:pos>
+									<aixm:elevation uom="FT">783.61</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id8"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id9">
+			<gml:identifier codeSpace="urn:uuid:">73506AB2-A51D-4E0D-A368-0B8EDEBE47A0</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id10">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id11">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id12">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>SURVEILLANCE TOWER</aixm:name>
+					<aixm:type>TOWER</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id13">
+							<aixm:verticalExtent uom="FT">21.32</aixm:verticalExtent>
+							<aixm:type>TOWER</aixm:type>
+							<aixm:designator>LTBR2</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id14" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2528944444 29.5443833333</gml:pos>
+									<aixm:elevation uom="FT">777.91</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id15">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id16">
+			<gml:identifier codeSpace="urn:uuid:">CF12F526-71AF-4E29-9D0B-B2957EC4E72A</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id17">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id18">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id19">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>NET BARRIER CABIN</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id20">
+							<aixm:verticalExtent uom="FT">7.22</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR3</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id21" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2516194444 29.5450694444</gml:pos>
+									<aixm:elevation uom="FT">765.08</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id22">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id23">
+			<gml:identifier codeSpace="urn:uuid:">9A3E6AFE-4ECE-4E43-963C-2A7F1087CA6A</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id24">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id25">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id26">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>NET BARRIER CABIN</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id27">
+							<aixm:verticalExtent uom="FT">7.22</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR4</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id28" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2525916667 29.5447166667</gml:pos>
+									<aixm:elevation uom="FT">765.08</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id29">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id30">
+			<gml:identifier codeSpace="urn:uuid:">834E1784-D1C9-43F0-A791-9DE40A0094D2</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id31">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id32">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id33">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>CABIN</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id34">
+							<aixm:verticalExtent uom="FT">7.22</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR5</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id35" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2516333333 29.54645</gml:pos>
+									<aixm:elevation uom="FT">767.60</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id36">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id37">
+			<gml:identifier codeSpace="urn:uuid:">61B572A2-CD5C-49BA-B701-8C7E8A8952E8</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id38">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id39">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id40">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>WINDSOCK</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id41">
+							<aixm:verticalExtent uom="FT">19.68</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR6</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id42" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2515861111 29.5464</gml:pos>
+									<aixm:elevation uom="FT">780.33</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id43">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id44">
+			<gml:identifier codeSpace="urn:uuid:">C02E1BF5-76DB-4528-9E8C-3359E03F75B9</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id45">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id46">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id47">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>WINDSOCK</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id48">
+							<aixm:verticalExtent uom="FT">19.68</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR7</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id49" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2543611111 29.5487861111</gml:pos>
+									<aixm:elevation uom="FT">777.28</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id50">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id51">
+			<gml:identifier codeSpace="urn:uuid:">FCC67F83-22A0-4058-930C-CC752AEE0FCB</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id52">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id53">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id54">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HOOK BARRIER CABIN</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id55">
+							<aixm:verticalExtent uom="FT">7.22</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR8</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id56" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2527722222 29.5506666667</gml:pos>
+									<aixm:elevation uom="FT">764.16</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id57">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id58">
+			<gml:identifier codeSpace="urn:uuid:">A7BC1BEA-6BFD-41BF-9694-8C2101B230D6</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id59">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id60">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id61">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HOOK BARRIER CABIN</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id62">
+							<aixm:verticalExtent uom="FT">7.22</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR9</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id63" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2538138889 29.5502916667</gml:pos>
+									<aixm:elevation uom="FT">763.93</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id64">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id65">
+			<gml:identifier codeSpace="urn:uuid:">6EFCB766-C3AE-482D-B064-C5AC8955E92B</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id66">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id67">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id68">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>RVR MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id69">
+							<aixm:verticalExtent uom="FT">8.53</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR10</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id70" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2536972222 29.5479861111</gml:pos>
+									<aixm:elevation uom="FT">767.01</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id71">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id72">
+			<gml:identifier codeSpace="urn:uuid:">3241837E-AC4D-4FFE-8889-B124DBDAAA7C</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id73">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id74">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id75">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>RVR MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id76">
+							<aixm:verticalExtent uom="FT">8.53</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR11</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id77" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2538777778 29.5488333333</gml:pos>
+									<aixm:elevation uom="FT">767.21</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id78">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id79">
+			<gml:identifier codeSpace="urn:uuid:">D4675508-8077-41EA-B3B2-F1ABF192E942</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id80">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id81">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id82">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>NET BARRIER CONCRETE ROD</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted nilReason="missing">OTHER</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id83">
+							<aixm:verticalExtent uom="FT">1.31</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR12</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id84" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2511861111 29.5453527778</gml:pos>
+									<aixm:elevation uom="FT">762.91</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id85"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id86">
+			<gml:identifier codeSpace="urn:uuid:">85C87A02-7B44-4F7C-9E8C-EC4E98BD3E1B</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id87">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id88">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id89">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>TACAN ANTENNA</aixm:name>
+					<aixm:type>ANTENNA</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id90">
+							<aixm:verticalExtent uom="FT">42.65</aixm:verticalExtent>
+							<aixm:type>ANTENNA</aixm:type>
+							<aixm:designator>LTBR13</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id91" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2573333333 29.5629083333</gml:pos>
+									<aixm:elevation uom="FT">796.08</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id92">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id93">
+			<gml:identifier codeSpace="urn:uuid:">7190CDD1-B84E-4535-AD32-476FDA60F529</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id94">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id95">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id96">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>RVR MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id97">
+							<aixm:verticalExtent uom="FT">8.53</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR14</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id98" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2565 29.5611944444</gml:pos>
+									<aixm:elevation uom="FT">764.45</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id99">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id100">
+			<gml:identifier codeSpace="urn:uuid:">8AADB2D7-E649-4731-B684-E4F1A00532E9</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id101">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id102">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id103">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>RVR MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id104">
+							<aixm:verticalExtent uom="FT">8.53</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR15</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id105" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2566805556 29.5620444444</gml:pos>
+									<aixm:elevation uom="FT">764.82</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id106">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id107">
+			<gml:identifier codeSpace="urn:uuid:">34540775-F395-406C-B852-25B00FE8F4B9</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id108">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id109">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id110">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>RVR MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id111">
+							<aixm:verticalExtent uom="FT">8.53</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR16</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id112" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2593055556 29.574425</gml:pos>
+									<aixm:elevation uom="FT">758.12</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id113">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id114">
+			<gml:identifier codeSpace="urn:uuid:">CB3D06C6-4314-43D0-ABB0-2AC26DA199CE</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id115">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id116">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id117">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>RVR MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id118">
+							<aixm:verticalExtent uom="FT">8.53</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR17</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id119" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2594861111 29.575275</gml:pos>
+									<aixm:elevation uom="FT">757.96</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id120">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id121">
+			<gml:identifier codeSpace="urn:uuid:">2FC15586-805D-48D3-AE47-CC9CAE96ECC8</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id122">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id123">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id124">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HOOK BARRIER CABIN</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id125">
+							<aixm:verticalExtent uom="FT">7.55</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR18</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id126" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2578583333 29.5746555556</gml:pos>
+									<aixm:elevation uom="FT">754.25</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id127">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id128">
+			<gml:identifier codeSpace="urn:uuid:">AFEAABE5-75AF-4ED1-B4CB-8BFB9C4CAAA5</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id129">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id130">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id131">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HOOK BARRIER CABIN</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id132">
+							<aixm:verticalExtent uom="FT">7.55</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR19</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id133" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2589027778 29.574275</gml:pos>
+									<aixm:elevation uom="FT">754.25</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id134">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id135">
+			<gml:identifier codeSpace="urn:uuid:">D2EB2924-6A8D-40D7-8E80-EE428BFFECB4</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id136">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id137">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id138">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>DME ILS/GP</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted nilReason="missing">OTHER</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id139">
+							<aixm:verticalExtent uom="FT">50.85</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR20</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id140" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2599111111 29.5752888889</gml:pos>
+									<aixm:elevation uom="FT">794.60</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id141"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id142">
+			<gml:identifier codeSpace="urn:uuid:">38E612C0-AD0E-4D40-B975-B4ECF816D718</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id143">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id144">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id145">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>GP CABIN</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted nilReason="missing">OTHER</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id146">
+							<aixm:verticalExtent uom="FT">21.98</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR21</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id147" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2601083333 29.5762166667</gml:pos>
+									<aixm:elevation uom="FT">768.69</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id148"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id149">
+			<gml:identifier codeSpace="urn:uuid:">D94CB8F3-11C8-4DFA-8CD4-ED263785F1F3</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id150">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id151">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id152">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>CABIN</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id153">
+							<aixm:verticalExtent uom="FT">7.22</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR22</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id154" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2586416667 29.5787527778</gml:pos>
+									<aixm:elevation uom="FT">757.60</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id155">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id156">
+			<gml:identifier codeSpace="urn:uuid:">5B894525-97F4-433E-945C-16C79F56B559</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id157">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id158">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id159">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>WINDSOCK</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id160">
+							<aixm:verticalExtent uom="FT">19.68</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR23</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id161" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2586583333 29.5788138889</gml:pos>
+									<aixm:elevation uom="FT">770.16</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id162">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id163">
+			<gml:identifier codeSpace="urn:uuid:">9B99162E-BA20-470E-98F4-D6C87FC508A5</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id164">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id165">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id166">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id167">
+							<aixm:verticalExtent uom="FT">72.17</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR28</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id168" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2603277778 29.4797916667</gml:pos>
+									<aixm:elevation uom="FT">1203.20</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id169">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id170">
+			<gml:identifier codeSpace="urn:uuid:">6E560470-B128-486C-BBE0-15E5FA8801E3</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id171">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id172">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id173">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id174">
+							<aixm:verticalExtent uom="FT">104.9</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR29</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id175" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2988138889 29.5546416667</gml:pos>
+									<aixm:elevation uom="FT">1097.10</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id176">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id177">
+			<gml:identifier codeSpace="urn:uuid:">50A3D8E6-2226-4FA8-9786-DF9C2810CAF0</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id178">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id179">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id180">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id181">
+							<aixm:verticalExtent uom="FT">104.9</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR30</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id182" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2994638889 29.5549666667</gml:pos>
+									<aixm:elevation uom="FT">1131.40</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id183">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id184">
+			<gml:identifier codeSpace="urn:uuid:">EFADA3A7-B550-4D31-B450-ED78E023E545</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id185">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id186">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id187">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id188">
+							<aixm:verticalExtent uom="FT">104.9</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR31</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id189" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2913694444 29.529925</gml:pos>
+									<aixm:elevation uom="FT">1029.00</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id190">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id191">
+			<gml:identifier codeSpace="urn:uuid:">F51D7166-839C-43F9-817A-EE0181EFAE72</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id192">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id193">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id194">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id195">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR32</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id196" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2882638889 29.52415</gml:pos>
+									<aixm:elevation uom="FT">1070</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id197">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id198">
+			<gml:identifier codeSpace="urn:uuid:">4C3F0757-2BFC-4235-851A-25D26425A6CB</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id199">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id200">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id201">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id202">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR33</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id203" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2815305556 29.5116194444</gml:pos>
+									<aixm:elevation uom="FT">981</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id204">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id205">
+			<gml:identifier codeSpace="urn:uuid:">69DD5BE1-B1ED-4F23-9D16-935CF2FE383E</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id206">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id207">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id208">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id209">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR34</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id210" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2888138889 29.5264083333</gml:pos>
+									<aixm:elevation uom="FT">991</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id211">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id212">
+			<gml:identifier codeSpace="urn:uuid:">E74C96BA-B4C6-4C41-8161-FDE9991C0138</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id213">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id214">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id215">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id216">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR35</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id217" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.300175 29.5614333333</gml:pos>
+									<aixm:elevation uom="FT">1113</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id218">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id219">
+			<gml:identifier codeSpace="urn:uuid:">E46E0885-F7CD-4118-A327-40C5DE35BAFF</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id220">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id221">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id222">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id223">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR36</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id224" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.3009111111 29.5624638889</gml:pos>
+									<aixm:elevation uom="FT">1151</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id225">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id226">
+			<gml:identifier codeSpace="urn:uuid:">E80DF902-AB5E-4DF6-937F-3DE0B123ED5C</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id227">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id228">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id229">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id230">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR37</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id231" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.3007388889 29.5645361111</gml:pos>
+									<aixm:elevation uom="FT">1122</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id232">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id233">
+			<gml:identifier codeSpace="urn:uuid:">218534E4-5BE6-458A-9BCB-4D34756FA899</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id234">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id235">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id236">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id237">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR38</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id238" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.3038305556 29.5774</gml:pos>
+									<aixm:elevation uom="FT">1101</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id239">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id240">
+			<gml:identifier codeSpace="urn:uuid:">E7CC875D-B438-4279-9B0E-6B3A654327E0</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id241">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id242">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id243">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id244">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR39</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id245" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.3033666667 29.5777666667</gml:pos>
+									<aixm:elevation uom="FT">1089</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id246">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id247">
+			<gml:identifier codeSpace="urn:uuid:">8EE63B80-4F76-4FDC-B22B-9E2215238544</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id248">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id249">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id250">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id251">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR40</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id252" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.3027638889 29.5720222222</gml:pos>
+									<aixm:elevation uom="FT">1152</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id253">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id254">
+			<gml:identifier codeSpace="urn:uuid:">0B234F5A-7881-4B21-BF5D-A547C5C1EC19</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id255">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id256">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id257">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id258">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR41</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id259" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.3050027778 29.5837083333</gml:pos>
+									<aixm:elevation uom="FT">1109</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id260">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id261">
+			<gml:identifier codeSpace="urn:uuid:">1B56BCA2-6680-41B0-A71B-62592C5FD063</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id262">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id263">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id264">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id265">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR42</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id266" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.3053916667 29.5885694444</gml:pos>
+									<aixm:elevation uom="FT">1171</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id267">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id268">
+			<gml:identifier codeSpace="urn:uuid:">5AC93021-A9B0-48B8-8357-A48C757CC506</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id269">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id270">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id271">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id272">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR43</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id273" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.3060055556 29.5884972222</gml:pos>
+									<aixm:elevation uom="FT">1171</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id274">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id275">
+			<gml:identifier codeSpace="urn:uuid:">7A708855-D74B-41B2-BA29-C6BF2CEE7DB1</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id276">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id277">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id278">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id279">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR44</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id280" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.3075138889 29.5992888889</gml:pos>
+									<aixm:elevation uom="FT">1188</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id281">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id282">
+			<gml:identifier codeSpace="urn:uuid:">9B467805-1232-4748-85F4-8332212A842B</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id283">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id284">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id285">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id286">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR45</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id287" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.308925 29.6037666667</gml:pos>
+									<aixm:elevation uom="FT">1233</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id288">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id289">
+			<gml:identifier codeSpace="urn:uuid:">CF7D7D6A-01AB-4973-8F04-7B5AAFE5C7BE</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id290">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id291">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id292">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id293">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR46</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id294" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.3084388889 29.604075</gml:pos>
+									<aixm:elevation uom="FT">1233</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id295">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id296">
+			<gml:identifier codeSpace="urn:uuid:">69CF65B9-4F9E-4E47-AE23-F3AE0130DF37</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id297">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id298">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id299">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HIGH VOLTAGE MAST</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id300">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR47</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id301" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.3022305556 29.5719583333</gml:pos>
+									<aixm:elevation uom="FT">1129</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id302">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id303">
+			<gml:identifier codeSpace="urn:uuid:">007F82DC-6001-4092-A862-2546A33E7644</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id304">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id305">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id306">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>GSM STATION</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id307">
+							<aixm:verticalExtent uom="FT">105</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR49</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id308" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2857 29.5091666667</gml:pos>
+									<aixm:elevation uom="FT">1083</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id309">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id310">
+			<gml:identifier codeSpace="urn:uuid:">96830DEB-1FC3-4526-AC82-AE3525C486ED</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id311">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id312">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id313">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>GSM STATION</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>YES</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id314">
+							<aixm:verticalExtent uom="FT">85</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR50</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id315" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2839083333 29.5091444444</gml:pos>
+									<aixm:elevation uom="FT">1037</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id316">
+									<aixm:colour>RED</aixm:colour>
+								</aixm:LightElement>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id317">
+			<gml:identifier codeSpace="urn:uuid:">92981318-9651-470B-A015-388E61523AD2</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id318">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id319">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id320">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>LIGHTNING MAST 1</aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted nilReason="missing">OTHER</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id321">
+							<aixm:verticalExtent uom="FT">23</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR57</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id322" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2525638889 29.5413722222</gml:pos>
+									<aixm:elevation uom="FT">785</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id323"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id324">
+			<gml:identifier codeSpace="urn:uuid:">69852D56-86E7-4F6E-AB71-757ABA500C80</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id325">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id326">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id327">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id328">
+							<aixm:verticalExtent uom="FT">10</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR67</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id329" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2589027778 29.5501972222</gml:pos>
+									<aixm:elevation uom="FT">774</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id330"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id331">
+			<gml:identifier codeSpace="urn:uuid:">55D692E1-56EC-4BBF-B135-FFD1FFB067F9</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id332">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id333">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id334">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>LIGHTNING MAST </aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id335">
+							<aixm:verticalExtent uom="FT">39</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR68</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id336" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2604611111 29.5519861111</gml:pos>
+									<aixm:elevation uom="FT">801</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id337"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id338">
+			<gml:identifier codeSpace="urn:uuid:">38D5DF15-0155-409F-86A2-39411405D15A</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id339">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id340">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id341">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>LIGHTNING MAST </aixm:name>
+					<aixm:type>POLE</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id342">
+							<aixm:verticalExtent uom="FT">39</aixm:verticalExtent>
+							<aixm:type>POLE</aixm:type>
+							<aixm:designator>LTBR69</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id343" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2608583333 29.550225</gml:pos>
+									<aixm:elevation uom="FT">801</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id344"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id345">
+			<gml:identifier codeSpace="urn:uuid:">BC884EB4-AF5A-4E95-81E4-45AFCB1DA4BE</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id346">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id347">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id348">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HANGAR</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id349">
+							<aixm:verticalExtent uom="FT">27</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR70</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id350" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2605555556 29.5557138889</gml:pos>
+									<aixm:elevation uom="FT">791</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id351"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id352">
+			<gml:identifier codeSpace="urn:uuid:">A25E2F43-D8D6-4FEA-92E6-2EE94393C68C</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id353">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id354">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id355">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HANGAR</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id356">
+							<aixm:verticalExtent uom="FT">27</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR71</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id357" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2500722222 29.5582555556</gml:pos>
+									<aixm:elevation uom="FT">789</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id358"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id359">
+			<gml:identifier codeSpace="urn:uuid:">C94AA953-25F8-43C9-AECA-366B88122AD5</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id360">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id361">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id362">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id363">
+							<aixm:verticalExtent uom="FT">11</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR72</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id364" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.266625 29.5793333333</gml:pos>
+									<aixm:elevation uom="FT">767</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id365"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id366">
+			<gml:identifier codeSpace="urn:uuid:">E8A4ED0F-5167-4526-A180-9922A8C7BE10</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id367">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id368">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id369">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HANGAR</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id370">
+							<aixm:verticalExtent uom="FT">27</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR73</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id371" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2606611111 29.586125</gml:pos>
+									<aixm:elevation uom="FT">785</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id372"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id373">
+			<gml:identifier codeSpace="urn:uuid:">EFEDCA2B-8AC4-432C-8F22-D1C53BB8630A</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id374">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id375">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id376">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>HANGAR</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id377">
+							<aixm:verticalExtent uom="FT">27</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR74</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id378" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2612583333 29.5883833333</gml:pos>
+									<aixm:elevation uom="FT">787</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id379"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id380">
+			<gml:identifier codeSpace="urn:uuid:">4EF3A637-DC69-4900-863D-27215E1F7C03</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id381">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id382">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id383">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id384">
+							<aixm:verticalExtent uom="FT">11</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR75</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id385" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2613638889 29.5897305556</gml:pos>
+									<aixm:elevation uom="FT">765</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id386"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id387">
+			<gml:identifier codeSpace="urn:uuid:">583E699B-F15B-476E-A276-C7FD09A8F04A</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id388">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id389">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id390">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted>NO</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id391">
+							<aixm:verticalExtent uom="FT">5</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR76</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id392" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.26415 29.5697555556</gml:pos>
+									<aixm:elevation uom="FT">760</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id393"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+	<hasMember>
+		<aixm:VerticalStructure gml:id="gml.id394">
+			<gml:identifier codeSpace="urn:uuid:">7412EED7-34A7-448A-AD33-272201D55EDA</gml:identifier>
+			<aixm:timeSlice>
+				<aixm:VerticalStructureTimeSlice gml:id="gml.id395">
+					<gml:validTime>
+						<gml:TimePeriod gml:id="gml.id396">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</gml:validTime>
+					<aixm:interpretation>BASELINE</aixm:interpretation>
+					<aixm:sequenceNumber>1</aixm:sequenceNumber>
+					<aixm:correctionNumber>0</aixm:correctionNumber>
+					<aixm:featureLifetime>
+						<gml:TimePeriod gml:id="gml.id397">
+							<gml:beginPosition>2022-10-06T00:00:00</gml:beginPosition>
+							<gml:endPosition indeterminatePosition="unknown"/>
+						</gml:TimePeriod>
+					</aixm:featureLifetime>
+					<aixm:name>BUILDING</aixm:name>
+					<aixm:type>BUILDING</aixm:type>
+					<aixm:lighted nilReason="missing">OTHER</aixm:lighted>
+					<aixm:group>NO</aixm:group>
+					<aixm:part>
+						<aixm:VerticalStructurePart gml:id="gml.id398">
+							<aixm:verticalExtent uom="FT">2</aixm:verticalExtent>
+							<aixm:type>BUILDING</aixm:type>
+							<aixm:designator>LTBR77</aixm:designator>
+							<aixm:horizontalProjection_location>
+								<aixm:ElevatedPoint gml:id="gml.id399" srsName="urn:ogc:def:crs:EPSG::4326">
+									<gml:pos>40.2518611111 29.5453388889</gml:pos>
+									<aixm:elevation uom="FT">764</aixm:elevation>
+								</aixm:ElevatedPoint>
+							</aixm:horizontalProjection_location>
+							<aixm:lighting>
+								<aixm:LightElement gml:id="gml.id400"/>
+							</aixm:lighting>
+						</aixm:VerticalStructurePart>
+					</aixm:part>
+				</aixm:VerticalStructureTimeSlice>
+			</aixm:timeSlice>
+		</aixm:VerticalStructure>
+	</hasMember>
+</AIXMBasicMessage>
