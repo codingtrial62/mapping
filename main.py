@@ -22,6 +22,7 @@ ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 secret_key = os.environ.get('SECRET_KEY')
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DB_URI','sqlite:///Users/dersim/PycharmProjects/mapping/instance/obstacles.db')
 # app.config.from_mapping(
 #     SECRET_KEY='secret_key' or 'dev_key',
 #     SQLALCHEMY_DATABASE_URI='postgresql://hrgigrfoqsjshn:f5d62edb2a1e5c81fad0de4bb4499d46baf7126753f69653fd182d7e05d9844e@ec2-44-206-204-65.compute-1.amazonaws.com:5432/d1hvskd1kbtl4v' or\
