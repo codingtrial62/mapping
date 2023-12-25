@@ -1,3 +1,0 @@
-Kastamonu þerit saha arazi verisi sayýsal nitelikler;
-Arazi verisi sýnýrlarý þerit sahayý kapsamaktadýr.
-Yatay doðruluk 30cm, düþey doðruluk 5m dir.
