@@ -11,6 +11,7 @@ from flask_sqlalchemy import SQLAlchemy
 from folium.plugins import FastMarkerCluster
 from sqlalchemy import create_engine
 import gunicorn
+from flask_migrate import Migrate
 '''
 ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 792-35-A1-R1-40-5047.   Coordinates end with 38* manually changed on dbviewer. 
@@ -20,9 +21,11 @@ secret_key = os.environ.get('SECRET_KEY')
 app = Flask(__name__)
 app.config['SECRET_KEY'] = secret_key
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///obstacles.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 db = SQLAlchemy()
+migrate = Migrate()
 db.init_app(app)
+migrate.init_app(app, db)
 path_list_ad = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
 path_to_enr = '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml'
 path_list_area_2 = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area2a_obstacles').rglob("*.gdb"))
