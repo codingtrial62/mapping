@@ -158,6 +158,8 @@ for j in path_list_area_4:
 
 
 #
+
+print(type(str(path_list_area_2[:][0])))
 # def read_ad_obs(path_to_ad):
 #     layer_name = str(path_list_ad[1])[64:78].lower()
 #     engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/aerodrome_obstacles.db', echo=False)

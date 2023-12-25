@@ -792,9 +792,9 @@ def fullscreen():
     m = folium.Map(location=[39, 35], zoom_start=6)
     mcg = folium.plugins.MarkerCluster(control=False)
     m.add_child(mcg)
+    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
     for p in path_list_ad[1:]:
         layer_name = str(p)[64:78].lower()
-        engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/aerodrome_obstacles.db', echo=False)
         df = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
 
         g1 = folium.plugins.FeatureGroupSubGroup(mcg, str(p)[64:68] + '_AD_Obst')
@@ -815,7 +815,7 @@ def fullscreen():
     folium.plugins.MousePosition().add_to(m)
     frame = m.get_root()._repr_html_()
 
-    return render_template('mapping.html', iframe=frame)
+    return render_template('mapping.html', iframe=frame, title='Fullscreen AD Map | Folium')
 
 
 @app.route("/aerodrome", methods=['GET', 'POST'])
@@ -823,11 +823,10 @@ def ad():
     m = folium.Map(location=[39, 35], zoom_start=6)
     mcg = folium.plugins.MarkerCluster(control=False)
     m.add_child(mcg)
+    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
     for p in path_list_ad[1:]:
         layer_name = str(p)[64:78].lower()
-        engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/aerodrome_obstacles.db', echo=False)
         df = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
-
         g1 = folium.plugins.FeatureGroupSubGroup(mcg, str(p)[64:68] + '_AD_Obst')
         m.add_child(g1)
         for i in range(df.shape[0]):
@@ -846,38 +845,48 @@ def ad():
     folium.plugins.MousePosition().add_to(m)
     frame = m.get_root()._repr_html_()
 
-    return render_template('mapping.html', iframe=frame)
+    return render_template('mapping.html', iframe=frame, title='AD Map | Folium')
 
 
-edf = read_ad_enr_obs_db('/Users/dersim/PycharmProjects/mapping/enr_obstacles.db')
 
 
+m50 = folium.Map(location=[39, 35], zoom_start=6)
 @app.route("/enrobs", methods=['GET', 'POST'])
 def enr_obstacles():
+
+    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    layer_name_enr = 'enr_obstacles'
+    edf = geopandas.read_postgis('SELECT * FROM ' + layer_name_enr, con=engine, geom_col='GEOMETRY')
     for i in range(edf.shape[0]):
         coords = edf.get_coordinates()
         edf.loc[i, 'coordinate'] = f"{coords.loc[i, 'x']} {coords.loc[i, 'y']}"
 
-    m = edf.explore(
+    edf.explore(m=m50,
         column='elevation',
         tooltip=['name', 'type', 'elevation', 'elevation_uom', 'verticalextent', 'verticalextent_uom',
                  'lighted', 'coordinate'],
         cmap='terrain',
         legend_kwds={'caption': 'Elevation'})
 
-    folium.plugins.MousePosition().add_to(m)
+    folium.plugins.MousePosition().add_to(m50)
     # header = m.get_root().header.render()
-    body_html = m.get_root().render()
-    frame = m.get_root()._repr_html_()
+    body_html = m50.get_root().render()
+    frame = m50.get_root()._repr_html_()
     # script = m.get_root().script.render()
 
-    return render_template('mapping.html', body_html=body_html, iframe=frame)
+    return render_template('mapping.html', body_html=body_html, iframe=frame, title='ENR Obstacles | Folium')
 
 
 @app.route('/area2a', methods=['GET', 'POST'])
 def area_2a_obstacles():
     m4 = folium.Map(location=[39, 35], zoom_start=6)
-    gdf = read_area2a()
+    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    layer_name_1 = str(path_list_area_2[:][0])[61:].replace('/', '_').replace('.gdb', '').lower()
+    gdf = geopandas.read_postgis('SELECT * FROM ' + layer_name_1, con=engine, geom_col='GEOMETRY')
+    for n in path_list_area_2[1:]:
+        layer_name = str(n)[61:].replace('/', '_').replace('.gdb', '').lower()
+        cdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+        gdf = pd.concat([gdf, cdf], ignore_index=True)
     gdf.explore(m=m4,
                 column='elevation',
                 tooltip=['obstacle_type', 'elevation', 'horizontal_extent', 'horizontal_accuracy',
@@ -888,7 +897,7 @@ def area_2a_obstacles():
     folium.plugins.MousePosition().add_to(m4)
     frame = m4.get_root()._repr_html_()
 
-    return render_template('mapping.html', iframe=frame)
+    return render_template('mapping.html', iframe=frame, title='Area 2A Obstacles | Folium')
 
 
 @app.route('/area3', methods=['GET', 'POST'])
@@ -898,28 +907,36 @@ def area_3():
     m5.add_child(mcg)
     g6 = folium.plugins.FeatureGroupSubGroup(mcg, 'LTAC_Area3_Obst')
     m5.add_child(g6)
+    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    layer_name_ltac = 'ltac_area_3_area_3'
+    ltac = geopandas.read_postgis('SELECT * FROM ' + layer_name_ltac, con=engine, geom_col='GEOMETRY')
+    for e in range(ltac.shape[0]):
+        coor = ltac.get_coordinates(ignore_index=True)
+        if ltac.geom_type[e] == 'Point':
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/marker_dot.png')
+            marker = folium.Marker(location=(coor.loc[e, 'x'], coor.loc[e, 'y']), icon=icons, color='brown')
+            popup = (f"Elevation: {ltac.loc[e, 'elevation']} FT  Type: {ltac.loc[e, 'obstacle_type']}"
+                     f" Coordinates: {coor.loc[e, 'x']}N, {coor.loc[e, 'y']}E")
 
-    for e in range(line_df.shape[0]):
-        folium.PolyLine(locations=chunks2(line_df.loc[e, 'Coordinate'].split(' '), 2), color='red',
-                        popup=f"Elevation: {line_df.loc[e, 'Elevation']} FT  Type: {line_df.loc[e, 'Obstacle_Type']} "
-                              f" Coordinates(..N..E): {chunks2(line_df.loc[e, 'Coordinate'].split(' '), 2)}").add_to(g6)
+            folium.Popup(popup).add_to(marker)
+            marker.add_to(g6)
 
-    for w in range(polygon_df.shape[0]):
-        folium.Polygon(locations=chunks2(polygon_df.loc[w, 'Coordinate'].split(' '), 2), color='red',
-                       popup=f"Elevation: {polygon_df.loc[w, 'Elevation']} FT  Type: {polygon_df.loc[w, 'Obstacle_Type']} "
-                             f" Coordinates(..N..E): {chunks2(polygon_df.loc[w, 'Coordinate'].split(' '), 2)}").add_to(
-            g6)
+        elif ltac.geom_type[e] == 'LineString':
+            folium.PolyLine(locations=chunks2(ltac.loc[e, 'coordinate'].replace(',', '.').split(' '), 2),
+                            color='brown',
+                            popup=f"Elevation: {ltac.loc[e, 'elevation']} FT  Type: {ltac.loc[e, 'obstacle_type']} "
+                                  f" Coordinates(..N..E): {chunks2(ltac.loc[e, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+                g6)
 
-    for c in range(point_gdf.shape[0]):
-        coords = point_gdf.loc[c, 'GEOMETRY']
-        icon_images = '/Users/dersim/PycharmProjects/mapping/icons/marker_dot.png'
-        folium.Marker(location=[coords.x, coords.y],
-                      icon=folium.CustomIcon(icon_image=icon_images, icon_size=(64, 64)), color='red',
-                      popup=f"Elevation: {point_gdf.loc[c, 'Elevation']} Type: {point_gdf.loc[c, 'Obstacle_Type']} "
-                            f" Coordinates: {coords.y}N, {coords.x}E").add_to(g6)
+
+        elif ltac.geom_type[e] == 'Polygon':
+            folium.Polygon(locations=chunks2(ltac.loc[e, 'coordinate'].replace(',', '.').split(' '), 2),
+                           color='brown',
+                           popup=f"Elevation: {ltac.loc[e, 'elevation']} FT  Type: {ltac.loc[e, 'obstacle_type']} "
+                                 f" Coordinates(..N..E): {chunks2(ltac.loc[e, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+                g6)
     for i in path_list_area_3:
         layer_name = str(i)[69:].replace('/', '_').replace('.gdb', '').lower()
-        engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/area3_obstacles.db', echo=False)
         gdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
         g5 = folium.plugins.FeatureGroupSubGroup(mcg, str(i)[69:73] + '_Area3_Obst')
         m5.add_child(g5)
@@ -944,7 +961,7 @@ def area_3():
     folium.LayerControl(collapsed=False).add_to(m5)
     folium.plugins.MousePosition().add_to(m5)
     frame = m5.get_root()._repr_html_()
-    return render_template('mapping.html', iframe=frame)
+    return render_template('mapping.html', iframe=frame, title='Area 3 Obstacles | Folium')
 
 
 @app.route('/area4')
@@ -952,15 +969,17 @@ def area_4():
     m6 = folium.Map(location=[39, 35], zoom_start=6)
     mcg = folium.plugins.MarkerCluster(control=False)
     m6.add_child(mcg)
+    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
     for j in path_list_area_4:
         layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower()
-        engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/area4_obstacles.db', echo=False)
         hdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
         g4 = folium.plugins.FeatureGroupSubGroup(mcg, str(j)[69:73] + '_Area4_Obst')
         m6.add_child(g4)
 
         for l in range(hdf.shape[0]):
             coor = hdf.get_coordinates(ignore_index=True)
+            if len(hdf.loc[l,'coordinate'])%2 != 0:
+                hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
             if hdf.loc[l, 'GEOMETRY'].geom_type == 'Point':
                 icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/marker_dot.png')
                 marker = folium.Marker(location=(coor.loc[l, 'y'], coor.loc[l, 'x']), icon=icons, color='green')
@@ -978,7 +997,6 @@ def area_4():
                     g4)
     for k in path_list_area_4_xml:
         layer_name = str(k)[69:].replace('/', '_').replace('_Obstacles_AIXM_5_1.xml', '').lower()
-        engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/area4_obstacles.db', echo=False)
         xdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
         g5 = folium.plugins.FeatureGroupSubGroup(mcg, str(k)[69:73] + 'Area4_Obstacles')
         m6.add_child(g5)
@@ -1011,7 +1029,7 @@ def area_4():
     folium.plugins.MousePosition().add_to(m6)
     frame = m6.get_root()._repr_html_()
 
-    return render_template('mapping.html', iframe=frame)
+    return render_template('mapping.html', iframe=frame, title='Area 4 Obstacles | Folium')
 
 
 @app.route('/all', methods=['GET', 'POST'])
@@ -1022,7 +1040,7 @@ def all():
     folium.LayerControl(collapsed=False).add_to(mall)
     folium.plugins.MousePosition().add_to(mall)
     frame = mall.get_root()._repr_html_()
-    return render_template('mapping.html', iframe=frame)
+    return render_template('mapping.html', iframe=frame, title='All Obstacles | Folium')
 
 
 
