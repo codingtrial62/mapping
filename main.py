@@ -23,7 +23,7 @@ secret_key = os.environ.get('SECRET_KEY')
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret_key'
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://hrgigrfoqsjshn:f5d62edb2a1e5c81fad0de4bb4499d46baf7126753f69653fd182d7e05d9844e@ec2-44-206-204-65.compute-1.amazonaws.com:5432/d1hvskd1kbtl4v'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://')
 db = SQLAlchemy()
 migrate = Migrate()
 db.init_app(app)
