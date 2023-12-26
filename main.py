@@ -54,7 +54,7 @@ def chunks2(xs, n):
 Area 3 LTAC Obstacles are in format of .mdb. To handle that https://fishcodelib.com/index.htm has a tool called 
 db.Migration.Net which converts .mdb to .sqlite. Then we can use geopandas to read the .sqlite file."""
 """ Getting data from ltac_obstacles.db which is created from .mdb file. """
-engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/ltac_obstacles.db', echo=True)
+
 
 point_df = pd.read_sql('SELECT * FROM Point_Obstacle', engine)
 
