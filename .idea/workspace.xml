@@ -181,7 +181,7 @@
       <workItem from="1703524458246" duration="10390000" />
       <workItem from="1703541900358" duration="55000" />
       <workItem from="1703542340536" duration="1992000" />
-      <workItem from="1703582582348" duration="3540000" />
+      <workItem from="1703582582348" duration="4619000" />
     </task>
     <task id="LOCAL-00001" summary="last revision from other branch">
       <option name="closed" value="true" />
@@ -397,6 +397,11 @@
           <url>file://$PROJECT_DIR$/app.py</url>
           <line>37</line>
           <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/app.py</url>
+          <line>801</line>
+          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
