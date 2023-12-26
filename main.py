@@ -259,7 +259,7 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
     """
     mcg = folium.plugins.MarkerCluster(control=False)
     maps.add_child(mcg)
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    engine = create_engine(os.environ.get('DB_URI'), echo=False)
     layer_name_enr = 'enr_obstacles'
     ydf = geopandas.read_postgis('SELECT * FROM ' + layer_name_enr, con=engine, geom_col='GEOMETRY')
     g0 = folium.plugins.FeatureGroupSubGroup(mcg, 'En-route Obstacles')
@@ -797,13 +797,13 @@ def marker_creator_ad(df, i):
 
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
-
+engine = create_engine(os.environ.get('DB_URI'), echo=False)
 @app.route("/", methods=['GET', 'POST'])
 def fullscreen():
     m = folium.Map(location=[39, 35], zoom_start=6)
     mcg = folium.plugins.MarkerCluster(control=False)
     m.add_child(mcg)
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    #engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
     for p in path_list_ad[1:]:
         layer_name = str(p)[64:78].lower()
         df = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
@@ -834,7 +834,7 @@ def ad():
     m = folium.Map(location=[39, 35], zoom_start=6)
     mcg = folium.plugins.MarkerCluster(control=False)
     m.add_child(mcg)
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    #engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
     for p in path_list_ad[1:]:
         layer_name = str(p)[64:78].lower()
         df = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
@@ -864,7 +864,7 @@ m50 = folium.Map(location=[39, 35], zoom_start=6)
 
 @app.route("/enrobs", methods=['GET', 'POST'])
 def enr_obstacles():
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    #engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
     layer_name_enr = 'enr_obstacles'
     edf = geopandas.read_postgis('SELECT * FROM ' + layer_name_enr, con=engine, geom_col='GEOMETRY')
     for i in range(edf.shape[0]):
@@ -890,7 +890,7 @@ def enr_obstacles():
 @app.route('/area2a', methods=['GET', 'POST'])
 def area_2a_obstacles():
     m4 = folium.Map(location=[39, 35], zoom_start=6)
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    #engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
     layer_name_1 = str(path_list_area_2[:][0])[61:].replace('/', '_').replace('.gdb', '').lower()
     gdf = geopandas.read_postgis('SELECT * FROM ' + layer_name_1, con=engine, geom_col='GEOMETRY')
     for n in path_list_area_2[1:]:
@@ -917,7 +917,7 @@ def area_3():
     m5.add_child(mcg)
     g6 = folium.plugins.FeatureGroupSubGroup(mcg, 'LTAC_Area3_Obst')
     m5.add_child(g6)
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    #engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
     layer_name_ltac = 'ltac_area_3_area_3'
     ltac = geopandas.read_postgis('SELECT * FROM ' + layer_name_ltac, con=engine, geom_col='GEOMETRY')
     for e in range(ltac.shape[0]):
@@ -979,7 +979,7 @@ def area_4():
     m6 = folium.Map(location=[39, 35], zoom_start=6)
     mcg = folium.plugins.MarkerCluster(control=False)
     m6.add_child(mcg)
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    #engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
     for j in path_list_area_4:
         layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower()
         hdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
