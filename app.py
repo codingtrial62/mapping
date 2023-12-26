@@ -21,19 +21,21 @@ ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 
 print(os.environ.get('DB_URI'))
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI","sqlite:///Users/dersim/PycharmProjects/mapping/instance/obstacles.db")
-# app.config.from_mapping(
-#     SECRET_KEY='secret_key' or 'dev_key',
-#     SQLALCHEMY_DATABASE_URI='postgresql://hrgigrfoqsjshn:f5d62edb2a1e5c81fad0de4bb4499d46baf7126753f69653fd182d7e05d9844e@ec2-44-206-204-65.compute-1.amazonaws.com:5432/d1hvskd1kbtl4v' or\
-#                             'sqlite:///Users/dersim/PycharmProjects/mapping/instance/obstacles.db',
-#     SQLALCHEMY_TRACK_MODIFICATIONS=False
-# )
+#app.config['SECRET_KEY'] = os.environ.get('FLASK_KEY')
+#app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get("DB_URI","sqlite:///Users/dersim/PycharmProjects/mapping/instance/obstacles.db")
+app.config.from_mapping(
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+                              'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+)
+
 
 db = SQLAlchemy()
-# migrate = Migrate()
+migrate = Migrate()
 db.init_app(app)
-# migrate.init_app(app, db)
+migrate.init_app(app, db)
+
 path_list_ad = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
 path_to_enr = '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml'
 path_list_area_2 = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area2a_obstacles').rglob("*.gdb"))
@@ -797,7 +799,7 @@ def marker_creator_ad(df, i):
 
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
-engine = create_engine(os.environ.get('DB_URI'), echo=False)
+engine = create_engine(os.environ.get('DATABASE_URL','sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db'), echo=False)
 @app.route("/", methods=['GET', 'POST'])
 def fullscreen():
     m = folium.Map(location=[39, 35], zoom_start=6)
