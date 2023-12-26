@@ -119,35 +119,35 @@ def chunks2(xs, n):
     return coordinate_list
 
 
-def read_ltac_area3():
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/ltac_obstacles.db', echo=True)
-
-    point_df = pd.read_sql('SELECT * FROM Point_Obstacle', engine)
-
-    for i in range(point_df.shape[0]):
-        point_df.loc[i, 'GEOMETRY'] = shp.Point(float(point_df.loc[i, 'Coordinate'].split(' ')[0]),
-                                                float(point_df.loc[i, 'Coordinate'].split(' ')[1]))
-
-    line_df = pd.read_sql('SELECT * FROM Line_Obstacle', engine)
-    for i in range(line_df.shape[0]):
-        line_df.loc[i, 'GEOMETRY'] = shp.LineString(chunks(line_df.loc[i, 'Coordinate'].split(' '), 2))
-
-    pointline = pd.concat([point_df, line_df], ignore_index=True)
-
-    polygon_df = pd.read_sql('SELECT * FROM Poligon_Obstacle', engine)
-    for i in range(polygon_df.shape[0]):
-
-        if len(polygon_df.loc[i, 'Coordinate'].split(' ')) % 2 != 0:
-            polygon_df.loc[i, 'GEOMETRY'] = shp.Polygon(chunks(polygon_df.loc[i, 'Coordinate'].split(' ').pop(), 2))
-            polygon_df.loc[i, 'Coordinate'] = polygon_df.loc[i, 'Coordinate'][:-1]
-        else:
-            polygon_df.loc[i, 'GEOMETRY'] = shp.Polygon(chunks(polygon_df.loc[i, 'Coordinate'].split(' '), 2))
-    poly_point_line = pd.concat([polygon_df, pointline], ignore_index=True)
-    return poly_point_line
-
-
-ltac = read_ltac_area3()
-ltac_gdf = geopandas.GeoDataFrame(ltac, geometry='GEOMETRY')
+# def read_ltac_area3():
+#     engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/ltac_obstacles.db', echo=True)
+#
+#     point_df = pd.read_sql('SELECT * FROM Point_Obstacle', engine)
+#
+#     for i in range(point_df.shape[0]):
+#         point_df.loc[i, 'GEOMETRY'] = shp.Point(float(point_df.loc[i, 'Coordinate'].split(' ')[0]),
+#                                                 float(point_df.loc[i, 'Coordinate'].split(' ')[1]))
+#
+#     line_df = pd.read_sql('SELECT * FROM Line_Obstacle', engine)
+#     for i in range(line_df.shape[0]):
+#         line_df.loc[i, 'GEOMETRY'] = shp.LineString(chunks(line_df.loc[i, 'Coordinate'].split(' '), 2))
+#
+#     pointline = pd.concat([point_df, line_df], ignore_index=True)
+#
+#     polygon_df = pd.read_sql('SELECT * FROM Poligon_Obstacle', engine)
+#     for i in range(polygon_df.shape[0]):
+#
+#         if len(polygon_df.loc[i, 'Coordinate'].split(' ')) % 2 != 0:
+#             polygon_df.loc[i, 'GEOMETRY'] = shp.Polygon(chunks(polygon_df.loc[i, 'Coordinate'].split(' ').pop(), 2))
+#             polygon_df.loc[i, 'Coordinate'] = polygon_df.loc[i, 'Coordinate'][:-1]
+#         else:
+#             polygon_df.loc[i, 'GEOMETRY'] = shp.Polygon(chunks(polygon_df.loc[i, 'Coordinate'].split(' '), 2))
+#     poly_point_line = pd.concat([polygon_df, pointline], ignore_index=True)
+#     return poly_point_line
+#
+#
+# ltac = read_ltac_area3()
+# ltac_gdf = geopandas.GeoDataFrame(ltac, geometry='GEOMETRY')
 
 engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
 for j in path_list_area_4:
@@ -160,7 +160,7 @@ for j in path_list_area_4:
 
 #
 
-print(type(str(path_list_area_2[:][0])))
+print(str(path_list_area_2[:][0])[61:].replace('/', '_').replace('.gdb', '').lower())
 # def read_ad_obs(path_to_ad):
 #     layer_name = str(path_list_ad[1])[64:78].lower()
 #     engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/aerodrome_obstacles.db', echo=False)
@@ -605,35 +605,35 @@ print(type(str(path_list_area_2[:][0])))
 
 
 
-"""
-Area 3 LTAC Obstacles are in format of .mdb. To handle that https://fishcodelib.com/index.htm has a tool called 
-db.Migration.Net which converts .mdb to .sqlite. Then we can use geopandas to read the .sqlite file."""
-""" Getting data from ltac_obstacles.db which is created from .mdb file. """
-engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/ltac_obstacles.db', echo=True)
-
-point_df = pd.read_sql('SELECT * FROM Point_Obstacle', engine)
-
-for i in range(point_df.shape[0]):
-    point_df.loc[i, 'GEOMETRY'] = shp.Point(float(point_df.loc[i, 'Coordinate'].split(' ')[0]),
-                                            float(point_df.loc[i, 'Coordinate'].split(' ')[1]))
-
-point_gdf = geopandas.GeoDataFrame(point_df, geometry='GEOMETRY', crs='EPSG:4326')
-
-line_df = pd.read_sql('SELECT * FROM Line_Obstacle', engine)
-for i in range(line_df.shape[0]):
-    line_df.loc[i, 'GEOMETRY'] = shp.LineString(chunks(line_df.loc[i, 'Coordinate'].split(' '), 2))
-
-line_gdf = geopandas.GeoDataFrame(line_df, geometry='GEOMETRY', crs='EPSG:4326')
-
-polygon_df = pd.read_sql('SELECT * FROM Poligon_Obstacle', engine)
-for i in range(polygon_df.shape[0]):
-
-    if len(polygon_df.loc[i, 'Coordinate'].split(' ')) % 2 != 0:
-        polygon_df.loc[i, 'GEOMETRY'] = shp.Polygon(chunks(polygon_df.loc[i, 'Coordinate'].split(' ').pop(), 2))
-        polygon_df.loc[i, 'Coordinate'] = polygon_df.loc[i, 'Coordinate'][:-1]
-    else:
-        polygon_df.loc[i, 'GEOMETRY'] = shp.Polygon(chunks(polygon_df.loc[i, 'Coordinate'].split(' '), 2))
-
-polygon_gdf = geopandas.GeoDataFrame(polygon_df, geometry='GEOMETRY', crs='EPSG:4326')
-""" Getting data from ltac_obstacles.db which is created from .mdb file. """
+# """
+# Area 3 LTAC Obstacles are in format of .mdb. To handle that https://fishcodelib.com/index.htm has a tool called
+# db.Migration.Net which converts .mdb to .sqlite. Then we can use geopandas to read the .sqlite file."""
+# """ Getting data from ltac_obstacles.db which is created from .mdb file. """
+# engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/ltac_obstacles.db', echo=True)
+#
+# point_df = pd.read_sql('SELECT * FROM Point_Obstacle', engine)
+#
+# for i in range(point_df.shape[0]):
+#     point_df.loc[i, 'GEOMETRY'] = shp.Point(float(point_df.loc[i, 'Coordinate'].split(' ')[0]),
+#                                             float(point_df.loc[i, 'Coordinate'].split(' ')[1]))
+#
+# point_gdf = geopandas.GeoDataFrame(point_df, geometry='GEOMETRY', crs='EPSG:4326')
+#
+# line_df = pd.read_sql('SELECT * FROM Line_Obstacle', engine)
+# for i in range(line_df.shape[0]):
+#     line_df.loc[i, 'GEOMETRY'] = shp.LineString(chunks(line_df.loc[i, 'Coordinate'].split(' '), 2))
+#
+# line_gdf = geopandas.GeoDataFrame(line_df, geometry='GEOMETRY', crs='EPSG:4326')
+#
+# polygon_df = pd.read_sql('SELECT * FROM Poligon_Obstacle', engine)
+# for i in range(polygon_df.shape[0]):
+#
+#     if len(polygon_df.loc[i, 'Coordinate'].split(' ')) % 2 != 0:
+#         polygon_df.loc[i, 'GEOMETRY'] = shp.Polygon(chunks(polygon_df.loc[i, 'Coordinate'].split(' ').pop(), 2))
+#         polygon_df.loc[i, 'Coordinate'] = polygon_df.loc[i, 'Coordinate'][:-1]
+#     else:
+#         polygon_df.loc[i, 'GEOMETRY'] = shp.Polygon(chunks(polygon_df.loc[i, 'Coordinate'].split(' '), 2))
+#
+# polygon_gdf = geopandas.GeoDataFrame(polygon_df, geometry='GEOMETRY', crs='EPSG:4326')
+# """ Getting data from ltac_obstacles.db which is created from .mdb file. """
 
