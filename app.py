@@ -261,7 +261,8 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
     """
     mcg = folium.plugins.MarkerCluster(control=False)
     maps.add_child(mcg)
-    engine = create_engine(os.environ.get('DATABASE_URL'.replace('postgres://', 'postgresql://'),'sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db'), echo=False)
+    engine = create_engine(os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or \
+                           'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     layer_name_enr = 'enr_obstacles'
     ydf = geopandas.read_postgis('SELECT * FROM ' + layer_name_enr, con=engine, geom_col='GEOMETRY')
     g0 = folium.plugins.FeatureGroupSubGroup(mcg, 'En-route Obstacles')
@@ -799,7 +800,8 @@ def marker_creator_ad(df, i):
 
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
-engine = create_engine(os.environ.get('DATABASE_URL'.replace('postgres://', 'postgresql://'),'sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db'), echo=False)
+engine = create_engine(os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or \
+                       'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
 @app.route("/", methods=['GET', 'POST'])
 def fullscreen():
     m = folium.Map(location=[39, 35], zoom_start=6)
