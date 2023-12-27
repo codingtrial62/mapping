@@ -310,7 +310,8 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
     maps.add_child(g0)
     for y in range(ydf.shape[0]):
         coor = ydf.loc[y, 'geometry']
-        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/marker_dot_orange.png')
+        kw = {"prefix": "fa-solid", "icon": "circle"}
+        icons = folium.Icon(**kw)
         marker = folium.Marker(location=[coor.y, coor.x], icon=icons)
         popup = (f"Elevation: {ydf.loc[y, 'elevation']} FT Type: {ydf.loc[y, 'type']} "
                  f" Coordinates: {coor.y}N, {coor.x}E")
@@ -327,7 +328,8 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
         for o in range(cdf.shape[0]):
             if cdf.loc[o, 'aerodrome']== str(p)[64:68]:
                 coor = cdf.get_coordinates(ignore_index=True)
-                icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/marker_dot.png')
+                kw = {"prefix": "fa-solid", "icon": "circle"}
+                icons = folium.Icon(**kw)
                 marker = folium.Marker(location=(coor.loc[o, 'y'], coor.loc[o, 'x']), icon=icons, color='yellow')
                 popup = (f"Elevation: {cdf.loc[o, 'elevation']} FT Type: {cdf.loc[o, 'type']} "
                          f" Coordinates: {coor.loc[o, 'y']}N, {coor.loc[o, 'x']}E")
@@ -346,7 +348,8 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
             if bdf.loc[o, 'aerodrome'] == str(n)[61:65].replace('/', '_').replace('.gdb', '').lower() + "_Area2a_Obstacles":
                 coor = bdf.get_coordinates(ignore_index=True)
                 if bdf.loc[o, 'geometry'].geom_type == 'Point':
-                    icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/marker_dot.png')
+                    kw = {"prefix": "fa-solid", "icon": "circle"}
+                    icons = folium.Icon(**kw)
                     marker = folium.Marker(location=(coor.loc[o, 'y'], coor.loc[o, 'x']), icon=icons, color='red')
                     popup = (f"Elevation: {bdf.loc[o, 'elevation']} FT  Type: {bdf.loc[o, 'obstacle_type']} "
                              f" Coordinates: {coor.loc[o, 'y']}N, {coor.loc[o, 'x']}E")
@@ -368,7 +371,8 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
     for e in range(ltac.shape[0]):
         coor = ltac.get_coordinates(ignore_index=True)
         if ltac.loc[e, 'geometry'].geom_type == 'Point':
-            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/marker_dot.png')
+            kw = {"prefix": "fa-solid", "icon": "circle"}
+            icons = folium.Icon(**kw)
             marker = folium.Marker(location=(coor.loc[e, 'y'], coor.loc[e, 'x']), icon=icons, color='brown')
             popup = (f"Elevation: {ltac.loc[e, 'elevation']} FT  Type: {ltac.loc[e, 'obstacle_type']}"
                      f" Coordinates: {coor.loc[e, 'y']}N, {coor.loc[e, 'x']}E")
@@ -401,7 +405,8 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
             if gdf.loc[t, 'aerodrome'] == str(i)[69:73].replace('/', '_').replace('.gdb', '').lower() + "_Area3_Obstacles":
                 coor = gdf.get_coordinates(ignore_index=True)
                 if gdf.loc[t, 'geometry'].geom_type == 'Point':
-                    icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/marker_dot.png')
+                    kw = {"prefix": "fa-solid", "icon": "circle"}
+                    icons = folium.Icon(**kw)
                     marker = folium.Marker(location=(coor.loc[t, 'y'], coor.loc[t, 'x']), icon=icons, color='purple')
                     popup = (f"Elevation: {gdf.loc[t, 'elevation']} FT  Type: {gdf.loc[t, 'obstacle_type']} "
                              f" Coordinates: {coor.loc[t, 'y']}N, {coor.loc[t, 'x']}E")
@@ -431,7 +436,8 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
                     hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-4]
                 coor = hdf.get_coordinates(ignore_index=True)
                 if hdf.loc[l, 'geometry'].geom_type == 'Point':
-                    icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/marker_dot.png')
+                    kw = {"prefix": "fa-solid", "icon": "circle"}
+                    icons = folium.Icon(**kw)
                     marker = folium.Marker(location=(coor.loc[l, 'y'], coor.loc[l, 'x']), icon=icons, color='green')
                     popup = (f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
                              f" Coordinates: {coor.loc[l, 'y']}N, {coor.loc[l, 'x']}E")
@@ -457,7 +463,8 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
         for e in range(xdf.shape[0]):
             coor = xdf.get_coordinates(ignore_index=True)
             if xdf.loc[e, 'geometry'].geom_type == 'Point':
-                icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/marker_dot.png')
+                kw = {"prefix": "fa-solid", "icon": "circle"}
+                icons = folium.Icon(**kw)
                 marker = folium.Marker(location=(coor.loc[e, 'y'], coor.loc[e, 'x']), icon=icons, color='brown')
                 popup = (f"Elevation: {xdf.loc[e, 'elevation']} FT  Type: {xdf.loc[e, 'type']}"
                          f" Coordinates: {coor.loc[e, 'y']}N, {coor.loc[e, 'x']}E")
@@ -483,7 +490,7 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
 
 
 
-@app.route('/all', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def all():
     mall = folium.Map(location=[39, 35], zoom_start=6)
     read_all(path_list_ad, path_list_area_2, path_list_area_3, path_list_area_4, path_list_area_4_xml,
