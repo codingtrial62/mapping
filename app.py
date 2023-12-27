@@ -22,23 +22,23 @@ ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 
 app = Flask(__name__)
 
-app.config.from_mapping(
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or \
-                              'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-)
-
 # app.config.from_mapping(
 #     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
-#     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+#     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or \
 #                               'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
 #     SQLALCHEMY_TRACK_MODIFICATIONS = False
 # )
+
+app.config.from_mapping(
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+                              'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+)
 db = SQLAlchemy()
-#migrate = Migrate()
+migrate = Migrate()
 db.init_app(app)
-#migrate.init_app(app, db)
+migrate.init_app(app, db)
 
 path_list_ad = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
 path_to_enr = '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml'
