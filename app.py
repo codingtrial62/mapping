@@ -29,7 +29,12 @@ app.config.from_mapping(
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 )
 
-
+# app.config.from_mapping(
+#     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
+#     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+#                               'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
+#     SQLALCHEMY_TRACK_MODIFICATIONS = False
+# )
 db = SQLAlchemy()
 migrate = Migrate()
 db.init_app(app)
