@@ -19,7 +19,7 @@ ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 792-35-A1-R1-40-5047.   Coordinates end with 38* manually changed on dbviewer. 
 '''
 
-print(os.environ.get('DB_URI'))
+
 app = Flask(__name__)
 
 app.config.from_mapping(
@@ -36,9 +36,9 @@ app.config.from_mapping(
 #     SQLALCHEMY_TRACK_MODIFICATIONS = False
 # )
 db = SQLAlchemy()
-migrate = Migrate()
+#migrate = Migrate()
 db.init_app(app)
-migrate.init_app(app, db)
+#migrate.init_app(app, db)
 
 path_list_ad = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
 path_to_enr = '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml'
