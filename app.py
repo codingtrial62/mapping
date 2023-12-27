@@ -450,7 +450,7 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
     df_fm['geometry'] = df_fm['geo'].apply(wkt.loads)
     xdf = geopandas.GeoDataFrame(df_fm, crs='EPSG:4326')
 
-    g5 = folium.plugins.FeatureGroupSubGroup(mcg, str(k)[69:73] + 'Ltfm_Area4_Obstacles')
+    g5 = folium.plugins.FeatureGroupSubGroup(mcg, 'Ltfm_Area4_Obstacles')
     maps.add_child(g5)
     for e in range(xdf.shape[0]):
         coor = xdf.get_coordinates(ignore_index=True)
