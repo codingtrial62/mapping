@@ -312,7 +312,7 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
         coor = ydf.loc[y, 'geometry']
         kw = {"prefix": "fa-solid", "icon": "circle"}
         icons = folium.Icon(**kw)
-        marker = folium.Marker(location=[coor.y, coor.x], icon=icons)
+        marker = folium.CircleMarker(location=[coor.y, coor.x], radius=5, fill=True)
         popup = (f"Elevation: {ydf.loc[y, 'elevation']} FT Type: {ydf.loc[y, 'type']} "
                  f" Coordinates: {coor.y}N, {coor.x}E")
 
@@ -348,7 +348,7 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
 
         coor = bdf.get_coordinates(ignore_index=True)
         if bdf.loc[o, 'geometry'].geom_type == 'Point':
-            marker = folium.CircleMarker(location=(coor.loc[o, 'y'], coor.loc[o, 'x']), radius=5, color='red')
+            marker = folium.CircleMarker(location=(coor.loc[o, 'y'], coor.loc[o, 'x']), radius=5, fill=True, color='red')
             popup = (f"Elevation: {bdf.loc[o, 'elevation']} FT  Type: {bdf.loc[o, 'obstacle_type']} "
                      f" Coordinates: {coor.loc[o, 'y']}N, {coor.loc[o, 'x']}E")
 
@@ -369,7 +369,7 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
     for e in range(ltac.shape[0]):
         coor = ltac.get_coordinates(ignore_index=True)
         if ltac.loc[e, 'geometry'].geom_type == 'Point':
-            marker = folium.CircleMarker(location=(coor.loc[e, 'y'], coor.loc[e, 'x']), radius=5, color='brown')
+            marker = folium.CircleMarker(location=(coor.loc[e, 'y'], coor.loc[e, 'x']), radius=5, fill=True, color='brown')
             popup = (f"Elevation: {ltac.loc[e, 'elevation']} FT  Type: {ltac.loc[e, 'obstacle_type']}"
                      f" Coordinates: {coor.loc[e, 'y']}N, {coor.loc[e, 'x']}E")
 
@@ -401,7 +401,7 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
 
         coor = gdf.get_coordinates(ignore_index=True)
         if gdf.loc[t, 'geometry'].geom_type == 'Point':
-            marker = folium.CircleMarker(location=(coor.loc[t, 'y'], coor.loc[t, 'x']), radius=5, color='purple')
+            marker = folium.CircleMarker(location=(coor.loc[t, 'y'], coor.loc[t, 'x']), radius=5, fill=True, color='purple')
             popup = (f"Elevation: {gdf.loc[t, 'elevation']} FT  Type: {gdf.loc[t, 'obstacle_type']} "
                      f" Coordinates: {coor.loc[t, 'y']}N, {coor.loc[t, 'x']}E")
 
@@ -430,7 +430,7 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
             hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-4]
         coor = hdf.get_coordinates(ignore_index=True)
         if hdf.loc[l, 'geometry'].geom_type == 'Point':
-            marker = folium.CircleMarker(location=(coor.loc[l, 'y'], coor.loc[l, 'x']), radius=5, color='green')
+            marker = folium.CircleMarker(location=(coor.loc[l, 'y'], coor.loc[l, 'x']), radius=5, fill=True, color='green')
             popup = (f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
                      f" Coordinates: {coor.loc[l, 'y']}N, {coor.loc[l, 'x']}E")
 
@@ -455,7 +455,7 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
     for e in range(xdf.shape[0]):
         coor = xdf.get_coordinates(ignore_index=True)
         if xdf.loc[e, 'geometry'].geom_type == 'Point':
-            marker = folium.CircleMarker(location=(coor.loc[e, 'y'], coor.loc[e, 'x']), radius=5, color='brown')
+            marker = folium.CircleMarker(location=(coor.loc[e, 'y'], coor.loc[e, 'x']), radius=5, fill=True, color='brown')
             popup = (f"Elevation: {xdf.loc[e, 'elevation']} FT  Type: {xdf.loc[e, 'type']}"
                      f" Coordinates: {coor.loc[e, 'y']}N, {coor.loc[e, 'x']}E")
 
