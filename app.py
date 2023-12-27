@@ -490,7 +490,7 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
 
 
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/all', methods=['GET', 'POST'])
 def all():
     mall = folium.Map(location=[39, 35], zoom_start=6)
     read_all(path_list_ad, path_list_area_2, path_list_area_3, path_list_area_4, path_list_area_4_xml,
