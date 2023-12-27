@@ -318,25 +318,25 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
 
         folium.Popup(popup).add_to(marker)
         marker.add_to(g0)
-    sql_ad = "SELECT * FROM ad_obstacles"
-    df_ad = pd.read_sql(sql_ad,con=engine)
-    df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
-    cdf = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
-    # for p in path_list_ad[1:]:
-    #     g1 = folium.plugins.FeatureGroupSubGroup(mcg, str(p)[64:68] + '_AD_Obst')
-    #     maps.add_child(g1)
-    g1 = folium.plugins.FeatureGroupSubGroup(mcg, 'Ad_Obs')
-    for o in range(cdf.shape[0]):
-        # if cdf.loc[o, 'aerodrome']== str(p)[64:68]:
-        coor = cdf.get_coordinates(ignore_index=True)
-        # kw = {"prefix": "fa-solid", "icon": "circle"}
-        # icons = folium.Icon(**kw)
-        marker = folium.CircleMarker(location=(coor.loc[o, 'y'], coor.loc[o, 'x']), radius=5, color='yellow')
-        popup = (f"Elevation: {cdf.loc[o, 'elevation']} FT Type: {cdf.loc[o, 'type']} "
-                 f" Coordinates: {coor.loc[o, 'y']}N, {coor.loc[o, 'x']}E")
-
-        folium.Popup(popup).add_to(marker)
-        marker.add_to(g1)
+    # sql_ad = "SELECT * FROM ad_obstacles"
+    # df_ad = pd.read_sql(sql_ad,con=engine)
+    # df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
+    # cdf = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
+    # # for p in path_list_ad[1:]:
+    # #     g1 = folium.plugins.FeatureGroupSubGroup(mcg, str(p)[64:68] + '_AD_Obst')
+    # #     maps.add_child(g1)
+    # g1 = folium.plugins.FeatureGroupSubGroup(mcg, 'Ad_Obs')
+    # for o in range(cdf.shape[0]):
+    #     # if cdf.loc[o, 'aerodrome']== str(p)[64:68]:
+    #     coor = cdf.get_coordinates(ignore_index=True)
+    #     # kw = {"prefix": "fa-solid", "icon": "circle"}
+    #     # icons = folium.Icon(**kw)
+    #     marker = folium.CircleMarker(location=(coor.loc[o, 'y'], coor.loc[o, 'x']), radius=5, color='yellow')
+    #     popup = (f"Elevation: {cdf.loc[o, 'elevation']} FT Type: {cdf.loc[o, 'type']} "
+    #              f" Coordinates: {coor.loc[o, 'y']}N, {coor.loc[o, 'x']}E")
+    #
+    #     folium.Popup(popup).add_to(marker)
+    #     marker.add_to(g1)
 
     sql_a2 = "SELECT * FROM area2a_obstacles"
     df_a2 = pd.read_sql(sql_a2,con=engine)
