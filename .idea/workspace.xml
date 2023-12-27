@@ -82,6 +82,7 @@
           <env key="DB_URI" value="" />
           <env key="FLASK_APP" value="app" />
           <env key="FLASK_ENV" value="development" />
+          <env key="SECRET_KEY" value="alinidos" />
         </envs>
         <option name="myUseModuleSdk" value="true" />
         <option name="myModuleName" value="mapping" />
@@ -91,6 +92,7 @@
             <entry key="DB_URI" value="" />
             <entry key="FLASK_APP" value="app" />
             <entry key="FLASK_ENV" value="development" />
+            <entry key="SECRET_KEY" value="alinidos" />
           </map>
         </option>
       </console-settings>
@@ -193,7 +195,7 @@
       <workItem from="1703615616358" duration="5229000" />
       <workItem from="1703620885216" duration="3743000" />
       <workItem from="1703665433178" duration="18500000" />
-      <workItem from="1703699442115" duration="11283000" />
+      <workItem from="1703699442115" duration="11736000" />
     </task>
     <task id="LOCAL-00001" summary="last revision from other branch">
       <option name="closed" value="true" />
