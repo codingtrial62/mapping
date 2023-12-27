@@ -21,9 +21,7 @@ ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 
 print(os.environ.get('DB_URI'))
 app = Flask(__name__)
-app.config.from_mapping(
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key'
-)
+
 app.config.from_mapping(
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or \
