@@ -10,8 +10,8 @@ from flask_sqlalchemy import SQLAlchemy
 from folium.plugins import FastMarkerCluster
 from sqlalchemy import create_engine
 # import gunicorn
-# from flask_migrate import Migrate
-# from flask_caching import Cache
+from flask_migrate import Migrate
+#from flask_caching import Cache
 
 # cache = Cache()
 '''
@@ -24,18 +24,18 @@ app = Flask(__name__)
 app.config.from_mapping(
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key'
 )
-# app.config.from_mapping(
-#     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
-#     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or \
-#                               'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
-#     SQLALCHEMY_TRACK_MODIFICATIONS = False
-# )
+app.config.from_mapping(
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or \
+                              'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+)
 
 
 db = SQLAlchemy()
-#migrate = Migrate()
+migrate = Migrate()
 db.init_app(app)
-#migrate.init_app(app, db)
+migrate.init_app(app, db)
 
 path_list_ad = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
 path_to_enr = '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml'
