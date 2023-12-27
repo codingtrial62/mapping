@@ -22,19 +22,19 @@ ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 
 app = Flask(__name__)
 
-# app.config.from_mapping(
-#     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
-#     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or \
-#                               'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
-#     SQLALCHEMY_TRACK_MODIFICATIONS = False
-# )
-
 app.config.from_mapping(
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or \
                               'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 )
+
+# app.config.from_mapping(
+#     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
+#     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
+#                               'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
+#     SQLALCHEMY_TRACK_MODIFICATIONS = False
+# )
 db = SQLAlchemy()
 migrate = Migrate()
 db.init_app(app)
