@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d043c1f-a2e7-477f-9065-613e7213b8d5" name="Changes" comment="engine change">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autoconf" beforeDir="false" afterPath="$PROJECT_DIR$/autoconf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/automake" beforeDir="false" afterPath="$PROJECT_DIR$/automake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bison" beforeDir="false" afterPath="$PROJECT_DIR$/bison" afterDir="false" />
@@ -80,6 +78,7 @@
     <option name="myPythonConsoleState">
       <console-settings module-name="mapping" is-module-sdk="true">
         <envs>
+          <env key="DATABASE_URL" value="postgres://ijycthkvyinpxi:567e51cc7ee8a72bc01df1f10b87b53b717329385f383ec2d2d88b00791df26c@ec2-35-169-9-79.compute-1.amazonaws.com:5432/d2a91h17qeudjt" />
           <env key="DB_URI" value="" />
           <env key="FLASK_APP" value="app" />
           <env key="FLASK_ENV" value="development" />
@@ -88,6 +87,7 @@
         <option name="myModuleName" value="mapping" />
         <option name="myEnvs">
           <map>
+            <entry key="DATABASE_URL" value="postgres://ijycthkvyinpxi:567e51cc7ee8a72bc01df1f10b87b53b717329385f383ec2d2d88b00791df26c@ec2-35-169-9-79.compute-1.amazonaws.com:5432/d2a91h17qeudjt" />
             <entry key="DB_URI" value="" />
             <entry key="FLASK_APP" value="app" />
             <entry key="FLASK_ENV" value="development" />
@@ -193,7 +193,7 @@
       <workItem from="1703615616358" duration="5229000" />
       <workItem from="1703620885216" duration="3743000" />
       <workItem from="1703665433178" duration="18500000" />
-      <workItem from="1703699442115" duration="11073000" />
+      <workItem from="1703699442115" duration="11283000" />
     </task>
     <task id="LOCAL-00001" summary="last revision from other branch">
       <option name="closed" value="true" />
