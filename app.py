@@ -1240,7 +1240,7 @@ def area_4():
     m6.add_child(g5)
     for m in range(xdf.shape[0]):
         coor = xdf.get_coordinates(ignore_index=True)
-        if xdf.loc[m, 'GEOMETRY'].geom_type == 'Point':
+        if xdf.loc[m, 'geometry'].geom_type == 'Point':
             icons = folium.CustomIcon(icon_image='/app/static/assets/images/marker_dot.png')
             marker = folium.Marker(location=(coor.loc[m, 'y'], coor.loc[m, 'x']), icon=icons, color='brown')
             popup = (f"Elevation: {xdf.loc[m, 'elevation']} FT  Type: {xdf.loc[m, 'type']}"
@@ -1249,7 +1249,7 @@ def area_4():
             folium.Popup(popup).add_to(marker)
             marker.add_to(g5)
 
-        elif xdf.loc[m, 'GEOMETRY'].geom_type == 'MultiLineString':
+        elif xdf.loc[m, 'geometry'].geom_type == 'MultiLineString':
             folium.PolyLine(locations=chunks2(xdf.loc[m, 'coordinate'].replace(',', '.').split(' '), 2),
                             color='brown',
                             popup=f"Elevation: {xdf.loc[m, 'elevation']} FT  Type: {xdf.loc[m, 'type']} "
@@ -1257,7 +1257,7 @@ def area_4():
                 g5)
 
 
-        elif xdf.loc[m, 'GEOMETRY'].geom_type == 'MultiPolygon':
+        elif xdf.loc[m, 'geometry'].geom_type == 'MultiPolygon':
             folium.Polygon(locations=chunks2(xdf.loc[m, 'coordinate'].replace(',', '.').split(' '), 2),
                            color='brown',
                            popup=f"Elevation: {xdf.loc[m, 'elevation']} FT  Type: {xdf.loc[m, 'type']} "

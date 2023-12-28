@@ -13,8 +13,6 @@
       <change beforePath="$PROJECT_DIR$/bison" beforeDir="false" afterPath="$PROJECT_DIR$/bison" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flex" beforeDir="false" afterPath="$PROJECT_DIR$/flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mdbtools" beforeDir="false" afterPath="$PROJECT_DIR$/mdbtools" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/assets/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/js/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trial.py" beforeDir="false" afterPath="$PROJECT_DIR$/trial.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +222,7 @@
       <workItem from="1703766820413" duration="25000" />
       <workItem from="1703766864781" duration="691000" />
       <workItem from="1703767710266" duration="191000" />
-      <workItem from="1703767937525" duration="2250000" />
+      <workItem from="1703767937525" duration="2465000" />
     </task>
     <task id="LOCAL-00001" summary="last revision from other branch">
       <option name="closed" value="true" />
