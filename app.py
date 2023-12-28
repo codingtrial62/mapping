@@ -1306,7 +1306,7 @@ def area_4():
         if xdf.loc[m, 'geometry'].geom_type == 'Point':
             coor = xdf.get_coordinates(ignore_index=True)
             icons = folium.CustomIcon(
-                icon_image='app/static/assets/images/marker_dot.png')
+                icon_image='/app/static/assets/images/marker_dot.png')
             marker = folium.Marker(location=(coor.loc[m, 'y'], coor.loc[m, 'x']), icon=icons, color='brown')
             popup = (f"Elevation: {xdf.loc[m, 'elevation']} FT  Type: {xdf.loc[m, 'type']}"
                      f" Coordinates: {coor.loc[m, 'y']}N, {coor.loc[m, 'x']}E")
