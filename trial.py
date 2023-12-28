@@ -361,6 +361,8 @@ class LtfmArea4Obstacles(db.Model):
 
 with app.app_context():
     db.create_all()
+
+
 #
 # for p in path_list_ad[:]:
 #     ad_df = geopandas.read_file(p)
@@ -698,18 +700,35 @@ with app.app_context():
 
 # if __name__ == '__main__':
 #     app.run(debug=True, port=5001)
+
+def chunks3(xs, n):
+    """
+    This function is a different implementation to suit our data to get coordinates as lists which has
+     two coordinates each.
+    :param xs:
+    :param n:
+    :return:
+    """
+    n = max(1, n)
+    coordinate_list = []
+    for i in range(0, len(xs), n):
+        coordinate_list.append(xs[i:i + n])
+    for t in coordinate_list:
+        ind = coordinate_list.index(t)
+        coordinate_list[ind] = [t[0], t[1]]
+    return coordinate_list
+
+
 engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db')
 sql_a4 = "SELECT * FROM area4_obstacles"
 df_a4 = pd.read_sql(sql_a4, con=engine)
+
 df_a4['geometry'] = df_a4['geo'].apply(wkt.loads)
 hdf = geopandas.GeoDataFrame(df_a4, crs='EPSG:4326')
+for l in range(hdf.shape[0]):
+    if hdf.loc[l, 'geometry'].geom_type == 'Point':
+        coor = hdf.loc[l, 'coordinate']
+        print(coor.split(' ')[1])
 
-for j in path_list_area_4:
-    layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower() + "_Area4_Obstacles"
-    tryial = geopandas.GeoDataFrame(hdf[hdf['aerodrome'] == layer_name])
-    for i in tryial.index:
-        print(tryial.loc[i, 'aerodrome'])
-        print(tryial.loc[i, 'geometry'])
-
-
-
+# for b in range(polygon.shape[0]):
+#     print(polygon)
