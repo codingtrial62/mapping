@@ -705,4 +705,5 @@ df_a4['geometry'] = df_a4['geo'].apply(wkt.loads)
 hdf = geopandas.GeoDataFrame(df_a4, crs='EPSG:4326')
 
 print(hdf['geometry'])
+print(os.environ.get('DATABASE_URL'))
 

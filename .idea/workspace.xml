@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d043c1f-a2e7-477f-9065-613e7213b8d5" name="Changes" comment="engine change">
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autoconf" beforeDir="false" afterPath="$PROJECT_DIR$/autoconf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/autoconf/build-aux/gendocs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/autoconf/build-aux/gendocs.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/automake" beforeDir="false" afterPath="$PROJECT_DIR$/automake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/automake/lib/gendocs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/automake/lib/gendocs.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bison" beforeDir="false" afterPath="$PROJECT_DIR$/bison" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flex" beforeDir="false" afterPath="$PROJECT_DIR$/flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mdbtools" beforeDir="false" afterPath="$PROJECT_DIR$/mdbtools" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mapping.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mapping.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/assets/js/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trial.py" beforeDir="false" afterPath="$PROJECT_DIR$/trial.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +84,6 @@
       <console-settings module-name="mapping" is-module-sdk="true">
         <envs>
           <env key="DATABASE_URL" value="postgres://ijycthkvyinpxi:567e51cc7ee8a72bc01df1f10b87b53b717329385f383ec2d2d88b00791df26c@ec2-35-169-9-79.compute-1.amazonaws.com:5432/d2a91h17qeudjt" />
-          <env key="DB_URI" value="" />
           <env key="FLASK_APP" value="app" />
           <env key="FLASK_ENV" value="development" />
           <env key="SECRET_KEY" value="alinidos" />
@@ -90,7 +93,6 @@
         <option name="myEnvs">
           <map>
             <entry key="DATABASE_URL" value="postgres://ijycthkvyinpxi:567e51cc7ee8a72bc01df1f10b87b53b717329385f383ec2d2d88b00791df26c@ec2-35-169-9-79.compute-1.amazonaws.com:5432/d2a91h17qeudjt" />
-            <entry key="DB_URI" value="" />
             <entry key="FLASK_APP" value="app" />
             <entry key="FLASK_ENV" value="development" />
             <entry key="SECRET_KEY" value="alinidos" />
@@ -113,7 +115,7 @@
       <recent name="$PROJECT_DIR$/instance" />
     </key>
   </component>
-  <component name="RunManager" selected="Flask server.mapping">
+  <component name="RunManager" selected="Python.app">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="mapping" />
       <option name="ENV_FILES" value="" />
@@ -121,6 +123,7 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DATABASE_URL" value="postgres://ijycthkvyinpxi:567e51cc7ee8a72bc01df1f10b87b53b717329385f383ec2d2d88b00791df26c@ec2-35-169-9-79.compute-1.amazonaws.com:5432/d2a91h17qeudjt" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -144,8 +147,12 @@
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <envs>
+        <env name="DATABASE_URL" value="postgres://ijycthkvyinpxi:567e51cc7ee8a72bc01df1f10b87b53b717329385f383ec2d2d88b00791df26c@ec2-35-169-9-79.compute-1.amazonaws.com:5432/d2a91h17qeudjt" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/local/bin/python3.12" />
+      <option name="SDK_NAME" value="Python 3.12" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -153,6 +160,10 @@
       <option name="launchJavascriptDebuger" value="false" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Flask server.mapping" />
+      <item itemvalue="Python.app" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -213,6 +224,7 @@
       <workItem from="1703766820413" duration="25000" />
       <workItem from="1703766864781" duration="691000" />
       <workItem from="1703767710266" duration="191000" />
+      <workItem from="1703767937525" duration="2250000" />
     </task>
     <task id="LOCAL-00001" summary="last revision from other branch">
       <option name="closed" value="true" />
@@ -433,12 +445,12 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/mapping$mapping.coverage" NAME="mapping Coverage Results" MODIFIED="1703759806409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/mapping$mapping.coverage" NAME="mapping Coverage Results" MODIFIED="1703771823810" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mapping$trial.coverage" NAME="trial Coverage Results" MODIFIED="1703325536519" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mapping$Flask__main_py_.coverage" NAME="Flask (main.py) Coverage Results" MODIFIED="1703584317650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/mapping$main.coverage" NAME="main Coverage Results" MODIFIED="1703512359306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/mapping$app.coverage" NAME="app Coverage Results" MODIFIED="1703702593492" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mapping$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1703759901007" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/mapping$Flask__trial_py_.coverage" NAME="Flask (trial.py) Coverage Results" MODIFIED="1703761984314" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/mapping$app.coverage" NAME="app Coverage Results" MODIFIED="1703771878463" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/mapping$Flask__trial_py_.coverage" NAME="Flask (trial.py) Coverage Results" MODIFIED="1703771544909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
