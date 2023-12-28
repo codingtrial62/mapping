@@ -5,12 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d043c1f-a2e7-477f-9065-613e7213b8d5" name="Changes" comment="engine change">
+      <change afterPath="$PROJECT_DIR$/static/assets/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/assets/js/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autoconf" beforeDir="false" afterPath="$PROJECT_DIR$/autoconf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/automake" beforeDir="false" afterPath="$PROJECT_DIR$/automake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bison" beforeDir="false" afterPath="$PROJECT_DIR$/bison" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flex" beforeDir="false" afterPath="$PROJECT_DIR$/flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mdbtools" beforeDir="false" afterPath="$PROJECT_DIR$/mdbtools" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/mapping.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mapping.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +69,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles/LTFJ_Obstacles&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/dersim/PycharmProjects/mapping/static/assets/css&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -101,10 +105,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/assets/css" />
+      <recent name="$PROJECT_DIR$/static/assets/js" />
       <recent name="$PROJECT_DIR$/aixm_/aerodrome obstacles/LTFJ_Obstacles" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/aixm_/aerodrome obstacles" />
-      <recent name="$PROJECT_DIR$/aixm_" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
@@ -112,7 +117,7 @@
       <recent name="$PROJECT_DIR$/instance" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Flask server.mapping">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="mapping" />
       <option name="ENV_FILES" value="" />
@@ -200,7 +205,17 @@
       <workItem from="1703758561963" duration="267000" />
       <workItem from="1703758847830" duration="40000" />
       <workItem from="1703758904229" duration="38000" />
-      <workItem from="1703758981131" duration="3756000" />
+      <workItem from="1703758981131" duration="4620000" />
+      <workItem from="1703763661190" duration="13000" />
+      <workItem from="1703763683002" duration="172000" />
+      <workItem from="1703764054593" duration="1005000" />
+      <workItem from="1703765066094" duration="24000" />
+      <workItem from="1703765371729" duration="198000" />
+      <workItem from="1703765655592" duration="25000" />
+      <workItem from="1703765711428" duration="17000" />
+      <workItem from="1703765786900" duration="1005000" />
+      <workItem from="1703766820413" duration="25000" />
+      <workItem from="1703766864781" duration="691000" />
     </task>
     <task id="LOCAL-00001" summary="last revision from other branch">
       <option name="closed" value="true" />
@@ -414,7 +429,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>41</line>
+          <line>42</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

@@ -11,6 +11,7 @@ from folium.plugins import FastMarkerCluster
 from sqlalchemy import create_engine
 # import gunicorn
 from flask_migrate import Migrate
+from flask_bootstrap import Bootstrap5
 #from flask_caching import Cache
 
 # cache = Cache()
@@ -21,7 +22,7 @@ ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 
 
 app = Flask(__name__)
-
+bootstrap = Bootstrap5(app)
 app.config.from_mapping(
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'dev_key',
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or \
