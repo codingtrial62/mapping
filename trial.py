@@ -703,11 +703,13 @@ sql_a4 = "SELECT * FROM area4_obstacles"
 df_a4 = pd.read_sql(sql_a4, con=engine)
 df_a4['geometry'] = df_a4['geo'].apply(wkt.loads)
 hdf = geopandas.GeoDataFrame(df_a4, crs='EPSG:4326')
-ad_list = []
+
 for j in path_list_area_4:
     layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower() + "_Area4_Obstacles"
-    tryial = hdf[hdf['aerodrome'] == layer_name]
-    for i in range(tryial.shape[0]):
-        ad_list.append(tryial.loc[i, 'geometry'])
+    tryial = geopandas.GeoDataFrame(hdf[hdf['aerodrome'] == layer_name])
+    for i in tryial.index:
+        print(tryial.loc[i, 'aerodrome'])
+        print(tryial.loc[i, 'geometry'])
+
 
 

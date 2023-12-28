@@ -1211,7 +1211,7 @@ def area_4():
         m6.add_child(g4)
 
         hdf = tr[tr['aerodrome'] == layer_name]
-        for l in range(hdf.shape[0]):
+        for l in hdf.index:
                 coor = hdf.get_coordinates(ignore_index=True)
                 if len(hdf.loc[l, 'coordinate']) % 2 != 0:
                     hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
