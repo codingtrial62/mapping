@@ -1206,7 +1206,7 @@ def area_4():
     df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
     hdf = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
     for j in path_list_area_4:
-        layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower()
+        layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower() + "_Area4_Obstacles"
         g4 = folium.plugins.FeatureGroupSubGroup(mcg, str(j)[69:73] + '_Area4_Obst')
         m6.add_child(g4)
 
