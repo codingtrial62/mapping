@@ -1013,7 +1013,7 @@ def fullscreen():
     m = folium.Map(location=[39, 35], zoom_start=6)
     mcg = folium.plugins.MarkerCluster(control=False)
     m.add_child(mcg)
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     sql_ad = "SELECT * FROM ad_obstacles"
     df_ad = pd.read_sql(sql_ad,con=engine)
     df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
@@ -1047,7 +1047,7 @@ def ad():
     m = folium.Map(location=[39, 35], zoom_start=6)
     mcg = folium.plugins.MarkerCluster(control=False)
     m.add_child(mcg)
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     sql_ad = "SELECT * FROM ad_obstacles"
     df_ad = pd.read_sql(sql_ad,con=engine)
     df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
@@ -1082,7 +1082,7 @@ m50 = folium.Map(location=[39, 35], zoom_start=6)
 
 @app.route("/enrobs", methods=['GET', 'POST'])
 def enr_obstacles():
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     sql_ad = "SELECT * FROM enr_obstacles"
     df_ad = pd.read_sql(sql_ad,con=engine)
     df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
@@ -1106,7 +1106,7 @@ def enr_obstacles():
 @app.route('/area2a', methods=['GET', 'POST'])
 def area_2a_obstacles():
     m4 = folium.Map(location=[39, 35], zoom_start=6)
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     sql_ad = "SELECT * FROM area2a_obstacles"
     df_ad = pd.read_sql(sql_ad,con=engine)
     df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
@@ -1131,7 +1131,7 @@ def area_3():
     m5.add_child(mcg)
     g6 = folium.plugins.FeatureGroupSubGroup(mcg, 'LTAC_Area3_Obst')
     m5.add_child(g6)
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     sql_ad = "SELECT * FROM ltac_area3_obstacles"
     df_ad = pd.read_sql(sql_ad,con=engine)
     df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
@@ -1199,7 +1199,7 @@ def area_4():
     m6 = folium.Map(location=[39, 35], zoom_start=6)
     mcg = folium.plugins.MarkerCluster(control=False)
     m6.add_child(mcg)
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db', echo=False)
+    engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     sql_ad = "SELECT * FROM area4_obstacles"
     df_ad = pd.read_sql(sql_ad,con=engine)
     df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)

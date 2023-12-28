@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d043c1f-a2e7-477f-9065-613e7213b8d5" name="Changes" comment="engine change">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autoconf" beforeDir="false" afterPath="$PROJECT_DIR$/autoconf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/automake" beforeDir="false" afterPath="$PROJECT_DIR$/automake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bison" beforeDir="false" afterPath="$PROJECT_DIR$/bison" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flex" beforeDir="false" afterPath="$PROJECT_DIR$/flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mdbtools" beforeDir="false" afterPath="$PROJECT_DIR$/mdbtools" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trial.py" beforeDir="false" afterPath="$PROJECT_DIR$/trial.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -202,7 +200,7 @@
       <workItem from="1703758561963" duration="267000" />
       <workItem from="1703758847830" duration="40000" />
       <workItem from="1703758904229" duration="38000" />
-      <workItem from="1703758981131" duration="3328000" />
+      <workItem from="1703758981131" duration="3756000" />
     </task>
     <task id="LOCAL-00001" summary="last revision from other branch">
       <option name="closed" value="true" />
