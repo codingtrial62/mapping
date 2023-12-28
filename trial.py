@@ -704,3 +704,5 @@ df_a4 = pd.read_sql(sql_a4, con=engine)
 df_a4['geometry'] = df_a4['geo'].apply(wkt.loads)
 hdf = geopandas.GeoDataFrame(df_a4, crs='EPSG:4326')
 
+print(hdf['geometry'])
+
