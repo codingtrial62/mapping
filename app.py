@@ -7,7 +7,7 @@ import pandas as pd
 from shapely import wkt
 from flask import Flask, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
-from folium.plugins import FastMarkerCluster
+from folium.plugins import FastMarkerCluster,FeatureGroupSubGroup, MarkerCluster
 from sqlalchemy import create_engine
 # import gunicorn
 from flask_migrate import Migrate
@@ -1079,7 +1079,7 @@ def fullscreen():
 @app.route("/aerodrome", methods=['GET', 'POST'])
 def ad():
     m = folium.Map(location=[39, 35], zoom_start=6)
-    mcg = folium.plugins.MarkerCluster(control=False)
+    mcg = folium.plugins.MarkerCluster(control=True)
     m.add_child(mcg)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     sql_ad = "SELECT * FROM ad_obstacles"
@@ -1234,67 +1234,88 @@ def area_3():
 @app.route('/area4')
 def area_4():
     m6 = folium.Map(location=[39, 35], zoom_start=6)
-    # mcg = folium.plugins.MarkerCluster(control=False)
-    # m6.add_child(mcg)
+    mcg = MarkerCluster(control=False)
+    m6.add_child(mcg)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     sql_ad = "SELECT * FROM area4_obstacles"
     df_ad = pd.read_sql(sql_ad, con=engine)
     df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
     hdf = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
-    hdf.explore(m=m6)
+
+    for j in path_list_area_4:
+        layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower() + "_Area4_Obstacles"
+        g4 = FeatureGroupSubGroup(mcg,str(j)[69:73] + '_Area4_Obst', show=False).add_to(m6)
+
+        for l in range(hdf.shape[0]):
+
+            if hdf.loc[l, 'aerodrome'] == layer_name:
+                if hdf.loc[l, 'obstacle_identifier'] == '792-55-A1-R1-40-0013':
+                    hdf.loc[l, 'coordinate'] = ('41.268954490 36.545948667 41.268945407 36.545976610 41.268935298 '
+                                                '36.546001687 41.268911937 36.545996773 41.268906594 36.546008163 '
+                                                '41.268860851 36.545985842 41.268873754 36.545940854 41.268895308 '
+                                                '36.545889963 41.268915084 36.545843271 41.268954558 36.545870598 '
+                                                '41.268935405 36.545917174 41.268929546 36.545931420 41.268954490 '
+                                                '36.545948667')
+                if hdf.loc[l, 'geometry'].geom_type == 'MultiLineString':
+                    if len(hdf.loc[l, 'coordinate']) % 2 != 0:
+                        hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
+
+                    if hdf.loc[l, 'coordinate'][-4::1] == ' 38*':
+                        hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-4]
+
+                    folium.PolyLine(locations=chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+                                    color='green',
+                                    popup=f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
+                                          f" Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+                        g4)
+
+
+
+                elif hdf.loc[l, 'geometry'].geom_type == 'MultiPolygon':
+                    if len(hdf.loc[l, 'coordinate']) % 2 != 0:
+                        hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
+                    folium.Polygon(locations=chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+                                   color='green',
+                                   popup=f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
+                                         f" Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+                        g4)
+
+                elif hdf.loc[l, 'geometry'].geom_type == 'Point':
+
+                    coor = hdf.loc[l, 'coordinate'].replace(',', '.').split(' ')
+
+                    marker = folium.CircleMarker(location=[coor[0],coor[1]], radius=3, color='red',fill=True,stroke=False, fill_opacity=1)
+                    popup = (f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
+                             f" Coordinates: {coor[0]}N, {coor[1]}E")
+                    folium.Popup(popup).add_to(marker)
+                    marker.add_to(g4)
+
     # for j in path_list_area_4:
     #     layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower() + "_Area4_Obstacles"
-    #     g4 = folium.plugins.FeatureGroupSubGroup(mcg, str(j)[69:73] + '_Area4_Obst')
-    #     m6.add_child(g4)
-    #     for l in range(hdf.shape[0]):
-    #         if hdf.loc[l, 'aerodrome'] == layer_name:
-    #             if hdf.loc[l,'obstacle_identifier'] == '792-55-A1-R1-40-0013':
-    #                 hdf.loc[l, 'coordinate'] = ('41.268954490 36.545948667 41.268945407 36.545976610 41.268935298 '
-    #                                             '36.546001687 41.268911937 36.545996773 41.268906594 36.546008163 '
-    #                                             '41.268860851 36.545985842 41.268873754 36.545940854 41.268895308 '
-    #                                             '36.545889963 41.268915084 36.545843271 41.268954558 36.545870598 '
-    #                                             '41.268935405 36.545917174 41.268929546 36.545931420 41.268954490 '
-    #                                             '36.545948667')
-    #             if hdf.loc[l, 'geometry'].geom_type == 'MultiLineString':
-    #                 if len(hdf.loc[l, 'coordinate']) % 2 != 0:
-    #                     hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
+    #     g10 = folium.plugins.FeatureGroupSubGroup(mcg, str(j)[69:73] + '_Area4_Obst')
+    #     m6.add_child(g10)
+    #     for k in range(hdf.shape[0]):
+    #         if hdf.loc[k, 'aerodrome'] == layer_name:
+    #             coor = hdf.loc[k, 'coordinate'].replace(',', '.').split(' ')
+    #             icons = folium.CustomIcon(
+    #                 icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/marker_dot.png')
+    #             marker = folium.Marker(location=(coor[0], coor[1]), icon=icons, color='brown')
+    #             popup = (f"Elevation: {hdf.loc[k, 'elevation']} FT  Type: {hdf.loc[k, 'obstacle_type']}"
+    #                      f" Coordinates: {coor[0]}N, {coor[1]}E")
     #
-    #                 if hdf.loc[l, 'coordinate'][-4::1] == ' 38*':
-    #                     hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-4]
-    #
-    #                 folium.PolyLine(locations=chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
-    #                                 color='green',
-    #                                 popup=f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
-    #                                       f" Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
-    #                     g4)
-    #
-    #
-    #
-    #             elif hdf.loc[l, 'geometry'].geom_type == 'MultiPolygon':
-    #                 if len(hdf.loc[l, 'coordinate']) % 2 != 0:
-    #                     hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
-    #                 folium.Polygon(locations=chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
-    #                                color='green',
-    #                                popup=f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
-    #                                      f" Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
-    #                     g4)
-    #
-    #
-    #             elif hdf.loc[l, 'geometry'].geom_type == 'Point':
-    #                 coor = hdf.loc[l, 'coordinate'].replace(',', '.').split(' ')
-    #                 icons = folium.CustomIcon(
-    #                     icon_image='/app/static/assets/images/marker_dot.png')
-    #                 marker = folium.Marker(location=[coor[0],coor[1]], icon=icons, fill=True)
-    #                 popup = (f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
-    #                          f" Coordinates: {coor[0]}N, {coor[1]}E")
-    #
-    #                 folium.Popup(popup).add_to(marker)
-    #                 marker.add_to(g4)
+    #             folium.Popup(popup).add_to(marker)
+    #             marker.add_to(g10)
+        # else:
+        #     coor = hdf.loc[l, 'coordinate'].replace(',', '.').split(' ')
+        #     icons = folium.CustomIcon(
+        #         icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/marker_dot.png')
+        #     marker = folium.Marker(location=[coor[0],coor[1]], icon=icons, fill=True)
+        #     popup = (f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
+        #              f" Coordinates: {coor[0]}N, {coor[1]}E")
 
+        # folium.Popup(popup).add_to(marker)
+        # marker.add_to(mcg)
 
-
-
-    #
     # sql_ad = "SELECT * FROM ltfm_area4_obstacles"
     # df_ad = pd.read_sql(sql_ad, con=engine)
     # df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
@@ -1307,7 +1328,7 @@ def area_4():
     #     if xdf.loc[m, 'geometry'].geom_type == 'Point':
     #         coor = xdf.get_coordinates(ignore_index=True)
     #         icons = folium.CustomIcon(
-    #             icon_image='/app/static/assets/images/marker_dot.png')
+    #             icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/marker_dot.png')
     #         marker = folium.Marker(location=(coor.loc[m, 'y'], coor.loc[m, 'x']), icon=icons, color='brown')
     #         popup = (f"Elevation: {xdf.loc[m, 'elevation']} FT  Type: {xdf.loc[m, 'type']}"
     #                  f" Coordinates: {coor.loc[m, 'y']}N, {coor.loc[m, 'x']}E")
@@ -1329,7 +1350,7 @@ def area_4():
     #                        popup=f"Elevation: {xdf.loc[m, 'elevation']} FT  Type: {xdf.loc[m, 'type']} "
     #                              f" Coordinates(..N..E): {chunks2(xdf.loc[m, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
     #             g5)
-    # folium.LayerControl(collapsed=True).add_to(m6)
+    folium.LayerControl(collapsed=True).add_to(m6)
     folium.plugins.MousePosition().add_to(m6)
     frame = m6.get_root()._repr_html_()
 
