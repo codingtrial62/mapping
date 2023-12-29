@@ -1352,7 +1352,7 @@ def area_4():
     #             g5)
     folium.LayerControl(collapsed=True).add_to(m6)
     folium.plugins.MousePosition().add_to(m6)
-    frame = m6.get_root()._repr_html_()
+    frame = m6.get_root().render()
 
     return render_template('mapping.html', iframe=frame, title='Area 4 Obstacles | Folium')
 
