@@ -316,9 +316,9 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
     maps.add_child(g0)
     for y in range(ydf.shape[0]):
         coo = ydf.loc[y, 'geometry']
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/marker_dot.png')
-        marker = folium.Marker(location=(coo.y,coo.x), icon=icons, fill=True)
+        # icons = folium.CustomIcon(
+        #     icon_image='/app/static/assets/images/marker_dot.png')
+        marker = folium.CircleMarker(location=(coo.y,coo.x), radius=3, color='purple', fill_opacity=1, fill=True)
         popup = (f"Elevation: {ydf.loc[y, 'elevation']} FT Type: {ydf.loc[y, 'type']} "
                  f" Coordinates: {coo.y}N, {coo.x}E")
 
@@ -354,9 +354,9 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
         coor = bdf.get_coordinates(ignore_index=True)
 
         if bdf.loc[o, 'geometry'].geom_type == 'Point':
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/marker_dot.png')
-            marker = folium.Marker(location=[coor.loc[o, 'y'], coor.loc[o, 'x']], icon=icons, fill=True)
+            # icons = folium.CustomIcon(
+            #     icon_image='/app/static/assets/images/marker_dot.png')
+            marker = folium.CircleMarker(location=[coor.loc[o, 'y'], coor.loc[o, 'x']], radius=3,color='blue', fill_opacity=1, fill=True)
             popup = (f"Elevation: {bdf.loc[o, 'elevation']} FT  Type: {bdf.loc[o, 'obstacle_type']} "
                      f" Coordinates: {coor.loc[o, 'y']}N, {coor.loc[o, 'x']}E")
 
@@ -382,9 +382,9 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
 
 
         if gdf.loc[t, 'geometry'].geom_type == 'Point':
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/marker_dot.png')
-            marker = folium.Marker(location=[coords.loc[t, 'y'], coords.loc[t, 'x']], icon=icons, fill=True)
+            # icons = folium.CustomIcon(
+            #     icon_image='/app/static/assets/images/marker_dot.png')
+            marker = folium.CircleMarker(location=[coords.loc[t, 'y'], coords.loc[t, 'x']], radius=3, color='magenta', fill_opacity=1, fill=True)
             popup = (f"Elevation: {gdf.loc[t, 'elevation']} FT  Type: {gdf.loc[t, 'obstacle_type']} "
                      f" Coordinates: {coords.loc[t, 'y']}N, {coords.loc[t, 'x']}E")
 
@@ -408,9 +408,9 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
     for e in range(ltac.shape[0]):
 
         if ltac.loc[e, 'geometry'].geom_type == 'Point':
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/marker_dot.png')
-            marker = folium.Marker(location=[coord.loc[e, 'x'], coord.loc[e, 'y']], icon=icons, fill=True)
+            # icons = folium.CustomIcon(
+            #     icon_image='/app/static/assets/images/marker_dot.png')
+            marker = folium.CircleMarker(location=[coord.loc[e, 'x'], coord.loc[e, 'y']], radius=3, color='pink', fill_opacity=1, fill=True)
             popup = (f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']}"
                      f" Coordinates: {coord.loc[e, 'y']}N, {coord.loc[e, 'x']}E")
 
@@ -448,9 +448,9 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
             hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-4]
 
         if hdf.loc[l, 'geometry'].geom_type == 'Point':
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/marker_dot.png')
-            marker = folium.Marker(location=[coordss.loc[l, 'y'], coordss.loc[l, 'x']], icon=icons, fill=True)
+            # icons = folium.CustomIcon(
+            #     icon_image='/app/static/assets/images/marker_dot.png')
+            marker = folium.CircleMarker(location=[coordss.loc[l, 'y'], coordss.loc[l, 'x']], radius=3, color='black', fill_opacity=1, fill=True)
             popup = (f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
                      f" Coordinates: {coordss.loc[l, 'y']}N, {coordss.loc[l, 'x']}E")
 
@@ -476,9 +476,9 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
     for u in range(xdf.shape[0]):
         coorddss = xdf.get_coordinates(ignore_index=True)
         if xdf.loc[u, 'geometry'].geom_type == 'Point':
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/marker_dot.png')
-            marker = folium.Marker(location=[coorddss.loc[u, 'y'], coorddss.loc[u, 'x']], icon=icons, fill=True)
+            # icons = folium.CustomIcon(
+            #     icon_image='/app/static/assets/images/marker_dot.png')
+            marker = folium.CircleMarker(location=[coorddss.loc[u, 'y'], coorddss.loc[u, 'x']], radius=3, color='yellow', fill_opacity=1, fill=True)
             popup = (f"Elevation: {xdf.loc[u, 'elevation']} FT  Type: {xdf.loc[u, 'type']}"
                      f" Coordinates: {coorddss.loc[u, 'y']}N, {coorddss.loc[u, 'x']}E")
 
@@ -1070,7 +1070,7 @@ def fullscreen():
         for i in range(df.shape[0]):
             if df.loc[i, 'aerodrome'] == layer_name:
                 coor = df.get_coordinates(ignore_index=True)
-                icons = marker_creator_ad(df, i)
+                icons = marker_creator_ad_2(df, i)
                 marker = folium.Marker(location=(coor.loc[i, 'y'], coor.loc[i, 'x']), icon=icons)
                 popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
                          f" Coordinates: {coor.loc[i, 'y']}N, {coor.loc[i, 'x']}E")
@@ -1090,37 +1090,38 @@ def fullscreen():
 @app.route("/aerodrome", methods=['GET', 'POST'])
 def ad():
     m = folium.Map(location=[39, 35], zoom_start=6)
-    mcg = folium.plugins.MarkerCluster(control=True)
+    mcg = folium.plugins.MarkerCluster(control=False)
     m.add_child(mcg)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     sql_ad = "SELECT * FROM ad_obstacles"
     df_ad = pd.read_sql(sql_ad, con=engine)
     df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
     df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
-
-    for p in path_list_ad[1:]:
+    for p in path_list_ad[:10]:
+        dicta ={}
         layer_name = str(p)[64:68].lower()
-        g1 = folium.plugins.FeatureGroupSubGroup(mcg, str(p)[64:68] + '_AD_Obst')
-        m.add_child(g1)
+        dicta[layer_name] = FeatureGroupSubGroup(mcg,str(p)[64:68] + '_AD_Obst')
+        m.add_child(dicta[layer_name])
+
+
         for i in range(df.shape[0]):
             if df.loc[i, 'aerodrome'] == layer_name:
                 coor = df.get_coordinates(ignore_index=True)
-                icons = folium.CustomIcon(
-                    icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/marker_dot.png')
-                marker = folium.Marker(location=(coor.loc[i, 'y'], coor.loc[i, 'x']), icon=icons)
+                icons = marker_creator_ad(df, i)
+                marker = folium.CircleMarker(location=(coor.loc[i, 'y'], coor.loc[i, 'x']), radius=3, color='red',fill=True, fill_opacity=0.5)
                 popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
                          f" Coordinates: {coor.loc[i, 'y']}N, {coor.loc[i, 'x']}E")
 
                 folium.Popup(popup).add_to(marker)
-                marker.add_to(g1)
+                marker.add_to(dicta[layer_name])
 
-    folium.LayerControl(collapsed=True).add_to(m)
+    folium.LayerControl(collapsed=False).add_to(m)
 
     """Simple example of a fullscreen map."""
     folium.plugins.MousePosition().add_to(m)
-    frame = m.get_root()._repr_html_()
+    frame = m.get_root().render()
 
-    return render_template('mapping.html', iframe=frame, title='AD Map | Folium')
+    return render_template('mapping.html', iframe=frame, title=' AD Map | Folium')
 
 
 m50 = folium.Map(location=[39, 35], zoom_start=6)
