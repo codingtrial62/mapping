@@ -698,73 +698,73 @@ with app.app_context():
 #             db.session.commit()
 
 
-@app.route('/', methods=['GET', 'POST'])
-def trial():
-    m = folium.Map(location=[39.925533, 32.866287], zoom_start=6)
+# @app.route('/', methods=['GET', 'POST'])
+# def trial():
+#     m = folium.Map(location=[39.925533, 32.866287], zoom_start=6)
+#
+#     engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db')
+#     sql_a4 = "SELECT * FROM area4_obstacles"
+#     df_a4 = pd.read_sql(sql_a4, con=engine)
+#
+#     df_a4['geometry'] = df_a4['geo'].apply(wkt.loads)
+#     hdf = geopandas.GeoDataFrame(df_a4, crs='EPSG:4326')
+#
+#     for j in path_list_area_4:
+#         layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower() + "_Area4_Obstacles"
+#         fg = folium.FeatureGroup(name=layer_name, show=False).add_to(m)
+#         for l in range(hdf.shape[0]):
+#             if hdf.loc[l, 'aerodrome'] == layer_name:
+#                 if hdf.loc[l, 'obstacle_identifier'] == '792-55-A1-R1-40-0013':
+#                     hdf.loc[l, 'coordinate'] = ('41.268954490 36.545948667 41.268945407 36.545976610 41.268935298 '
+#                                                 '36.546001687 41.268911937 36.545996773 41.268906594 36.546008163 '
+#                                                 '41.268860851 36.545985842 41.268873754 36.545940854 41.268895308 '
+#                                                 '36.545889963 41.268915084 36.545843271 41.268954558 36.545870598 '
+#                                                 '41.268935405 36.545917174 41.268929546 36.545931420 41.268954490 '
+#                                                 '36.545948667')
+#             if hdf.loc[l, 'geometry'].geom_type == 'MultiLineString':
+#                 if len(hdf.loc[l, 'coordinate']) % 2 != 0:
+#                     hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
+#
+#                 if hdf.loc[l, 'coordinate'][-4::1] == ' 38*':
+#                     hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-4]
+#
+#                 folium.PolyLine(locations=chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+#                                 color='green',
+#                                 popup=f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
+#                                       f" Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+#                     fg)
+#
+#
+#
+#             elif hdf.loc[l, 'geometry'].geom_type == 'MultiPolygon':
+#                 if len(hdf.loc[l, 'coordinate']) % 2 != 0:
+#                     hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
+#                 folium.Polygon(locations=chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+#                                color='green',
+#                                popup=f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
+#                                      f" Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+#                     fg)
+#
+#
+#             elif hdf.loc[l, 'geometry'].geom_type == 'Point':
+#                 coor = hdf.loc[l, 'coordinate'].replace(',', '.').split(' ')
+#                 icons = folium.CustomIcon(
+#                     icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/marker_dot.png')
+#                 marker = folium.Marker(location=[coor[0], coor[1]], icon=icons, fill=True)
+#                 popup = (f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
+#                          f" Coordinates: {coor[0]}N, {coor[1]}E")
+#
+#                 folium.Popup(popup).add_to(marker)
+#                 marker.add_to(fg)
+#
+#     folium.LayerControl().add_to(m)
+#
+#     frame = m.get_root()._repr_html_()
+#     return render_template('mapping.html', frame=frame)
 
-    engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db')
-    sql_a4 = "SELECT * FROM area4_obstacles"
-    df_a4 = pd.read_sql(sql_a4, con=engine)
 
-    df_a4['geometry'] = df_a4['geo'].apply(wkt.loads)
-    hdf = geopandas.GeoDataFrame(df_a4, crs='EPSG:4326')
-
-    for j in path_list_area_4:
-        layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower() + "_Area4_Obstacles"
-        fg = folium.FeatureGroup(name=layer_name, show=False).add_to(m)
-        for l in range(hdf.shape[0]):
-            if hdf.loc[l, 'aerodrome'] == layer_name:
-                if hdf.loc[l, 'obstacle_identifier'] == '792-55-A1-R1-40-0013':
-                    hdf.loc[l, 'coordinate'] = ('41.268954490 36.545948667 41.268945407 36.545976610 41.268935298 '
-                                                '36.546001687 41.268911937 36.545996773 41.268906594 36.546008163 '
-                                                '41.268860851 36.545985842 41.268873754 36.545940854 41.268895308 '
-                                                '36.545889963 41.268915084 36.545843271 41.268954558 36.545870598 '
-                                                '41.268935405 36.545917174 41.268929546 36.545931420 41.268954490 '
-                                                '36.545948667')
-            if hdf.loc[l, 'geometry'].geom_type == 'MultiLineString':
-                if len(hdf.loc[l, 'coordinate']) % 2 != 0:
-                    hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
-
-                if hdf.loc[l, 'coordinate'][-4::1] == ' 38*':
-                    hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-4]
-
-                folium.PolyLine(locations=chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
-                                color='green',
-                                popup=f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
-                                      f" Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
-                    fg)
-
-
-
-            elif hdf.loc[l, 'geometry'].geom_type == 'MultiPolygon':
-                if len(hdf.loc[l, 'coordinate']) % 2 != 0:
-                    hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
-                folium.Polygon(locations=chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
-                               color='green',
-                               popup=f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
-                                     f" Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
-                    fg)
-
-
-            elif hdf.loc[l, 'geometry'].geom_type == 'Point':
-                coor = hdf.loc[l, 'coordinate'].replace(',', '.').split(' ')
-                icons = folium.CustomIcon(
-                    icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/marker_dot.png')
-                marker = folium.Marker(location=[coor[0], coor[1]], icon=icons, fill=True)
-                popup = (f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
-                         f" Coordinates: {coor[0]}N, {coor[1]}E")
-
-                folium.Popup(popup).add_to(marker)
-                marker.add_to(fg)
-
-    folium.LayerControl().add_to(m)
-
-    frame = m.get_root()._repr_html_()
-    return render_template('mapping.html', frame=frame)
-
-
-if __name__ == '__main__':
-    app.run(debug=True, port=5002)
+# if __name__ == '__main__':
+#     app.run(debug=True, port=5002)
 
 
 def chunks3(xs, n):
@@ -784,17 +784,15 @@ def chunks3(xs, n):
         coordinate_list[ind] = [t[0], t[1]]
     return coordinate_list
 
-
 engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db')
-sql_a4 = "SELECT * FROM area4_obstacles"
-df_a4 = pd.read_sql(sql_a4, con=engine)
+sql_fm = "SELECT * FROM ltfm_area4_obstacles"
+df_fm = pd.read_sql(sql_fm, con=engine)
+df_fm['geometry'] = df_fm['geo'].apply(wkt.loads)
+xdf = geopandas.GeoDataFrame(df_fm, crs='EPSG:4326')
 
-df_a4['geometry'] = df_a4['geo'].apply(wkt.loads)
-hdf = geopandas.GeoDataFrame(df_a4, crs='EPSG:4326')
-ad = []
-for j in path_list_area_4:
-    layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower() + "_Area4_Obstacles"
-    ad.append(layer_name)
+for e in range(xdf.shape[0]):
+    coor = xdf.get_coordinates(ignore_index=True)
+    print(coor)
 
 # for b in range(polygon.shape[0]):
 #     print(polygon)
