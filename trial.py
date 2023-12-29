@@ -784,15 +784,398 @@ def chunks3(xs, n):
         coordinate_list[ind] = [t[0], t[1]]
     return coordinate_list
 
-engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db')
-sql_fm = "SELECT * FROM ltfm_area4_obstacles"
-df_fm = pd.read_sql(sql_fm, con=engine)
-df_fm['geometry'] = df_fm['geo'].apply(wkt.loads)
-xdf = geopandas.GeoDataFrame(df_fm, crs='EPSG:4326')
+def marker_creator_ad(df, i, ):
+    if 'BUILDING' in df.loc[i, 'name'] or 'BULDING' in df.loc[i, 'name']:
+        # kw = {"prefix": "fa", "color": "green", "icon": "building"}
+        # icons = folium.Icon(**kw)
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/building.png')
 
-for e in range(xdf.shape[0]):
-    coor = xdf.get_coordinates(ignore_index=True)
-    print(coor)
 
-# for b in range(polygon.shape[0]):
-#     print(polygon)
+    elif 'MAST' in df.loc[i, 'name']:
+        if df.loc[i, 'name'] == 'LIGHTING MAST':
+            # kw = {"prefix": "fa", "color": "red", "icon": "shower"}
+            # icons = folium.Icon(**kw)
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/street-light.png')
+
+        elif df.loc[i, 'name'] == 'APRON LIGHTING MAST' or df.loc[i, 'name'] == 'APRON LIGTHING MAST':
+            # kw = {"prefix": "fa", "color": "red", "icon": "shower"}
+            # icons = folium.Icon(**kw)
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/apron_lighting.png')
+
+        else:
+            icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/mast.png')
+            # folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/aixm_mapping/icons8-pylon-64.png')
+
+
+
+    elif df.loc[i, 'name'] == 'MOSQUE' or df.loc[i, 'name'] == 'MOSQUE_DOME':
+
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/mosque.png')
+
+
+    elif df.loc[i, 'name'] == 'MINARET':
+
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/minaret.png')
+
+    elif 'SURVEILLANCE TOWER' in df.loc[i, 'name'] or 'TWR' in df.loc[i, 'name'] or 'TOWER' in df.loc[
+        i, 'name']:
+        kw = {"prefix": "fa", "color": "pink", "icon": "tower-observation"}
+        icons = folium.Icon(**kw)
+
+    elif 'ANTENNA' in df.loc[i, 'name']:
+        if df.loc[i, 'name'] == 'GSM ANTENNA':
+            # kw = {"prefix": "fa", "color": "purple", "icon": "signal"}
+            # icons = folium.Icon(**kw)
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/gsm_anten.png')
+
+        elif df.loc[i, 'name'] == 'DME ANTENNA' or df.loc[i, 'name'] == 'DME ANTENNA(GP)':
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/dme_antenna.png')
+
+        elif df.loc[i, 'name'] == 'GLIDE PATH  ANTENNA' or df.loc[i, 'name'] == 'GLIDE PATH ANTENNA' \
+                or df.loc[i, 'name'] == 'GP ANTENNA' or df.loc[i, 'name'] == 'GLIDE PATH ANTENNA':
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/glidepath_antenna.png')
+
+        elif df.loc[i, 'name'] == 'LLZ ANTENNA':
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/llz_ant.png')
+
+        elif df.loc[i, 'name'] == 'NDB ANTENNA':
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/ndb_antenna.png')
+
+        elif df.loc[i, 'name'] == 'TACAN ANTENNA':
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/tacan_antenna.png')
+
+        elif df.loc[i, 'name'] == 'VOR ANTENNA':
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/vor_antenna.png')
+
+        elif df.loc[i, 'name'] == 'NF ANTENNA':
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/nf_antenna.png')
+
+        else:
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/antenna.png')
+
+    elif df.loc[i, 'name'] == 'CHIMNEY' or df.loc[i, 'name'] == 'SHAFT':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/chimney.png')
+
+    elif df.loc[i, 'name'] == 'ANM' or 'ANEMO' in df.loc[i, 'name']:
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/anemometer.png')
+
+
+    elif 'WIND' in df.loc[i, 'name']:
+        if 'DIRECTION' in df.loc[i, 'name']:
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/wind-direction.png')
+
+        elif 'ROSE' in df.loc[i, 'name']:
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/wind-rose.png')
+
+
+        elif 'TURBINE' in df.loc[i, 'name'] or 'T' in df.loc[i, 'name']:
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/wind-turbine.png')
+
+
+        else:
+            icons = folium.CustomIcon(
+                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/windsock.png')
+
+
+    elif 'WDI' in df.loc[i, 'name']:
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/wind-direction.png')
+
+    elif 'APPROACH' in df.loc[i, 'name']:
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/landing-track.png')
+
+    elif 'POLE' in df.loc[i, 'name']:
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/pole.png')
+
+
+    elif df.loc[i, 'name'] == 'LIGHTNING ROD' or df.loc[i, 'name'] == 'PARATONER' or df.loc[
+        i, 'name'] == 'PARATONNERRE':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/lightning-rod.png')
+
+
+    elif df.loc[i, 'name'] == 'HOSPITAL':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/hospital.png')
+
+
+    elif df.loc[i, 'name'] == 'DME' or df.loc[i, 'name'] == 'DME ILS/GP':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/dme.png')
+
+
+    elif df.loc[i, 'name'] == 'NDB':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/ndb.png')
+
+
+    elif df.loc[i, 'name'] == 'TACAN' or df.loc[i, 'name'] == 'TACAN CONTAINER':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/tacan.png')
+
+
+    elif df.loc[i, 'name'] == 'VOR' or df.loc[i, 'name'] == 'VOR CONTAINER' or df.loc[
+        i, 'name'] == 'VOR STATION':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/icons/vor.png')
+
+
+    elif df.loc[i, 'name'] == 'VOR+DME' or df.loc[i, 'name'] == 'VOR/DME':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/vor_dme.png')
+
+
+    elif df.loc[i, 'name'] == 'ATC1_AERIAL' or df.loc[i, 'name'] == 'ATC2_AERIAL':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/nf_antenna.png')
+
+
+    elif 'LIGHT' in df.loc[i, 'name']:
+
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/street-light.png')
+
+
+    elif df.loc[i, 'name'] == 'GREENHOUSE' or df.loc[i, 'name'] == 'GREEN HOUSE' or df.loc[
+        i, 'name'] == 'PLANT-HOUSE' or df.loc[i, 'name'] == 'GARDEN FRAME':
+
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/greenhouse.png')
+
+    elif df.loc[i, 'name'] == 'SILO' or df.loc[i, 'name'] == 'GRAIN SILO':
+
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/silo.png')
+
+
+    elif df.loc[i, 'name'] == 'STADIUM':
+
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/stadium.png')
+
+
+    elif 'HOOK BARRIER' in df.loc[i, 'name']:
+
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/hook.png')
+
+
+    elif 'NET BARRIER' in df.loc[i, 'name']:
+
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/net.png')
+
+
+    elif df.loc[i, 'name'] == 'CONCRETE BARRIER' or df.loc[i, 'name'] == 'CONCRETE BLOCK' or df.loc[
+        i, 'name'] == 'BETON BARIYER':
+
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/concrete_barrier.png')
+
+
+    elif 'WALL' in df.loc[i, 'name']:
+
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/wall.png')
+
+
+    elif df.loc[i, 'name'] == 'ATC1_AERIAL' or df.loc[i, 'name'] == 'ATC2_AERIAL':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/nf_antenna.png')
+
+
+    elif (df.loc[i, 'name'] == 'DVOR' or df.loc[i, 'name'] == 'DVOR_LC' or df.loc[i, 'name'] == 'DVOR_MONITOR'
+          or df.loc[i, 'name'] == 'FFM_18' or df.loc[i, 'name'] == 'FFM_17L' or df.loc[i, 'name'] == 'FFM-35R'
+          or df.loc[i, 'name'] == "FFM_34L" or df.loc[i, 'name'] == 'FFM_36' or df.loc[
+              i, 'name'] == 'GLIDE PATH'
+          or df.loc[i, 'name'] == 'GLIDEPAT CON.' or df.loc[i, 'name'] == 'GLIDE PATH SHELTER' or df.loc[
+              i, 'name'] == 'GLIDE PATH CONTAINER'
+          or df.loc[i, 'name'] == 'GP' or df.loc[i, 'name'] == 'GP CABIN' or df.loc[i, 'name'] == 'GP STATION'
+          or df.loc[i, 'name'] == 'GP_16R_MONITOR' or df.loc[i, 'name'] == 'GP/NAVAID' or df.loc[
+              i, 'name'] == 'GP/DME'
+          or df.loc[i, 'name'] == 'GP_16R_OBS_LT' or df.loc[i, 'name'] == 'GP_17L_MONITOR' or df.loc[
+              i, 'name'] == 'GP_17L_OBS_LT'
+          or df.loc[i, 'name'] == 'GP_34L_MONITOR' or df.loc[i, 'name'] == 'GP_18_OBS_LT' or df.loc[
+              i, 'name'] == 'GP_18_MONITOR'
+          or df.loc[i, 'name'] == 'GP_34L_OBS_LT' or df.loc[i, 'name'] == 'GP_35R_MONITOR' or df.loc[
+              i, 'name'] == 'GP_35R_OBS_LT'
+          or df.loc[i, 'name'] == 'LLZ CON.' or df.loc[i, 'name'] == 'GP_36_OBS_LT' or df.loc[
+              i, 'name'] == 'GP_36_MONITOR'
+          or df.loc[i, 'name'] == 'LLZ CONTAINER' or df.loc[i, 'name'] == 'LLZ16' or df.loc[
+              i, 'name'] == 'LLZ_18'
+          or df.loc[i, 'name'] == 'RVR' or df.loc[i, 'name'] == 'PAPI_COVER' or df.loc[
+              i, 'name'] == 'LOCALIZER' or
+          df.loc[i, 'name'] == 'RAPCON'
+          or df.loc[i, 'name'] == 'RVR-SENSOR') or df.loc[i, 'name'] == 'NDB FIELD' or df.loc[
+        i, 'name'] == 'GCA' or \
+            df.loc[i, 'name'] == 'SENTRY BOX' \
+            or df.loc[i, 'name'] == 'NFM_34L':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/other_navigation_aid.png')
+
+    elif df.loc[i, 'name'] == 'GSM BASE STATION' or df.loc[i, 'name'] == 'GSM STATION':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/gsm_anten.png')
+
+
+    elif df.loc[i, 'name'] == 'GAS STATION':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/gas-station.png')
+
+
+    elif df.loc[i, 'name'] == 'RADAR_STATION':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/radar.png')
+
+
+    elif (df.loc[i, 'name'] == 'CABIN' or df.loc[i, 'name'] == 'CONSTRUCTION' or df.loc[i, 'name'] == 'COTTAGE'
+          or df.loc[i, 'name'] == 'GUARD COTTAGE' or df.loc[i, 'name'] == 'STRUCTURE'):
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/cabin.png')
+
+
+    elif df.loc[i, 'name'] == 'HANGAR':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/hangar.png')
+
+
+    elif df.loc[i, 'name'] == 'MILITARY TRENCH':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/trench.png')
+
+
+    elif df.loc[i, 'name'] == 'REFLECTOR':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/reflector.png')
+
+
+    elif df.loc[i, 'name'] == 'ROCK' or df.loc[i, 'name'] == 'STACK' \
+            or df.loc[i, 'name'] == 'CLIFF':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/rock_stack_cliff.png')
+
+
+    elif df.loc[i, 'name'] == 'TREE':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/tree.png')
+
+
+    elif df.loc[i, 'name'] == 'VAN CASTLE':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/castle.png')
+
+
+    elif df.loc[i, 'name'] == 'BRIDGE_DECK':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/bridge_deck.png')
+
+
+    elif df.loc[i, 'name'] == 'TRANSFORMER':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/transformer.png')
+
+
+    elif df.loc[i, 'name'] == 'TRAFFIC_SIGN' or df.loc[i, 'name'] == 'TRAFFIC BOARD' \
+            or df.loc[i, 'name'] == 'SIGNBOARD':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/sign_board.png')
+
+
+    elif df.loc[i, 'name'] == 'PYLON':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/pylon.png')
+
+
+    elif df.loc[i, 'name'] == 'CRANE':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/crane.png')
+
+
+    elif df.loc[i, 'name'] == 'ARFF POOL':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/arff_pool.png')
+
+
+    elif df.loc[i, 'name'] == 'ENERGY TRANSMISSION LINE' or df.loc[i, 'name'] == 'POWER_TRANSMISSION_LINE':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/transmission.png')
+
+    elif df.loc[i, 'name'] == 'CONTAINER':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/container.png')
+
+
+    elif 'TERRAIN' in df.loc[i, 'name']:
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/terrain.png')
+
+
+    elif df.loc[i, 'name'] == 'BASE STATION':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/base_station.png')
+
+
+    elif df.loc[i, 'name'] == 'BILLBOARD':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/billboard.png')
+
+
+    elif df.loc[i, 'name'] == 'CAMERA PANEL':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/panel.png')
+
+
+    elif df.loc[i, 'name'] == 'FENCE' or df.loc[i, 'name'] == 'WIRE FENCE':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/fence.png')
+
+
+    elif df.loc[i, 'name'] == 'FUEL_TANK':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/fuel_tank.png')
+
+
+    elif df.loc[i, 'name'] == 'WATER TANK':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/water_tank.png')
+
+
+    elif df.loc[i, 'name'] == 'WATER ROSERVOIR':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/reservoir.png')
+
+
+    elif df.loc[i, 'name'] == 'ENERGY CABIN':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/energy_cabin.png')
+
+
+    elif df.loc[i, 'name'] == 'METEOROLOGY DEVICE':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/meteo_device.png')
+
+
+    elif df.loc[i, 'name'] == 'OKIS':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/okis.png')
+
+
+    elif df.loc[i, 'name'] == 'TERMINAL':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/terminal.png')
+
+
+    elif df.loc[i, 'name'] == 'VOICE BIRD SCARING SYSTEM':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/vbss.png')
+
+
+    elif df.loc[i, 'name'] == 'WATCH BOX':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/watch_box.png')
+
+
+    elif df.loc[i, 'name'] == 'GNSS_MEASUREMENT_POINT':
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/gnss.png')
+
+    elif df.loc[i, 'name'] == 'OTHER':
+        icons = folium.CustomIcon(
+            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/other_navigation_aid.png')
+
+    else:
+        icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/laughing.png')
+
+    return icons
+
+engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
+sql_enr = "SELECT * FROM area2a_obstacles"
+df_enr = pd.read_sql(sql_enr, con=engine)
+df_enr['geometry'] = df_enr['geo'].apply(wkt.loads)
+ydf = geopandas.GeoDataFrame(df_enr, crs='EPSG:4326')
+for i in range(ydf.shape[0]):
+    if ydf.loc[i, 'geometry'].geom_type == 'MultiLineString':
+        locs = chunks2(ydf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)
+        print(locs)
