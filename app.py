@@ -935,7 +935,7 @@ def fullscreen():
         icons = marker_creator_ad_2(df, i)
         marker = folium.Marker(location=(coor[0], coor[1]), icon=icons)
         popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
-                 f" Coordinates: {coor.loc[i, 'y']}N, {coor.loc[i, 'x']}E")
+                 f" Coordinates: {coor[0]}N, {coor[1]}E")
 
         folium.Popup(popup).add_to(marker)
         mcg.add_child(marker)
