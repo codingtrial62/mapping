@@ -1179,7 +1179,7 @@ for p in path_list_area_2[:]:
     dict_area2[str(p)[61:65].lower() + '_Area2a_Obstacles'] = folium.plugins.MarkerCluster(name=str(p)[61:65] + '_Area2a_Obstacles', control=True)
 print(dict_area2)
 
-
+print(dict_area2['ltac_Area2a_Obstacles'])
 
 # def create_ad_obstacles_db(path_list):
 #     """

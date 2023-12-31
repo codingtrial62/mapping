@@ -1030,7 +1030,7 @@ def area_2a_obstacles():
         dict_area2[str(p)[61:65].lower() + '_Area2a_Obstacles'] = MarkerCluster(name=str(p)[61:65] + '_Area2a_Obstacles', control=True)
 
     for i in range(gdf.shape[0]):
-
+        mc = dict_area2[gdf.loc[i, 'aerodrome']]
         coor = gdf.get_coordinates(ignore_index=True)
         if gdf.loc[i, 'geometry'].geom_type == 'Point':
             hh = gdf.loc[i, 'coordinate'].replace(',', '.').split(' ')
@@ -1040,21 +1040,22 @@ def area_2a_obstacles():
                      f" Coordinates: {coor.loc[i, 'y']}N, {coor.loc[i, 'x']}E")
 
             folium.Popup(popup).add_to(marker)
-            dict_area2[gdf.loc[i, 'aerodrome']].add_child(marker)
+
+            mc.add_child(marker)
 
         elif gdf.loc[i, 'geometry'].geom_type == 'MultiLineString':
             poly = folium.PolyLine(locations=chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
                                    color='purple',
                                    popup=f"Elevation: {gdf.loc[i, 'elevation']} FT  Type: {gdf.loc[i, 'obstacle_type']} "
                                          f" Coordinates(..N..E): {chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}")
-            dict_area2[gdf.loc[i, 'aerodrome']].add_child(poly)
+            mc.add_child(poly)
         elif gdf.loc[i, 'geometry'].geom_type == 'MultiPolygon':
             sky = folium.Polygon(locations=chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
                            color='purple',
                            popup=f"Elevation: {gdf.loc[i, 'elevation']} FT  Type: {gdf.loc[i, 'obstacle_type']} "
                                  f" Coordinates(..N..E): {chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}")
             dict_area2[gdf.loc[i, 'aerodrome']].add_child(sky)
-        dict_area2[gdf.loc[i, 'aerodrome']].add_to(m4)
+        mc.add_to(m4)
     folium.plugins.MousePosition().add_to(m4)
     folium.LayerControl(collapsed=False).add_to(m4)
     frame = m4.get_root().render()
