@@ -1115,8 +1115,7 @@ def area_3():
 
         coor = gdf.get_coordinates(ignore_index=True)
         icons = folium.CustomIcon(
-            icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/marker_dot.png',
-            icon_size=(64, 64))
+            icon_image='/app/static/assets/images/marker_dot.png')
         if gdf.loc[t, 'geometry'].geom_type == 'Point':
             coordddd = gdf.loc[t, 'coordinate'].replace(',', '.').split(' ')
             marker = folium.CircleMarker(location=(coordddd[0], coordddd[1]), radius=3, color='red',fill=True, fill_opacity=1)
