@@ -1169,17 +1169,15 @@ def marker_creator_ad(df, i, ):
         icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/laughing.png')
 
     return icons
-
-# engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
-# sql_ad = "SELECT * FROM enr_obstacles"
-# df_ad = pd.read_sql(sql_ad, con=engine)
-# df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
-# df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
-
-
-df = geopandas.read_file('/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml')
-
-
+engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db')
+sql_ad = "SELECT * FROM area2a_obstacles"
+df_ad = pd.read_sql(sql_ad, con=engine)
+df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
+gdf = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
+dict_area2 = {}
+for p in path_list_area_2[:]:
+    dict_area2[str(p)[61:65].lower() + '_Area2a_Obstacles'] = folium.plugins.MarkerCluster(name=str(p)[61:65] + '_Area2a_Obstacles', control=True)
+print(dict_area2)
 
 
 

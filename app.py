@@ -959,9 +959,8 @@ def ad():
     df_ad = pd.read_sql(sql_ad, con=engine)
     df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
     df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
-
+    dict_ad = {}
     for p in path_list_ad[:]:
-        dict_ad = {}
         dict_ad[str(p)[64:68] + '_AD_Obstacles'] = MarkerCluster(name=str(p)[64:68] + '_AD_Obstacles', control=True)
     for i in range(df.shape[0]):
 
@@ -973,8 +972,8 @@ def ad():
                  f" Coordinates: {coor.loc[i, 'y']}N, {coor.loc[i, 'x']}E")
 
         folium.Popup(popup).add_to(marker)
-        df.loc[i, 'aerodrome'].add_child(marker)
-        df.loc[i, 'aerodrome'].add_to(m)
+        dict_ad[df.loc[i, 'aerodrome']].add_child(marker)
+        dict_ad[df.loc[i, 'aerodrome']].add_to(m)
 
     folium.LayerControl(collapsed=False).add_to(m)
 
@@ -1026,36 +1025,36 @@ def area_2a_obstacles():
     df_ad = pd.read_sql(sql_ad, con=engine)
     df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
     gdf = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
+    dict_area2 = {}
     for p in path_list_area_2[:]:
-        dict_ad = {}
-        dict_ad[str(p)[61:65] + '_Area2a_Obstacles'] = MarkerCluster(name=str(p)[61:65] + '_Area2a_Obstacles', control=True)
+        dict_area2[str(p)[61:65].lower() + '_Area2a_Obstacles'] = MarkerCluster(name=str(p)[61:65] + '_Area2a_Obstacles', control=True)
 
     for i in range(gdf.shape[0]):
-        if gdf.loc[i, 'aerodrome'] == str(p)[61:65].lower() + '_Area2a_Obstacles':
-            coor = gdf.get_coordinates(ignore_index=True)
-            if gdf.loc[i, 'geometry'].geom_type == 'Point':
-                hh = gdf.loc[i, 'coordinate'].replace(',', '.').split(' ')
-                marker = folium.CircleMarker(location=(hh[0], hh[1]), radius=3, color='red',
-                                             fill=True, fill_opacity=1)
-                popup = (f"Elevation: {gdf.loc[i, 'elevation']} FT Type: {gdf.loc[i, 'obstacle_type']} "
-                         f" Coordinates: {coor.loc[i, 'y']}N, {coor.loc[i, 'x']}E")
 
-                folium.Popup(popup).add_to(marker)
-                gdf.loc[i, 'aerodrome'].add_child(marker)
+        coor = gdf.get_coordinates(ignore_index=True)
+        if gdf.loc[i, 'geometry'].geom_type == 'Point':
+            hh = gdf.loc[i, 'coordinate'].replace(',', '.').split(' ')
+            marker = folium.CircleMarker(location=(hh[0], hh[1]), radius=3, color='red',
+                                         fill=True, fill_opacity=1)
+            popup = (f"Elevation: {gdf.loc[i, 'elevation']} FT Type: {gdf.loc[i, 'obstacle_type']} "
+                     f" Coordinates: {coor.loc[i, 'y']}N, {coor.loc[i, 'x']}E")
 
-            elif gdf.loc[i, 'geometry'].geom_type == 'MultiLineString':
-                poly = folium.PolyLine(locations=chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
-                                       color='purple',
-                                       popup=f"Elevation: {gdf.loc[i, 'elevation']} FT  Type: {gdf.loc[i, 'obstacle_type']} "
-                                             f" Coordinates(..N..E): {chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}")
-                gdf.loc[i, 'aerodrome'].add_child(poly)
-            elif gdf.loc[i, 'geometry'].geom_type == 'MultiPolygon':
-                sky = folium.Polygon(locations=chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
-                               color='purple',
-                               popup=f"Elevation: {gdf.loc[i, 'elevation']} FT  Type: {gdf.loc[i, 'obstacle_type']} "
-                                     f" Coordinates(..N..E): {chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}")
-                gdf.loc[i, 'aerodrome'].add_child(sky)
-        gdf.loc[i, 'aerodrome'].add_to(m4)
+            folium.Popup(popup).add_to(marker)
+            dict_area2[gdf.loc[i, 'aerodrome']].add_child(marker)
+
+        elif gdf.loc[i, 'geometry'].geom_type == 'MultiLineString':
+            poly = folium.PolyLine(locations=chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
+                                   color='purple',
+                                   popup=f"Elevation: {gdf.loc[i, 'elevation']} FT  Type: {gdf.loc[i, 'obstacle_type']} "
+                                         f" Coordinates(..N..E): {chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}")
+            dict_area2[gdf.loc[i, 'aerodrome']].add_child(poly)
+        elif gdf.loc[i, 'geometry'].geom_type == 'MultiPolygon':
+            sky = folium.Polygon(locations=chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
+                           color='purple',
+                           popup=f"Elevation: {gdf.loc[i, 'elevation']} FT  Type: {gdf.loc[i, 'obstacle_type']} "
+                                 f" Coordinates(..N..E): {chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}")
+            dict_area2[gdf.loc[i, 'aerodrome']].add_child(sky)
+        dict_area2[gdf.loc[i, 'aerodrome']].add_to(m4)
     folium.plugins.MousePosition().add_to(m4)
     folium.LayerControl(collapsed=False).add_to(m4)
     frame = m4.get_root().render()
