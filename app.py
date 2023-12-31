@@ -9,7 +9,7 @@ from flask import Flask, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
 from folium.plugins import FastMarkerCluster, FeatureGroupSubGroup, MarkerCluster
 from sqlalchemy import create_engine
-# import gunicorn
+import gunicorn
 from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap5
 
