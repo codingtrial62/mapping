@@ -13,9 +13,9 @@ from sqlalchemy import create_engine
 from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap5
 
-# from flask_caching import Cache
+from flask_caching import Cache
 
-# cache = Cache()
+cache = Cache()
 '''
 ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 792-35-A1-R1-40-5047.   Coordinates end with 38* manually changed on dbviewer. 
@@ -239,34 +239,34 @@ with app.app_context():
     db.create_all()
 
 
-#
-# cache_servers = os.environ.get('MEMCACHIER_SERVERS')
-# if cache_servers == None:
-#     # Fall back to simple in memory cache (development)
-#     cache.init_app(app, config={'CACHE_TYPE': 'simple'})
-# else:
-#     cache_user = os.environ.get('MEMCACHIER_USERNAME') or ''
-#     cache_pass = os.environ.get('MEMCACHIER_PASSWORD') or ''
-#     cache.init_app(app,
-#                    config={'CACHE_TYPE': 'SASLMemcachedCache',
-#                            'CACHE_MEMCACHED_SERVERS': cache_servers.split(','),
-#                            'CACHE_MEMCACHED_USERNAME': cache_user,
-#                            'CACHE_MEMCACHED_PASSWORD': cache_pass,
-#                            'CACHE_OPTIONS': {'behaviors': {
-#                                # Faster IO
-#                                'tcp_nodelay': True,
-#                                # Keep connection alive
-#                                'tcp_keepalive': True,
-#                                # Timeout for set/get requests
-#                                'connect_timeout': 2000,  # ms
-#                                'send_timeout': 750 * 1000,  # us
-#                                'receive_timeout': 750 * 1000,  # us
-#                                '_poll_timeout': 2000,  # ms
-#                                # Better failover
-#                                'ketama': True,
-#                                'remove_failed': 1,
-#                                'retry_timeout': 2,
-#                                'dead_timeout': 30}}})
+
+cache_servers = os.environ.get('MEMCACHIER_SERVERS')
+if cache_servers == None:
+    # Fall back to simple in memory cache (development)
+    cache.init_app(app, config={'CACHE_TYPE': 'simple'})
+else:
+    cache_user = os.environ.get('MEMCACHIER_USERNAME') or ''
+    cache_pass = os.environ.get('MEMCACHIER_PASSWORD') or ''
+    cache.init_app(app,
+                   config={'CACHE_TYPE': 'SASLMemcachedCache',
+                           'CACHE_MEMCACHED_SERVERS': cache_servers.split(','),
+                           'CACHE_MEMCACHED_USERNAME': cache_user,
+                           'CACHE_MEMCACHED_PASSWORD': cache_pass,
+                           'CACHE_OPTIONS': {'behaviors': {
+                               # Faster IO
+                               'tcp_nodelay': True,
+                               # Keep connection alive
+                               'tcp_keepalive': True,
+                               # Timeout for set/get requests
+                               'connect_timeout': 2000,  # ms
+                               'send_timeout': 750 * 1000,  # us
+                               'receive_timeout': 750 * 1000,  # us
+                               '_poll_timeout': 2000,  # ms
+                               # Better failover
+                               'ketama': True,
+                               'remove_failed': 1,
+                               'retry_timeout': 2,
+                               'dead_timeout': 30}}})
 
 
 def chunks(xs, n):
@@ -518,6 +518,7 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
 
 
 @app.route('/all', methods=['GET', 'POST'])
+@cache.cached()
 def all():
     mall = folium.Map(location=[39, 35], zoom_start=6)
     read_all(path_list_ad, path_list_area_2, path_list_area_3, path_list_area_4, path_list_area_4_xml,
@@ -918,6 +919,7 @@ def marker_creator_ad_2(df, i):
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
 @app.route("/", methods=['GET', 'POST'])
+@cache.cached()
 def fullscreen():
     m = folium.Map(location=[39, 35], zoom_start=6)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
@@ -949,6 +951,7 @@ def fullscreen():
 
 
 @app.route("/aerodrome", methods=['GET', 'POST'])
+@cache.cached()
 def ad():
     m = folium.Map(location=[39, 35], zoom_start=6)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
@@ -1071,9 +1074,9 @@ def area_3():
     for e in range(ltac.shape[0]):
         coor = ltac.get_coordinates(ignore_index=True)
         if ltac.loc[e, 'geometry'].geom_type == 'Point':
-            icons = folium.CustomIcon(
-                icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/marker_dot.png')
-            marker = folium.Marker(location=(coor.loc[e, 'x'], coor.loc[e, 'y']), icon=icons, color='brown')
+            # icons = folium.CustomIcon(
+            #     icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/marker_dot.png')
+            marker = folium.CircleMarker(location=(coor.loc[e, 'x'], coor.loc[e, 'y']), radius=3, color='brown', fill=True, fill_opacity=1)
             popup = (f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']}"
                      f" Coordinates: {coor.loc[e, 'x']}N, {coor.loc[e, 'y']}E")
 
@@ -1110,7 +1113,7 @@ def area_3():
                     icon_size=(64, 64))
                 if gdf.loc[t, 'geometry'].geom_type == 'Point':
                     coordddd = gdf.loc[t, 'coordinate'].replace(',', '.').split(' ')
-                    marker = folium.Marker(location=(coordddd[0], coordddd[1]), icon=icons)
+                    marker = folium.CircleMarker(location=(coordddd[0], coordddd[1]), radius=3, color='red',fill=True, fill_opacity=1)
                     popup = (f"Elevation: {gdf.loc[t, 'elevation']} FT  Type: {gdf.loc[t, 'obstacle_type']} "
                              f" Coordinates: {coor.loc[t, 'y']}N, {coor.loc[t, 'x']}E")
                     folium.Popup(popup).add_to(marker)
