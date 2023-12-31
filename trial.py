@@ -208,18 +208,18 @@ class EnrouteObstacles(db.Model):
     identifier = db.Column(db.String())
     beginposition = db.Column(db.String())
     interpretation = db.Column(db.String())
-    sequencenumber = db.Column(db.Integer)
-    correctionnumber = db.Column(db.Integer)
+    sequencenumber = db.Column(db.Integer())
+    correctionnumber = db.Column(db.Integer())
     timeslice_verticalstructuretimeslice_featurelifetime_timeperiod_beginposition = db.Column(db.String())
     name = db.Column(db.String())
     type = db.Column(db.String())
     lighted = db.Column(db.String())
     group = db.Column(db.String())
-    verticalextent = db.Column(db.Integer)
+    verticalextent = db.Column(db.Integer())
     verticalextent_uom = db.Column(db.String())
     timeslice_verticalstructuretimeslice_part_verticalstructurepart_type = db.Column(db.String())
     designator = db.Column(db.String())
-    elevation = db.Column(db.Integer)
+    elevation = db.Column(db.String())
     elevation_uom = db.Column(db.String())
     colour = db.Column(db.String())
     geo = db.Column(db.String())
@@ -453,13 +453,13 @@ with app.app_context():
 #                                              timeslice_verticalstructuretimeslice_part_verticalstructurepart_type=enr_df.loc[
 #                                                  i, 'timeSlice|VerticalStructureTimeSlice|part|VerticalStructurePart|type'],
 #                                              designator=enr_df.loc[i, 'designator'],
-#                                              elevation=enr_df.loc[i, 'elevation'],
+#                                              elevation=str(enr_df.loc[i, 'elevation']),
 #                                              elevation_uom=enr_df.loc[i, 'elevation_uom'],
 #                                              colour=enr_df.loc[i, 'colour'],
 #                                              geo=str(enr_df.loc[i, 'geometry']))
 #             db.session.add(enr_obstacles)
 #             db.session.commit()
-#
+
 #
 # for s in path_list_area_2:
 #     table = str(s)[61:65].replace('/', '_').replace('.gdb', '').lower() + "_Area2a_Obstacles"
@@ -1170,12 +1170,163 @@ def marker_creator_ad(df, i, ):
 
     return icons
 
-engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
-sql_enr = "SELECT * FROM area2a_obstacles"
-df_enr = pd.read_sql(sql_enr, con=engine)
-df_enr['geometry'] = df_enr['geo'].apply(wkt.loads)
-ydf = geopandas.GeoDataFrame(df_enr, crs='EPSG:4326')
-for i in range(ydf.shape[0]):
-    if ydf.loc[i, 'geometry'].geom_type == 'MultiLineString':
-        locs = chunks2(ydf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)
-        print(locs)
+# engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
+# sql_ad = "SELECT * FROM enr_obstacles"
+# df_ad = pd.read_sql(sql_ad, con=engine)
+# df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
+# df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
+
+
+df = geopandas.read_file('/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml')
+
+
+
+
+
+# def create_ad_obstacles_db(path_list):
+#     """
+# This function creates a database from .xml files for aerodrome obstacles for every airport in Turkey.
+# All geometry is point.
+#     :param path_list: Absolute path for every aerodrome obstacle xml file.
+#     """
+#
+#     for i in path_list:
+#
+#         if path_list.index(i) == 0:
+#             pass
+#         else:
+#             layer_name = str(i)[64:78]
+#             bdf = geopandas.read_file(i)
+#             bdf.to_file('aerodrome_obstacles.db', driver='SQLite', spatialite=True, layer=layer_name, OVERWRITE='YES')
+#
+#
+# # create_ad_obstacles_db(path_list_ad)
+#
+#
+# def create_enr_obstacles_db():
+#     """
+#     This function creates a database from .xml file for AIP ENR 5.4 obstacles in Turkey.
+#     All geometry is point.
+#     """
+#     df = geopandas.read_file(
+#         '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml')
+#     df.to_file('enr_obstacles.db', driver='SQLite')
+#
+#
+# # create_enr_obstacles_db()
+# def read_ad_enr_obs_db(db_path):
+#     gdf = geopandas.read_file(db_path)
+#     return gdf
+#
+#
+# def create_area2a_db():
+#     """
+#     This function creates a database from .gdb files for area2a obstacles for every airport in Turkey. If data has crs type other
+#     than WGS84 transforms it to WGS84. Also caution for file paths especially having space in it.
+#     Geometry consists of point, and line
+#
+#     """
+#     path_list = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area2a_obstacles').rglob("*.gdb"))
+#     for i in path_list:
+#         layer_name = str(i)[61:].replace('/', '_').replace('.gdb', '').lower()
+#         bdf = geopandas.read_file(i, driver='OpenFileGDB')
+#         if bdf.crs != 'EPSG:4326':
+#             bdf = bdf.to_crs('EPSG:4326')
+#         bdf.to_file('area2a_obstacles.db', driver='SQLite', spatialite=True, layer=layer_name)
+#
+#
+# # create_area2a_db()
+#
+#
+# def read_area2a():
+#     path_list = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area2a_obstacles').rglob("*.gdb"))
+#     for i in path_list:
+#         engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/area2a_obstacles.db', echo=False)
+#         layer_name = str(i)[61:].replace('/', '_').replace('.gdb', '').lower()
+#         if path_list.index(i) == 0:
+#             gdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+#         else:
+#             bdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+#             gdf = pd.concat([gdf, bdf], ignore_index=True)
+#
+#     return gdf
+#
+#
+# def create_area_3_4_db(path_list, area: int, path_list_xml):
+#     """
+#     This function creates a database from .gdb files for area3a and area4a obstacles for every airport other than
+#     LTFM. For LTFM we use the aixm format and different path. If data has crs type other than WGS84 transforms it to
+#     WGS84. Also caution for file paths especially having space in it.
+#     Geometry consists of point, line, and polygon.
+#     path_list: list of paths for .gdb files
+#     area: area number, 3 or 4
+#     path_list_xml: list of paths for .xml files which contains aerodrome data in it.
+#     """
+#     if area == 3:
+#         for i in path_list:
+#             layer_name = str(i)[69:].replace('/', '_').replace('.gdb', '').lower()
+#             bdf = geopandas.read_file(i, driver='OpenFileGDB')
+#             if bdf.crs != 'EPSG:4326':
+#                 bdf = bdf.to_crs('EPSG:4326')
+#             bdf.to_file('area3_obstacles.db', driver='SQLite', spatialite=True, layer=layer_name)
+#
+#     elif area == 4:
+#         for i in path_list:
+#             layer_name = str(i)[69:].replace('/', '_').replace('.gdb', '').lower()
+#             bdf = geopandas.read_file(i, driver='OpenFileGDB')
+#             if bdf.crs != 'EPSG:4326':
+#                 bdf = bdf.to_crs('EPSG:4326')
+#             bdf.to_file('area4_obstacles.db', driver='SQLite', spatialite=True, layer=layer_name)
+#
+#         for j in path_list_xml:
+#             layer_name = str(j)[69:].replace('/', '_').replace('_Obstacles_AIXM_5_1.xml', '').lower()
+#             bdf = geopandas.read_file(j)
+#             if bdf.crs != 'EPSG:4326':
+#                 bdf = bdf.to_crs('EPSG:4326')
+#             bdf.to_file('area4_obstacles.db', driver='SQLite', spatialite=True, layer=layer_name)
+#     else:
+#         print('Wrong area number. Please enter 3 or 4.')
+#
+#
+# # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
+# # create_area_3_4_db(path_list_area_4, 4, path_list_area_4_xml)
+#
+# def read_area_3_4_db(path_list, area: int, path_list_xml):
+#     """
+#     This function creates a database from .gdb files for area3a and area4a obstacles for every airport other than
+#     LTFM. For LTFM we use the aixm format and different path. If data has crs type other than WGS84 transforms it to
+#     WGS84. Also caution for file paths especially having space in it. Sometimes manually changing file names may be better:).
+#
+#     """
+#     if area == 3:
+#         for i in path_list:
+#             layer_name = str(i)[69:].replace('/', '_').replace('.gdb', '').lower()
+#             engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/area3_obstacles.db', echo=False)
+#             if path_list.index(i) == 0:
+#                 gdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+#             else:
+#                 bdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+#                 gdf = pd.concat([gdf, bdf], ignore_index=True)
+#
+#     elif area == 4:
+#         for j in path_list:
+#             layer_name = str(j)[69:].replace('/', '_').replace('.gdb', '').lower()
+#             engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/area4_obstacles.db', echo=False)
+#             if path_list.index(j) == 0:
+#                 gdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+#             else:
+#                 bdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+#                 gdf = pd.concat([gdf, bdf], ignore_index=True)
+#
+#         for k in path_list_xml:
+#             layer_name = str(k)[69:].replace('/', '_').replace('_Obstacles_AIXM_5_1.xml', '').lower()
+#             engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/area4_obstacles.db', echo=False)
+#             if path_list_xml.index(k) == 0:
+#                 xdf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+#             else:
+#                 ydf = geopandas.read_postgis('SELECT * FROM ' + layer_name, con=engine, geom_col='GEOMETRY')
+#                 xdf = pd.concat([xdf, ydf], ignore_index=True)
+#         gdf = pd.concat([gdf, xdf], ignore_index=True)
+#     else:
+#         print('Wrong area number. Please enter 3 or 4.')
+#     return gdf
