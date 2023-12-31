@@ -1631,10 +1631,6 @@ def marker_creator_ad(df, i):
         icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/laughing.png')
 
     return icons
-@app.route('static/<path:path>')
-def css(path):
-
-    return render_template('css.html
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
