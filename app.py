@@ -957,8 +957,8 @@ def ad():
     m = folium.Map(location=[39, 35], zoom_start=6)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     sql_ad = "SELECT * FROM ad_obstacles"
-    df_ad = pd.read_sql(sql_ad, con=engine)
-    df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
+    df_ad = pd.read_sql(sql_ad, con=engine, chunksize=10000)
+    df_ad.geometry = df_ad.geometry.apply(wkt.loads)
     df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
     # dict_ad = {}
     # for p in path_list_ad[:]:
@@ -967,7 +967,7 @@ def ad():
     for i in range(df.shape[0]):
 
         coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
-        icons = marker_creator_ad(df, i)
+        icons = marker_creator_ad_2(df, i)
         marker = folium.CircleMarker(location=(coor[0], coor[1]), radius=3, color='red',
                                      fill=True, fill_opacity=0.5)
         popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
