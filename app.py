@@ -971,7 +971,7 @@ def ad():
         marker = folium.CircleMarker(location=(coor[0], coor[1]), radius=3, color='red',
                                      fill=True, fill_opacity=0.5)
         popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
-                 f" Coordinates: {coor.loc[i, 'y']}N, {coor.loc[i, 'x']}E")
+                 f" Coordinates: {coor[0]}N, {coor[1]}E")
 
         folium.Popup(popup).add_to(marker)
         mc.add_child(marker)
