@@ -15,11 +15,17 @@ from flask_bootstrap import Bootstrap5
 
 from flask_caching import Cache
 
-cache = Cache()
+cache = Cache(config={
+    "DEBUG": True,          # some Flask specific configs
+    "CACHE_TYPE": "SimpleCache",  # Flask-Caching related configs
+    "CACHE_DEFAULT_TIMEOUT": 300,
+    'THRESHOLD': 171000
+})
 '''
 ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 792-35-A1-R1-40-5047.   Coordinates end with 38* manually changed on dbviewer. 
 '''
+
 
 app = Flask(__name__)
 bootstrap = Bootstrap5(app)
@@ -27,7 +33,7 @@ app.config.from_mapping(
     SECRET_KEY=os.environ.get('SECRET_KEY') or 'dev_key',
     SQLALCHEMY_DATABASE_URI=os.environ.get('DATABASE_URL').replace('postgres://', 'postgresql://') or \
                             'sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'),
-    SQLALCHEMY_TRACK_MODIFICATIONS=False
+    SQLALCHEMY_TRACK_MODIFICATIONS=False,
 )
 
 # app.config.from_mapping(
@@ -40,6 +46,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 db.init_app(app)
 migrate.init_app(app, db)
+cache.init_app(app)
 
 path_list_ad = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
 path_to_enr = '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml'
@@ -237,36 +244,41 @@ class LtfmArea4Obstacles(db.Model):
 
 with app.app_context():
     db.create_all()
+    # cache.delete_many('amap','bmap','c_map')
 
 
+print(cache.has('amap'))
+print(cache.has('bmap'))
+print(cache.has('c_map'))
 
-cache_servers = os.environ.get('MEMCACHIER_SERVERS')
-if cache_servers == None:
-    # Fall back to simple in memory cache (development)
-    cache.init_app(app, config={'CACHE_TYPE': 'simple'})
-else:
-    cache_user = os.environ.get('MEMCACHIER_USERNAME') or ''
-    cache_pass = os.environ.get('MEMCACHIER_PASSWORD') or ''
-    cache.init_app(app,
-                   config={'CACHE_TYPE': 'SASLMemcachedCache',
-                           'CACHE_MEMCACHED_SERVERS': cache_servers.split(','),
-                           'CACHE_MEMCACHED_USERNAME': cache_user,
-                           'CACHE_MEMCACHED_PASSWORD': cache_pass,
-                           'CACHE_OPTIONS': {'behaviors': {
-                               # Faster IO
-                               'tcp_nodelay': True,
-                               # Keep connection alive
-                               'tcp_keepalive': True,
-                               # Timeout for set/get requests
-                               'connect_timeout': 2000,  # ms
-                               'send_timeout': 750 * 1000,  # us
-                               'receive_timeout': 750 * 1000,  # us
-                               '_poll_timeout': 2000,  # ms
-                               # Better failover
-                               'ketama': True,
-                               'remove_failed': 1,
-                               'retry_timeout': 2,
-                               'dead_timeout': 30}}})
+
+# cache_servers = os.environ.get('MEMCACHIER_SERVERS')
+# if cache_servers == None:
+#     # Fall back to simple in memory cache (development)
+#     cache.init_app(app, config={'CACHE_TYPE': 'simple'})
+# else:
+#     cache_user = os.environ.get('MEMCACHIER_USERNAME') or ''
+#     cache_pass = os.environ.get('MEMCACHIER_PASSWORD') or ''
+#     cache.init_app(app,
+#                    config={'CACHE_TYPE': 'SASLMemcachedCache',
+#                            'CACHE_MEMCACHED_SERVERS': cache_servers.split(','),
+#                            'CACHE_MEMCACHED_USERNAME': cache_user,
+#                            'CACHE_MEMCACHED_PASSWORD': cache_pass,
+#                            'CACHE_OPTIONS': {'behaviors': {
+#                                # Faster IO
+#                                'tcp_nodelay': True,
+#                                # Keep connection alive
+#                                'tcp_keepalive': True,
+#                                # Timeout for set/get requests
+#                                'connect_timeout': 2000,  # ms
+#                                'send_timeout': 750 * 1000,  # us
+#                                'receive_timeout': 750 * 1000,  # us
+#                                '_poll_timeout': 2000,  # ms
+#                                # Better failover
+#                                'ketama': True,
+#                                'remove_failed': 1,
+#                                'retry_timeout': 2,
+#                                'dead_timeout': 30}}})
 
 
 def chunks(xs, n):
@@ -307,7 +319,6 @@ def chunks3(xs, n):
         coordinate_list[ind] = [float(t[1]), float(t[0])]
     return coordinate_list
 
-@cache.memoize()
 def read_all():
     """
     This function creates a database from .gdb files for area3a and area4a obstacles for every airport other than
@@ -522,12 +533,13 @@ def read_all():
     frame = maps.get_root().render()
     return frame
 
-
-@app.route('/all', methods=['GET', 'POST'])
 @cache.cached()
+@app.route('/all', methods=['GET', 'POST'])
 def all():
 
-    frame = read_all()
+    c_map = read_all()
+    cache.add('c_map',c_map)
+    frame = cache.get(c_map)
 
     return render_template('mapping.html', iframe=frame, title='All Obstacles | Folium')
 
@@ -922,7 +934,7 @@ def marker_creator_ad_2(df, i):
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
 @app.route("/", methods=['GET', 'POST'])
-@cache.cached()
+
 def fullscreen():
     m = folium.Map(location=[39, 35], zoom_start=6)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
@@ -948,13 +960,17 @@ def fullscreen():
 
     """Simple example of a fullscreen map."""
     folium.plugins.MousePosition().add_to(m)
-    frame = m.get_root().render()
+    bmap = m.get_root().render()
+    cache.add('bmap',bmap)
+    frame = cache.get('bmap')
+
+
 
     return render_template('mapping.html', iframe=frame, title='Fullscreen AD Map | Folium')
 
 
 @app.route("/aerodrome", methods=['GET', 'POST'])
-@cache.cached()
+
 def ad():
     m = folium.Map(location=[39, 35], zoom_start=6)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
@@ -983,16 +999,17 @@ def ad():
 
     """Simple example of a fullscreen map."""
     folium.plugins.MousePosition().add_to(m)
-    frame = m.get_root().render()
+    amap = m.get_root().render()
+    cache.add('amap', amap)
+    frame = cache.get('amap')
+
 
     return render_template('mapping.html', iframe=frame, title=' AD Map | Folium')
 
 
 m50 = folium.Map(location=[39, 35], zoom_start=6)
 
-
-@app.route("/enrobs", methods=['GET', 'POST'])
-def enr_obstacles():
+def enr():
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     maps = folium.Map(location=[39, 35], zoom_start=6)
     mcg = folium.plugins.MarkerCluster(control=False)
@@ -1017,12 +1034,16 @@ def enr_obstacles():
     folium.LayerControl(collapsed=False).add_to(maps)
 
     frame = maps.get_root().render()
+    return frame
+@app.route("/enrobs", methods=['GET', 'POST'])
 
+def enr_obstacles():
+    frame= enr()
     return render_template('mapping.html', iframe=frame, title='ENR Obstacles | Folium')
 
 
 @app.route('/area2a', methods=['GET', 'POST'])
-@cache.cached()
+
 def area_2a_obstacles():
     m4 = folium.Map(location=[39, 35], zoom_start=6)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
@@ -1639,6 +1660,8 @@ def marker_creator_ad(df, i):
         icons = folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/laughing.png')
 
     return icons
-
+print(cache.has('amap'))
+print(cache.has('bmap'))
+print(cache.has('c_map'))
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
