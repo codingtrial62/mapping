@@ -1132,24 +1132,23 @@ def marker_creator_ad_2(df, i):
 def fullscreen():
     m = folium.Map(location=[39, 35], zoom_start=6)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
-    for p in path_list_ad[:]:
-        ad = str(p)[64:68]
-        sql_ad = f'''SELECT geo,coordinate,elevation,type, name FROM ad_obstacles  where ad_obstacles.aerodrome="{str(p)[64:68].lower()}"'''
-        df_ad = pd.read_sql(sql_ad, con=engine)
-        df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
-        df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
-        mcg = MarkerCluster(name='AD_Obst', control=True)
-        for i in range(df.shape[0]):
-            # if df.loc[i, 'aerodrome'] == str(p)[64:68].lower():
-            coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
-            icons = marker_creator_ad_2(df, i)
-            marker = folium.Marker(location=(coor[1], coor[0]), icon=icons)
-            popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
-                     f" Coordinates: {coor[1]}N, {coor[0]}E")
 
-            folium.Popup(popup).add_to(marker)
-            mcg.add_child(marker)
-        mcg.add_to(m)
+    sql_ad = f'''SELECT geo,coordinate,elevation,type, name FROM ad_obstacles'''
+    df_ad = pd.read_sql(sql_ad, con=engine)
+    df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
+    df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
+    mcg = MarkerCluster(name='AD_Obst', control=True)
+    for i in range(df.shape[0]):
+        # if df.loc[i, 'aerodrome'] == str(p)[64:68].lower():
+        coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
+        icons = marker_creator_ad_2(df, i)
+        marker = folium.Marker(location=(coor[1], coor[0]), icon=icons)
+        popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
+                 f" Coordinates: {coor[1]}N, {coor[0]}E")
+
+        folium.Popup(popup).add_to(marker)
+        mcg.add_child(marker)
+    mcg.add_to(m)
 
     folium.LayerControl(collapsed=False).add_to(m)
 
@@ -1167,27 +1166,26 @@ def ad():
     m = folium.Map(location=[39, 35], zoom_start=6)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     mc = MarkerCluster(name='AD_Obstacles', control=True)
-    for p in path_list_ad[:]:
-        ad = str(p)[64:68]
-        sql_ad = f'''SELECT geo,coordinate,elevation,type FROM ad_obstacles  where ad_obstacles.aerodrome="{str(p)[64:68].lower()}"'''
-        df_ad = pd.read_sql(sql_ad, con=engine)
-        df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
-        df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
-        # dict_ad = {}
-        # for p in path_list_ad[:]:
-        #     dict_ad[str(p)[64:68] + '_AD_Obstacles'] = MarkerCluster(name=str(p)[64:68] + '_AD_Obstacles', control=True)
 
-        for i in range(df.shape[0]):
-            coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
-            # icons = marker_creator_ad_2(df, i)
-            marker = folium.CircleMarker(location=(coor[1], coor[0]), radius=3, color='red',
-                                         fill=True, fill_opacity=0.5)
-            popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
-                     f" Coordinates: {coor[1]}N, {coor[0]}E")
+    sql_ad = f'''SELECT geo,coordinate,elevation,type FROM ad_obstacles'''
+    df_ad = pd.read_sql(sql_ad, con=engine)
+    df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
+    df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
+    # dict_ad = {}
+    # for p in path_list_ad[:]:
+    #     dict_ad[str(p)[64:68] + '_AD_Obstacles'] = MarkerCluster(name=str(p)[64:68] + '_AD_Obstacles', control=True)
 
-            folium.Popup(popup).add_to(marker)
-            mc.add_child(marker)
-            mc.add_to(m)
+    for i in range(df.shape[0]):
+        coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
+        # icons = marker_creator_ad_2(df, i)
+        marker = folium.CircleMarker(location=(coor[1], coor[0]), radius=3, color='red',
+                                     fill=True, fill_opacity=0.5)
+        popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
+                 f" Coordinates: {coor[1]}N, {coor[0]}E")
+
+        folium.Popup(popup).add_to(marker)
+        mc.add_child(marker)
+        mc.add_to(m)
 
     folium.LayerControl(collapsed=False).add_to(m)
 
