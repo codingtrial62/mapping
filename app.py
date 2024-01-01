@@ -307,6 +307,7 @@ def chunks3(xs, n):
         coordinate_list[ind] = [float(t[1]), float(t[0])]
     return coordinate_list
 
+@cache.memoize()
 def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml, maps):
     """
     This function creates a database from .gdb files for area3a and area4a obstacles for every airport other than
