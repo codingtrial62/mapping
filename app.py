@@ -308,14 +308,14 @@ def chunks3(xs, n):
     return coordinate_list
 
 @cache.memoize()
-def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml, maps):
+def read_all():
     """
     This function creates a database from .gdb files for area3a and area4a obstacles for every airport other than
     LTFM. For LTFM we use the aixm format and different path. If data has crs type other than WGS84 transforms it to
     WGS84. Also caution for file paths especially having space in it.
 
     """
-
+    maps = folium.Map(location=[39, 35], zoom_start=6)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     mcg = folium.plugins.MarkerCluster(control=False)
     maps.add_child(mcg)
@@ -517,16 +517,18 @@ def read_all(path_list_ad, path_list_2, path_list_3, path_list_4, path_list_xml,
                                  f" Coordinates(..N..E): {chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
                 g4)
 
+    folium.LayerControl(collapsed=False).add_to(maps)
+    folium.plugins.MousePosition().add_to(maps)
+    frame = maps.get_root().render()
+    return frame
+
 
 @app.route('/all', methods=['GET', 'POST'])
 @cache.cached()
 def all():
-    mall = folium.Map(location=[39, 35], zoom_start=6)
-    read_all(path_list_ad, path_list_area_2, path_list_area_3, path_list_area_4, path_list_area_4_xml,
-             mall)
-    folium.LayerControl(collapsed=False).add_to(mall)
-    folium.plugins.MousePosition().add_to(mall)
-    frame = mall.get_root().render()
+
+    frame = read_all()
+
     return render_template('mapping.html', iframe=frame, title='All Obstacles | Folium')
 
 
@@ -934,9 +936,9 @@ def fullscreen():
         # if df.loc[i, 'aerodrome'] == str(p)[64:68].lower():
         coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
         icons = marker_creator_ad_2(df, i)
-        marker = folium.Marker(location=(coor[0], coor[1]), icon=icons)
+        marker = folium.Marker(location=(coor[1], coor[0]), icon=icons)
         popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
-                 f" Coordinates: {coor[0]}N, {coor[1]}E")
+                 f" Coordinates: {coor[1]}N, {coor[0]}E")
 
         folium.Popup(popup).add_to(marker)
         mcg.add_child(marker)
@@ -968,10 +970,10 @@ def ad():
 
         coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
         #icons = marker_creator_ad_2(df, i)
-        marker = folium.CircleMarker(location=(coor[0], coor[1]), radius=3, color='red',
+        marker = folium.CircleMarker(location=(coor[1], coor[0]), radius=3, color='red',
                                      fill=True, fill_opacity=0.5)
         popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
-                 f" Coordinates: {coor[0]}N, {coor[1]}E")
+                 f" Coordinates: {coor[1]}N, {coor[0]}E")
 
         folium.Popup(popup).add_to(marker)
         mc.add_child(marker)
