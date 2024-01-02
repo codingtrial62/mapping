@@ -1,10 +1,8 @@
 import os
 from pathlib import Path
-from rq import Queue
 import folium
 import geopandas
 import pandas as pd
-
 from shapely import wkt
 from flask import Flask, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -14,10 +12,6 @@ import gunicorn
 from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap5
 from flask_caching import Cache
-from rq import Queue
-from worker import conn
-
-q = Queue(connection=conn)
 
 cache = Cache()
 '''
@@ -1322,9 +1316,10 @@ def aerodrome_queue():
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
 
-cache.set('admap', aerodrome_queue(), compress=True)
+cache.set('admap', aerodrome_queue())
 @app.route("/", methods=['GET', 'POST'])
 def fullscreen():
+
     frame = cache.get('admap')
 
     return render_template('mapping.html', iframe=frame, title='Fullscreen AD Map | Folium')
@@ -1631,9 +1626,5 @@ def area_4():
 
     return render_template('mapping.html', iframe=frame, title='Area 4 Obstacles | Folium')
 
-
-print(cache.has('amap'))
-print(cache.has('bmap'))
-print(cache.has('c_map'))
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(debug=True, port=5000)
