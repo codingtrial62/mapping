@@ -1316,10 +1316,10 @@ def aerodrome_queue():
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
 
-cache.set('admap', aerodrome_queue())
+
 @app.route("/", methods=['GET', 'POST'])
 def fullscreen():
-
+    cache.set('admap', aerodrome_queue())
     frame = cache.get('admap')
 
     return render_template('mapping.html', iframe=frame, title='Fullscreen AD Map | Folium')
