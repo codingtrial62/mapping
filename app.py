@@ -19,12 +19,7 @@ from worker import conn
 
 q = Queue(connection=conn)
 
-cache = Cache(config={
-    "DEBUG": True,  # some Flask specific configs
-    "CACHE_TYPE": "SimpleCache",  # Flask-Caching related configs
-    "CACHE_DEFAULT_TIMEOUT": 300,
-    'THRESHOLD': 171000
-})
+cache = Cache()
 '''
 ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 792-35-A1-R1-40-5047.   Coordinates end with 38* manually changed on dbviewer. 
@@ -49,7 +44,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 db.init_app(app)
 migrate.init_app(app, db)
-cache.init_app(app)
+
 
 path_list_ad = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
 path_to_enr = '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml'
@@ -251,33 +246,33 @@ with app.app_context():
     # cache.delete_many('amap','bmap','c_map')
 
 
-# cache_servers = os.environ.get('MEMCACHIER_SERVERS')
-# if cache_servers == None:
-#     # Fall back to simple in memory cache (development)
-#     cache.init_app(app, config={'CACHE_TYPE': 'simple'})
-# else:
-#     cache_user = os.environ.get('MEMCACHIER_USERNAME') or ''
-#     cache_pass = os.environ.get('MEMCACHIER_PASSWORD') or ''
-#     cache.init_app(app,
-#                    config={'CACHE_TYPE': 'SASLMemcachedCache',
-#                            'CACHE_MEMCACHED_SERVERS': cache_servers.split(','),
-#                            'CACHE_MEMCACHED_USERNAME': cache_user,
-#                            'CACHE_MEMCACHED_PASSWORD': cache_pass,
-#                            'CACHE_OPTIONS': {'behaviors': {
-#                                # Faster IO
-#                                'tcp_nodelay': True,
-#                                # Keep connection alive
-#                                'tcp_keepalive': True,
-#                                # Timeout for set/get requests
-#                                'connect_timeout': 2000,  # ms
-#                                'send_timeout': 750 * 1000,  # us
-#                                'receive_timeout': 750 * 1000,  # us
-#                                '_poll_timeout': 2000,  # ms
-#                                # Better failover
-#                                'ketama': True,
-#                                'remove_failed': 1,
-#                                'retry_timeout': 2,
-#                                'dead_timeout': 30}}})
+cache_servers = os.environ.get('MEMCACHIER_SERVERS')
+if cache_servers == None:
+    # Fall back to simple in memory cache (development)
+    cache.init_app(app, config={'CACHE_TYPE': 'simple'})
+else:
+    cache_user = os.environ.get('MEMCACHIER_USERNAME') or ''
+    cache_pass = os.environ.get('MEMCACHIER_PASSWORD') or ''
+    cache.init_app(app,
+                   config={'CACHE_TYPE': 'SASLMemcachedCache',
+                           'CACHE_MEMCACHED_SERVERS': cache_servers.split(','),
+                           'CACHE_MEMCACHED_USERNAME': cache_user,
+                           'CACHE_MEMCACHED_PASSWORD': cache_pass,
+                           'CACHE_OPTIONS': {'behaviors': {
+                               # Faster IO
+                               'tcp_nodelay': True,
+                               # Keep connection alive
+                               'tcp_keepalive': True,
+                               # Timeout for set/get requests
+                               'connect_timeout': 2000,  # ms
+                               'send_timeout': 750 * 1000,  # us
+                               'receive_timeout': 750 * 1000,  # us
+                               '_poll_timeout': 2000,  # ms
+                               # Better failover
+                               'ketama': True,
+                               'remove_failed': 1,
+                               'retry_timeout': 2,
+                               'dead_timeout': 30}}})
 
 
 def chunks(xs, n):
@@ -520,7 +515,7 @@ def read_all_area():
 @app.route('/all', methods=['GET', 'POST'])
 def all():
     frame = read_all_area()
-    return render_template('mapping.html', iframe=frame, title='All Obstacles | Folium')
+    return render_template('mapping.html', iframe=frame, title='All Area Obstacles | Folium')
 
 
 def marker_creator_ad(df, i):
@@ -1327,12 +1322,10 @@ def aerodrome_queue():
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
 
-
+cache.set('admap', aerodrome_queue(), compress=True)
 @app.route("/", methods=['GET', 'POST'])
 def fullscreen():
-    frame = q.enqueue(aerodrome_queue)
-
-    # frame = aerodrome_queue.queue(m)
+    frame = cache.get('admap')
 
     return render_template('mapping.html', iframe=frame, title='Fullscreen AD Map | Folium')
 
