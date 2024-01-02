@@ -4,7 +4,7 @@ from rq import Queue
 import folium
 import geopandas
 import pandas as pd
-from redis import Redis
+
 from shapely import wkt
 from flask import Flask, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
@@ -13,10 +13,10 @@ from sqlalchemy import create_engine
 import gunicorn
 from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap5
-from flask_rq2 import RQ
 from flask_caching import Cache
 from rq import Queue
 from worker import conn
+
 q = Queue(connection=conn)
 
 cache = Cache(config={
@@ -47,11 +47,10 @@ app.config.from_mapping(
 # )
 db = SQLAlchemy()
 migrate = Migrate()
-rq = RQ()
 db.init_app(app)
 migrate.init_app(app, db)
 cache.init_app(app)
-rq.init_app(app)
+
 path_list_ad = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
 path_to_enr = '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml'
 path_list_area_2 = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area2a_obstacles').rglob("*.gdb"))
@@ -251,10 +250,6 @@ with app.app_context():
 
     # cache.delete_many('amap','bmap','c_map')
 
-print(cache.has('amap'))
-print(cache.has('bmap'))
-print(cache.has('c_map'))
-
 
 # cache_servers = os.environ.get('MEMCACHIER_SERVERS')
 # if cache_servers == None:
@@ -362,7 +357,6 @@ def read_all_area():
     #         folium.Popup(popup).add_to(marker)
     #         marker.add_to(g1)
 
-
     sql_a2 = f'''SELECT geo, coordinate, elevation, obstacle_type  FROM area2a_obstacles'''
     df_a2 = pd.read_sql(sql_a2, con=engine)
     df_a2['geometry'] = df_a2['geo'].apply(wkt.loads)
@@ -388,7 +382,6 @@ def read_all_area():
                             popup=f"Elevation: {bdf.loc[o, 'elevation']} FT  Type: {bdf.loc[o, 'obstacle_type']} "
                                   f" Coordinates(..N..E): {chunks2(bdf.loc[o, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
                 g2)
-
 
     sql_a3 = f'''SELECT geo, coordinate, elevation, obstacle_type   FROM area3_obstacles'''
     df_a3 = pd.read_sql(sql_a3, con=engine)
@@ -452,7 +445,6 @@ def read_all_area():
                                  f" Coordinates(..N..E): {chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2)}").add_to(
                 g3)
 
-
     sql_a4 = f'''SELECT geo, coordinate, elevation, obstacle_type  FROM area4_obstacles'''
     df_a4 = pd.read_sql(sql_a4, con=engine)
     df_a4['geometry'] = df_a4['geo'].apply(wkt.loads)
@@ -484,7 +476,6 @@ def read_all_area():
                             popup=f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
                                   f" Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
                 g5)
-
 
     sql_fm = "SELECT geo, coordinate, elevation,type  FROM ltfm_area4_obstacles"
     df_fm = pd.read_sql(sql_fm, con=engine)
@@ -528,7 +519,6 @@ def read_all_area():
 
 @app.route('/all', methods=['GET', 'POST'])
 def all():
-
     frame = read_all_area()
     return render_template('mapping.html', iframe=frame, title='All Obstacles | Folium')
 
@@ -1306,7 +1296,7 @@ def marker_creator_ad_2(df, i):
 
     return icons
 
-@rq.job('low', timeout=240)
+
 def aerodrome_queue():
     maps = folium.Map(location=[39, 35], zoom_start=6)
     mcg = folium.plugins.MarkerCluster(name='AD_Obst', control=True)
@@ -1328,11 +1318,8 @@ def aerodrome_queue():
     mcg.add_to(maps)
     folium.LayerControl(collapsed=False).add_to(maps)
 
-
     folium.plugins.MousePosition().add_to(maps)
     frame = maps.get_root().render()
-    # cache.add('bmap', bmap)
-    # frame = cache.get('bmap')
 
     return frame
 
@@ -1343,15 +1330,11 @@ def aerodrome_queue():
 
 @app.route("/", methods=['GET', 'POST'])
 def fullscreen():
-
     frame = q.enqueue(aerodrome_queue)
 
-# frame = aerodrome_queue.queue(m)
-
-
+    # frame = aerodrome_queue.queue(m)
 
     return render_template('mapping.html', iframe=frame, title='Fullscreen AD Map | Folium')
-
 
 
 @app.route("/aerodrome", methods=['GET', 'POST'])
@@ -1521,7 +1504,7 @@ def area_3():
     for t in range(gdf.shape[0]):
 
         coor = gdf.get_coordinates(ignore_index=True)
-        #icons = folium.CustomIcon(icon_image='/app/static/assets/images/marker_dot.png')
+        # icons = folium.CustomIcon(icon_image='/app/static/assets/images/marker_dot.png')
         if gdf.loc[t, 'geometry'].geom_type == 'Point':
             coordddd = gdf.loc[t, 'coordinate'].replace(',', '.').split(' ')
             marker = folium.CircleMarker(location=(coordddd[0], coordddd[1]), radius=3, color='red', fill=True,
@@ -1654,9 +1637,6 @@ def area_4():
     frame = m6.get_root().render()
 
     return render_template('mapping.html', iframe=frame, title='Area 4 Obstacles | Folium')
-
-
-
 
 
 print(cache.has('amap'))
