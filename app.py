@@ -1308,7 +1308,7 @@ def aerodrome_queue():
     for i in range(df.shape[0]):
         # if df.loc[i, 'aerodrome'] == str(p)[64:68].lower():
         coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
-        icons = marker_creator_ad(df, i)
+        icons = marker_creator_ad_2(df, i)
         marker = folium.Marker(location=(coor[1], coor[0]), icon=icons)
         popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
                  f" Coordinates: {coor[1]}N, {coor[0]}E")
