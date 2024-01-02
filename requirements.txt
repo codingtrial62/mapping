@@ -66,3 +66,6 @@ urllib3==2.1.0
 Werkzeug==3.0.1
 wheel==0.42.0
 WTForms==3.1.1
+
+redis~=5.0.1
+rq~=1.15.1
