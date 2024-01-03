@@ -237,8 +237,14 @@
         console.log('MarkerCluster:', markerCluster);
         // Fetch additional markers asynchronously
         fetch('/get_markers')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
+                console.log('Response:', data);
                 // Add dynamic data to the map
                 console.log('Markers data:', data.markers);
                 var markers = data.markers;
