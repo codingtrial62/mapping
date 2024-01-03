@@ -13,6 +13,7 @@ from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap5
 from flask_caching import Cache
 import logging
+import json
 
 cache = Cache()
 '''
@@ -1335,7 +1336,8 @@ def get_markers():
                      f"Coordinates: {coor[1]}N, {coor[0]}E")
             markers.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
     logging.info(f'Markers: {markers}')
-    return jsonify({'markers': markers})
+    #jsonify({'markers': markers})
+    return json.dumps({'markers': markers})
 @app.route("/", methods=['GET', 'POST'])
 @cache.cached(timeout=30)
 def fullscreen():
