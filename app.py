@@ -12,6 +12,7 @@ import gunicorn
 from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap5
 from flask_caching import Cache
+import logging
 
 cache = Cache()
 '''
@@ -1313,6 +1314,7 @@ def aerodrome_queue():
 
     return frame
 
+logging.basicConfig(level=logging.DEBUG)  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
 
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
@@ -1332,7 +1334,7 @@ def get_markers():
             popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
                      f"Coordinates: {coor[1]}N, {coor[0]}E")
             markers.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
-    print(markers)
+    logging.info(f'Markers: {markers}')
     return jsonify({'markers': markers})
 @app.route("/", methods=['GET', 'POST'])
 @cache.cached(timeout=30)
