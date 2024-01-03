@@ -1336,8 +1336,8 @@ def get_markers():
                      f"Coordinates: {coor[1]}N, {coor[0]}E")
             markers.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
     logging.info(f'markers: {markers}')
-    #jsonify({'markers': markers})
-    return json.dumps({'markers': markers})
+
+    return jsonify({'markers': markers})
 @app.route("/", methods=['GET', 'POST'])
 @cache.cached(timeout=30)
 def fullscreen():

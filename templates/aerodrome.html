@@ -33,7 +33,7 @@
     var markerCluster = L.markerClusterGroup();
 
     // Fetch additional markers asynchronously
-    fetch('/get_markers')
+    fetch({{markers}})
         .then(response => response.json())
         .then(data => {
             // Add dynamic data to the map
