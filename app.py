@@ -1331,7 +1331,7 @@ def get_markers():
             coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
             popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
                      f"Coordinates: {coor[1]}N, {coor[0]}E")
-            markers.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup, 'path': path})
+            markers.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
     return jsonify({'markers': markers})
 @app.route("/", methods=['GET', 'POST'])
 @cache.cached(timeout=30)
