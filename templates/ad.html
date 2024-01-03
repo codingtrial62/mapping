@@ -242,7 +242,9 @@
                 // Add dynamic data to the map
                 console.log('Markers data:', data.markers);
                 var markers = data.markers;
+                console.log('Number of markers:', markers.length);
                 for (var i = 0; i < markers.length; i++) {
+                    console.log('Processing marker:', i);
                     var dataPoint = markers[i];
                     var circleMarker = L.circleMarker([dataPoint.lat, dataPoint.lon]);
 
