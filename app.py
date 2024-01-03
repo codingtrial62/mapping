@@ -4,7 +4,7 @@ import folium
 import geopandas
 import pandas as pd
 from shapely import wkt
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from folium.plugins import FastMarkerCluster, FeatureGroupSubGroup, MarkerCluster, GroupedLayerControl
 from sqlalchemy import create_engine
@@ -1290,21 +1290,22 @@ def aerodrome_queue():
     maps = folium.Map(location=[39, 35], zoom_start=6)
     mcg = folium.plugins.MarkerCluster(name='AD_Obst', control=True)
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
-    sql_ad = f'''SELECT geo,coordinate,elevation,type, name FROM ad_obstacles'''
-    df_ad = pd.read_sql(sql_ad, con=engine)
-    df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
-    df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
-    for i in range(df.shape[0]):
-        # if df.loc[i, 'aerodrome'] == str(p)[64:68].lower():
-        coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
-        icons = marker_creator_ad_2(df, i)
-        marker = folium.Marker(location=(coor[1], coor[0]), icon=icons)
-        popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
-                 f" Coordinates: {coor[1]}N, {coor[0]}E")
+    for p in path_list_ad[:]:
+        sql_ad = f'''SELECT geo,coordinate,elevation,type, name FROM ad_obstacles where ad_obstacles.aerodrome = "{str(p)[64:68].lower()}"'''
+        df_ad = pd.read_sql(sql_ad, con=engine)
+        df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
+        df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
+        for i in range(df.shape[0]):
+            # if df.loc[i, 'aerodrome'] == str(p)[64:68].lower():
+            coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
+            icons = marker_creator_ad(df, i)
+            marker = folium.Marker(location=(coor[1], coor[0]), icon=icons)
+            popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
+                     f" Coordinates: {coor[1]}N, {coor[0]}E")
 
-        folium.Popup(popup).add_to(marker)
-        mcg.add_child(marker)
-    mcg.add_to(maps)
+            folium.Popup(popup).add_to(marker)
+            mcg.add_child(marker)
+        mcg.add_to(maps)
     folium.LayerControl(collapsed=False).add_to(maps)
 
     folium.plugins.MousePosition().add_to(maps)
@@ -1315,12 +1316,28 @@ def aerodrome_queue():
 
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
+@app.route("/get_markers", methods=['GET', 'POST'])
+def get_markers():
+    engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
+    markers= []
+    for p in path_list_ad[:]:
+        sql_ad = f'''SELECT geo,coordinate,elevation,type FROM ad_obstacles where ad_obstacles.aerodrome = "{str(p)[64:68].lower()}"'''
+        df_ad = pd.read_sql(sql_ad, con=engine)
+        df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
+        df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
 
-
+        for i in range(df.shape[0]):
+            path = f'{str(p)[64:68].lower()}_AD_Obst'
+            coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
+            popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
+                     f"Coordinates: {coor[1]}N, {coor[0]}E")
+            markers.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup, 'path': path})
+    return jsonify({'markers': markers})
 @app.route("/", methods=['GET', 'POST'])
+@cache.cached(timeout=30)
 def fullscreen():
-    cache.set('admap', aerodrome_queue())
-    frame = cache.get('admap')
+    frame = aerodrome_queue()
+
 
     return render_template('mapping.html', iframe=frame, title='Fullscreen AD Map | Folium')
 
@@ -1328,38 +1345,30 @@ def fullscreen():
 @app.route("/aerodrome", methods=['GET', 'POST'])
 def ad():
     m = folium.Map(location=[39, 35], zoom_start=6)
-    engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
-    mc = MarkerCluster(name='AD_Obstacles', control=True)
 
-    sql_ad = f'''SELECT geo,coordinate,elevation,type FROM ad_obstacles'''
-    df_ad = pd.read_sql(sql_ad, con=engine)
-    df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
-    df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
-    # dict_ad = {}
-    # for p in path_list_ad[:]:
-    #     dict_ad[str(p)[64:68] + '_AD_Obstacles'] = MarkerCluster(name=str(p)[64:68] + '_AD_Obstacles', control=True)
 
-    for i in range(df.shape[0]):
-        coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
-        # icons = marker_creator_ad_2(df, i)
-        marker = folium.CircleMarker(location=(coor[1], coor[0]), radius=3, color='red',
-                                     fill=True, fill_opacity=0.5)
-        popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
-                 f" Coordinates: {coor[1]}N, {coor[0]}E")
+    # for i in range(df.shape[0]):
+    #     coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
+    #     # icons = marker_creator_ad_2(df, i)
+    #     marker = folium.CircleMarker(location=(coor[1], coor[0]), radius=3, color='red',
+    #                                  fill=True, fill_opacity=0.5)
+    #     popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
+    #              f" Coordinates: {coor[1]}N, {coor[0]}E")
+    #
+    #     folium.Popup(popup).add_to(marker)
+    #     mc.add_child(marker)
+    #     mc.add_to(m)
+    #
+    # folium.LayerControl(collapsed=False).add_to(m)
+    #
+    # """Simple example of a fullscreen map."""
+    # folium.plugins.MousePosition().add_to(m)
+    # amap = m.get_root().render()
+    # cache.add('amap', amap)
+    # frame = cache.get('amap')
+    frame = m.get_root().render()
 
-        folium.Popup(popup).add_to(marker)
-        mc.add_child(marker)
-        mc.add_to(m)
-
-    folium.LayerControl(collapsed=False).add_to(m)
-
-    """Simple example of a fullscreen map."""
-    folium.plugins.MousePosition().add_to(m)
-    amap = m.get_root().render()
-    cache.add('amap', amap)
-    frame = cache.get('amap')
-
-    return render_template('mapping.html', iframe=frame, title=' AD Map | Folium')
+    return render_template('ad.html', iframe=frame, title=' AD Map | Folium')
 
 
 def enr():

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+
+    <!-- Include necessary CSS libraries -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+
+    <!-- Include necessary JavaScript libraries -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/folium@0.12.1/folium.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+</head>
+<body>
+<!-- Create a container div for the map -->
+<div id="map" style="height: 400px;"></div>
+
+<!-- Include script for dynamic marker addition -->
+<script>
+    // Create a new map instance
+    var map = L.map('map').setView([39, 35], 6);
+
+    // Add a base tile layer (e.g., OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Create a MarkerCluster group
+    var markerCluster = L.markerClusterGroup();
+
+    // Fetch additional markers asynchronously
+    fetch('/get_markers')
+        .then(response => response.json())
+        .then(data => {
+            // Add dynamic data to the map
+            var markers = data.markers;
+            for (var i = 0; i < markers.length; i++) {
+                var dataPoint = markers[i];
+                var marker = L.marker([dataPoint.lat, dataPoint.lon]);
+                marker.bindPopup(dataPoint.popup);
+                markerCluster.addLayer(marker);
+            }
+
+            // Add MarkerCluster to the map
+            map.addLayer(markerCluster);
+        });
+</script>
+</body>
+</html>
