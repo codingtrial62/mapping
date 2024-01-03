@@ -1322,7 +1322,7 @@ logging.basicConfig(level=logging.DEBUG)  # Set the logging level (DEBUG, INFO, 
 @app.route("/get_markers", methods=['GET', 'POST'])
 def get_markers():
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
-    markers= []
+    markerz= []
     for p in path_list_ad[:]:
         sql_ad = f'''SELECT geo,coordinate,elevation,type FROM ad_obstacles where ad_obstacles.aerodrome = "{str(p)[64:68].lower()}"'''
         df_ad = pd.read_sql(sql_ad, con=engine)
@@ -1334,10 +1334,9 @@ def get_markers():
             coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
             popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
                      f"Coordinates: {coor[1]}N, {coor[0]}E")
-            markers.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
-    logging.info(f'markers: {markers}')
+            markerz.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
 
-    return jsonify({'markers': markers})
+    return jsonify({'markers':markerz})
 @app.route("/", methods=['GET', 'POST'])
 @cache.cached(timeout=30)
 def fullscreen():
@@ -1350,27 +1349,6 @@ def fullscreen():
 @app.route("/aerodrome", methods=['GET', 'POST'])
 def ad():
     m = folium.Map(location=[39, 35], zoom_start=6)
-
-
-    # for i in range(df.shape[0]):
-    #     coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
-    #     # icons = marker_creator_ad_2(df, i)
-    #     marker = folium.CircleMarker(location=(coor[1], coor[0]), radius=3, color='red',
-    #                                  fill=True, fill_opacity=0.5)
-    #     popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
-    #              f" Coordinates: {coor[1]}N, {coor[0]}E")
-    #
-    #     folium.Popup(popup).add_to(marker)
-    #     mc.add_child(marker)
-    #     mc.add_to(m)
-    #
-    # folium.LayerControl(collapsed=False).add_to(m)
-    #
-    # """Simple example of a fullscreen map."""
-    # folium.plugins.MousePosition().add_to(m)
-    # amap = m.get_root().render()
-    # cache.add('amap', amap)
-    # frame = cache.get('amap')
     frame = m.get_root().render()
 
     return render_template('ad.html', iframe=frame, title=' AD Map | Folium')

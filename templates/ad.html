@@ -12,12 +12,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css" />
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster.js"></script>
     <!-- Favicons -->
     <style>
         .bd-placeholder-img {
@@ -233,24 +233,14 @@
 
         // Create a MarkerCluster group
         var markerCluster = L.markerClusterGroup();
-
-        console.log('MarkerCluster:', markerCluster);
+        const markerss = {{ url_for('get_markers')|tojson }};
         // Fetch additional markers asynchronously
-        fetch('/get_markers')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
+        fetch(markerss)
+            .then(response => response.json())
             .then(data => {
-                console.log('Response:', data);
                 // Add dynamic data to the map
-                console.log('Markers data:', data.markers);
                 var markers = data.markers;
-                console.log('Number of markers:', markers.length);
                 for (var i = 0; i < markers.length; i++) {
-                    console.log('Processing marker:', i);
                     var dataPoint = markers[i];
                     var circleMarker = L.circleMarker([dataPoint.lat, dataPoint.lon]);
 
@@ -294,9 +284,15 @@
     });
 </script>
 
+
 <!-- Move Bootstrap script to the bottom -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
+<script>
+    var offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
+    var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
+        return new bootstrap.Offcanvas(offcanvasEl)
+    });
+</script>
 </body>
 
 </html>
