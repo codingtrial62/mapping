@@ -912,25 +912,21 @@ def marker_c():
     for i in range(df.shape[0]):
 
         if 'BUILDING' in df.loc[i, 'name'] or 'BULDING' in df.loc[i, 'name']:
-            # kw = {"prefix": "fa", "color": "green", "icon": "building"}
-            # icons = folium.Icon(**kw)
             path = '/app/static/assets/images/building.png'
 
 
         elif 'MAST' in df.loc[i, 'name']:
             if df.loc[i, 'name'] == 'LIGHTING MAST':
-                # kw = {"prefix": "fa", "color": "red", "icon": "shower"}
-                # icons = folium.Icon(**kw)
+
                 path = '/app/static/assets/images/street-light.png'
 
             elif df.loc[i, 'name'] == 'APRON LIGHTING MAST' or df.loc[i, 'name'] == 'APRON LIGTHING MAST':
-                # kw = {"prefix": "fa", "color": "red", "icon": "shower"}
-                # icons = folium.Icon(**kw)
+
                 path = '/app/static/assets/images/apron_lighting.png'
 
             else:
-                path = icon_image='/app/static/assets/images/mast.png'
-                # folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/aixm_mapping/icons8-pylon-64.png')
+                path = '/app/static/assets/images/mast.png'
+
 
 
 
@@ -945,13 +941,11 @@ def marker_c():
 
         elif 'SURVEILLANCE TOWER' in df.loc[i, 'name'] or 'TWR' in df.loc[i, 'name'] or 'TOWER' in df.loc[
             i, 'name']:
-            kw = {"prefix": "fa", "color": "pink", "icon": "tower-observation"}
+
             path = '/app/static/assets/images/towerr.png'
 
         elif 'ANTENNA' in df.loc[i, 'name']:
             if df.loc[i, 'name'] == 'GSM ANTENNA':
-                # kw = {"prefix": "fa", "color": "purple", "icon": "signal"}
-                # icons = folium.Icon(**kw)
                 path = '/app/static/assets/images/gsm_anten.png'
 
             elif df.loc[i, 'name'] == 'DME ANTENNA' or df.loc[i, 'name'] == 'DME ANTENNA(GP)':
