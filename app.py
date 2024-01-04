@@ -4,7 +4,7 @@ import folium
 import geopandas
 import pandas as pd
 from shapely import wkt
-from flask import Flask, render_template, url_for, jsonify,redirect
+from flask import Flask, render_template, url_for, jsonify, redirect
 from flask_sqlalchemy import SQLAlchemy
 from folium.plugins import FastMarkerCluster, FeatureGroupSubGroup, MarkerCluster, GroupedLayerControl
 from sqlalchemy import create_engine
@@ -13,7 +13,7 @@ from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap5
 from flask_caching import Cache
 import logging
-from flask_cors import CORS,cross_origin
+from flask_cors import CORS, cross_origin
 
 cache = Cache()
 '''
@@ -239,7 +239,6 @@ with app.app_context():
     db.create_all()
 
     # cache.delete_many('amap','bmap','c_map')
-
 
 cache_servers = os.environ.get('MEMCACHIER_SERVERS')
 if cache_servers == None:
@@ -899,422 +898,370 @@ def marker_creator_ad(df, i):
 
     return icons
 
-
-def marker_creator_ad_2(df, i):
-    if 'BUILDING' in df.loc[i, 'name'] or 'BULDING' in df.loc[i, 'name']:
-        # kw = {"prefix": "fa", "color": "green", "icon": "building"}
-        # icons = folium.Icon(**kw)
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/building.png')
-
-
-    elif 'MAST' in df.loc[i, 'name']:
-        if df.loc[i, 'name'] == 'LIGHTING MAST':
-            # kw = {"prefix": "fa", "color": "red", "icon": "shower"}
-            # icons = folium.Icon(**kw)
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/street-light.png')
-
-        elif df.loc[i, 'name'] == 'APRON LIGHTING MAST' or df.loc[i, 'name'] == 'APRON LIGTHING MAST':
-            # kw = {"prefix": "fa", "color": "red", "icon": "shower"}
-            # icons = folium.Icon(**kw)
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/apron_lighting.png')
-
-        else:
-            icons = folium.CustomIcon(icon_image='/app/static/assets/images/mast.png')
-            # folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/aixm_mapping/icons8-pylon-64.png')
-
-
-
-    elif df.loc[i, 'name'] == 'MOSQUE' or df.loc[i, 'name'] == 'MOSQUE_DOME':
-
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/mosque.png')
-
-
-    elif df.loc[i, 'name'] == 'MINARET':
-
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/minaret.png')
-
-    elif 'SURVEILLANCE TOWER' in df.loc[i, 'name'] or 'TWR' in df.loc[i, 'name'] or 'TOWER' in df.loc[
-        i, 'name']:
-        kw = {"prefix": "fa", "color": "pink", "icon": "tower-observation"}
-        icons = folium.Icon(**kw)
-
-    elif 'ANTENNA' in df.loc[i, 'name']:
-        if df.loc[i, 'name'] == 'GSM ANTENNA':
-            # kw = {"prefix": "fa", "color": "purple", "icon": "signal"}
-            # icons = folium.Icon(**kw)
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/gsm_anten.png')
-
-        elif df.loc[i, 'name'] == 'DME ANTENNA' or df.loc[i, 'name'] == 'DME ANTENNA(GP)':
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/dme_antenna.png')
-
-        elif df.loc[i, 'name'] == 'GLIDE PATH  ANTENNA' or df.loc[i, 'name'] == 'GLIDE PATH ANTENNA' \
-                or df.loc[i, 'name'] == 'GP ANTENNA' or df.loc[i, 'name'] == 'GLIDE PATH ANTENNA':
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/glidepath_antenna.png')
-
-        elif df.loc[i, 'name'] == 'LLZ ANTENNA':
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/llz_ant.png')
-
-        elif df.loc[i, 'name'] == 'NDB ANTENNA':
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/ndb_antenna.png')
-
-        elif df.loc[i, 'name'] == 'TACAN ANTENNA':
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/tacan_antenna.png')
-
-        elif df.loc[i, 'name'] == 'VOR ANTENNA':
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/vor_antenna.png')
-
-        elif df.loc[i, 'name'] == 'NF ANTENNA':
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/nf_antenna.png')
-
-        else:
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/antenna.png')
-
-    elif df.loc[i, 'name'] == 'CHIMNEY' or df.loc[i, 'name'] == 'SHAFT':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/chimney.png')
-
-    elif df.loc[i, 'name'] == 'ANM' or 'ANEMO' in df.loc[i, 'name']:
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/anemometer.png')
-
-
-    elif 'WIND' in df.loc[i, 'name']:
-        if 'DIRECTION' in df.loc[i, 'name']:
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/wind-direction.png')
-
-        elif 'ROSE' in df.loc[i, 'name']:
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/wind-rose.png')
-
-
-        elif 'TURBINE' in df.loc[i, 'name'] or 'T' in df.loc[i, 'name']:
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/wind-turbine.png')
-
-
-        else:
-            icons = folium.CustomIcon(
-                icon_image='/app/static/assets/images/windsock.png')
-
-
-    elif 'WDI' in df.loc[i, 'name']:
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/wind-direction.png')
-
-    elif 'APPROACH' in df.loc[i, 'name']:
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/landing-track.png')
-
-    elif 'POLE' in df.loc[i, 'name']:
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/pole.png')
-
-
-    elif df.loc[i, 'name'] == 'LIGHTNING ROD' or df.loc[i, 'name'] == 'PARATONER' or df.loc[
-        i, 'name'] == 'PARATONNERRE':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/lightning-rod.png')
-
-
-    elif df.loc[i, 'name'] == 'HOSPITAL':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/hospital.png')
-
-
-    elif df.loc[i, 'name'] == 'DME' or df.loc[i, 'name'] == 'DME ILS/GP':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/dme.png')
-
-
-    elif df.loc[i, 'name'] == 'NDB':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/ndb.png')
-
-
-    elif df.loc[i, 'name'] == 'TACAN' or df.loc[i, 'name'] == 'TACAN CONTAINER':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/tacan.png')
-
-
-    elif df.loc[i, 'name'] == 'VOR' or df.loc[i, 'name'] == 'VOR CONTAINER' or df.loc[
-        i, 'name'] == 'VOR STATION':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/vor.png')
-
-
-    elif df.loc[i, 'name'] == 'VOR+DME' or df.loc[i, 'name'] == 'VOR/DME':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/vor_dme.png')
-
-
-    elif df.loc[i, 'name'] == 'ATC1_AERIAL' or df.loc[i, 'name'] == 'ATC2_AERIAL':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/nf_antenna.png')
-
-
-    elif 'LIGHT' in df.loc[i, 'name']:
-
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/street-light.png')
-
-
-    elif df.loc[i, 'name'] == 'GREENHOUSE' or df.loc[i, 'name'] == 'GREEN HOUSE' or df.loc[
-        i, 'name'] == 'PLANT-HOUSE' or df.loc[i, 'name'] == 'GARDEN FRAME':
-
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/greenhouse.png')
-
-    elif df.loc[i, 'name'] == 'SILO' or df.loc[i, 'name'] == 'GRAIN SILO':
-
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/silo.png')
-
-
-    elif df.loc[i, 'name'] == 'STADIUM':
-
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/stadium.png')
-
-
-    elif 'HOOK BARRIER' in df.loc[i, 'name']:
-
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/hook.png')
-
-
-    elif 'NET BARRIER' in df.loc[i, 'name']:
-
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/net.png')
-
-
-    elif df.loc[i, 'name'] == 'CONCRETE BARRIER' or df.loc[i, 'name'] == 'CONCRETE BLOCK' or df.loc[
-        i, 'name'] == 'BETON BARIYER':
-
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/concrete_barrier.png')
-
-
-    elif 'WALL' in df.loc[i, 'name']:
-
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/wall.png')
-
-
-    elif df.loc[i, 'name'] == 'ATC1_AERIAL' or df.loc[i, 'name'] == 'ATC2_AERIAL':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/nf_antenna.png')
-
-
-    elif (df.loc[i, 'name'] == 'DVOR' or df.loc[i, 'name'] == 'DVOR_LC' or df.loc[i, 'name'] == 'DVOR_MONITOR'
-          or df.loc[i, 'name'] == 'FFM_18' or df.loc[i, 'name'] == 'FFM_17L' or df.loc[i, 'name'] == 'FFM-35R'
-          or df.loc[i, 'name'] == "FFM_34L" or df.loc[i, 'name'] == 'FFM_36' or df.loc[
-              i, 'name'] == 'GLIDE PATH'
-          or df.loc[i, 'name'] == 'GLIDEPAT CON.' or df.loc[i, 'name'] == 'GLIDE PATH SHELTER' or df.loc[
-              i, 'name'] == 'GLIDE PATH CONTAINER'
-          or df.loc[i, 'name'] == 'GP' or df.loc[i, 'name'] == 'GP CABIN' or df.loc[i, 'name'] == 'GP STATION'
-          or df.loc[i, 'name'] == 'GP_16R_MONITOR' or df.loc[i, 'name'] == 'GP/NAVAID' or df.loc[
-              i, 'name'] == 'GP/DME'
-          or df.loc[i, 'name'] == 'GP_16R_OBS_LT' or df.loc[i, 'name'] == 'GP_17L_MONITOR' or df.loc[
-              i, 'name'] == 'GP_17L_OBS_LT'
-          or df.loc[i, 'name'] == 'GP_34L_MONITOR' or df.loc[i, 'name'] == 'GP_18_OBS_LT' or df.loc[
-              i, 'name'] == 'GP_18_MONITOR'
-          or df.loc[i, 'name'] == 'GP_34L_OBS_LT' or df.loc[i, 'name'] == 'GP_35R_MONITOR' or df.loc[
-              i, 'name'] == 'GP_35R_OBS_LT'
-          or df.loc[i, 'name'] == 'LLZ CON.' or df.loc[i, 'name'] == 'GP_36_OBS_LT' or df.loc[
-              i, 'name'] == 'GP_36_MONITOR'
-          or df.loc[i, 'name'] == 'LLZ CONTAINER' or df.loc[i, 'name'] == 'LLZ16' or df.loc[
-              i, 'name'] == 'LLZ_18'
-          or df.loc[i, 'name'] == 'RVR' or df.loc[i, 'name'] == 'PAPI_COVER' or df.loc[
-              i, 'name'] == 'LOCALIZER' or
-          df.loc[i, 'name'] == 'RAPCON'
-          or df.loc[i, 'name'] == 'RVR-SENSOR') or df.loc[i, 'name'] == 'NDB FIELD' or df.loc[
-        i, 'name'] == 'GCA' or \
-            df.loc[i, 'name'] == 'SENTRY BOX' \
-            or df.loc[i, 'name'] == 'NFM_34L':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/other_navigation_aid.png')
-
-    elif df.loc[i, 'name'] == 'GSM BASE STATION' or df.loc[i, 'name'] == 'GSM STATION':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/gsm_anten.png')
-
-
-    elif df.loc[i, 'name'] == 'GAS STATION':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/gas-station.png')
-
-
-    elif df.loc[i, 'name'] == 'RADAR_STATION':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/radar.png')
-
-
-    elif (df.loc[i, 'name'] == 'CABIN' or df.loc[i, 'name'] == 'CONSTRUCTION' or df.loc[i, 'name'] == 'COTTAGE'
-          or df.loc[i, 'name'] == 'GUARD COTTAGE' or df.loc[i, 'name'] == 'STRUCTURE'):
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/cabin.png')
-
-
-    elif df.loc[i, 'name'] == 'HANGAR':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/hangar.png')
-
-
-    elif df.loc[i, 'name'] == 'MILITARY TRENCH':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/trench.png')
-
-
-    elif df.loc[i, 'name'] == 'REFLECTOR':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/reflector.png')
-
-
-    elif df.loc[i, 'name'] == 'ROCK' or df.loc[i, 'name'] == 'STACK' \
-            or df.loc[i, 'name'] == 'CLIFF':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/rock_stack_cliff.png')
-
-
-    elif df.loc[i, 'name'] == 'TREE':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/tree.png')
-
-
-    elif df.loc[i, 'name'] == 'VAN CASTLE':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/castle.png')
-
-
-    elif df.loc[i, 'name'] == 'BRIDGE_DECK':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/bridge_deck.png')
-
-
-    elif df.loc[i, 'name'] == 'TRANSFORMER':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/transformer.png')
-
-
-    elif df.loc[i, 'name'] == 'TRAFFIC_SIGN' or df.loc[i, 'name'] == 'TRAFFIC BOARD' \
-            or df.loc[i, 'name'] == 'SIGNBOARD':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/sign_board.png')
-
-
-    elif df.loc[i, 'name'] == 'PYLON':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/pylon.png')
-
-
-    elif df.loc[i, 'name'] == 'CRANE':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/crane.png')
-
-
-    elif df.loc[i, 'name'] == 'ARFF POOL':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/arff_pool.png')
-
-
-    elif df.loc[i, 'name'] == 'ENERGY TRANSMISSION LINE' or df.loc[i, 'name'] == 'POWER_TRANSMISSION_LINE':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/transmission.png')
-
-    elif df.loc[i, 'name'] == 'CONTAINER':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/container.png')
-
-
-    elif 'TERRAIN' in df.loc[i, 'name']:
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/terrain.png')
-
-
-    elif df.loc[i, 'name'] == 'BASE STATION':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/base_station.png')
-
-
-    elif df.loc[i, 'name'] == 'BILLBOARD':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/billboard.png')
-
-
-    elif df.loc[i, 'name'] == 'CAMERA PANEL':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/panel.png')
-
-
-    elif df.loc[i, 'name'] == 'FENCE' or df.loc[i, 'name'] == 'WIRE FENCE':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/fence.png')
-
-
-    elif df.loc[i, 'name'] == 'FUEL_TANK':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/fuel_tank.png')
-
-
-    elif df.loc[i, 'name'] == 'WATER TANK':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/water_tank.png')
-
-
-    elif df.loc[i, 'name'] == 'WATER ROSERVOIR':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/reservoir.png')
-
-
-    elif df.loc[i, 'name'] == 'ENERGY CABIN':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/energy_cabin.png')
-
-
-    elif df.loc[i, 'name'] == 'METEOROLOGY DEVICE':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/meteo_device.png')
-
-
-    elif df.loc[i, 'name'] == 'OKIS':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/okis.png')
-
-
-    elif df.loc[i, 'name'] == 'TERMINAL':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/terminal.png')
-
-
-    elif df.loc[i, 'name'] == 'VOICE BIRD SCARING SYSTEM':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/vbss.png')
-
-
-    elif df.loc[i, 'name'] == 'WATCH BOX':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/watch_box.png')
-
-
-    elif df.loc[i, 'name'] == 'GNSS_MEASUREMENT_POINT':
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/gnss.png')
-
-    elif df.loc[i, 'name'] == 'OTHER':
-        icons = folium.CustomIcon(
-            icon_image='/app/static/assets/images/other_navigation_aid.png')
-
-    else:
-        icons = folium.CustomIcon(icon_image='/app/static/assets/images/laughing.png')
-
-    return icons
-
-
-def aerodrome_queue():
-    maps = folium.Map(location=[39, 35], zoom_start=6)
-    mcg = folium.plugins.MarkerCluster(name='AD_Obst', control=True)
+@app.route('/marker_c', methods=['GET'])
+@cross_origin()
+def marker_c():
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
-    for p in path_list_ad[:]:
-        sql_ad = f'''SELECT geo,coordinate,elevation,type, name FROM ad_obstacles where ad_obstacles.aerodrome = "{str(p)[64:68].lower()}"'''
-        df_ad = pd.read_sql(sql_ad, con=engine)
-        df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
-        df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
-        for i in range(df.shape[0]):
-            # if df.loc[i, 'aerodrome'] == str(p)[64:68].lower():
-            coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
-            icons = marker_creator_ad(df, i)
-            marker = folium.Marker(location=(coor[1], coor[0]), icon=icons)
-            popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
-                     f" Coordinates: {coor[1]}N, {coor[0]}E")
+    markerz = []
 
-            folium.Popup(popup).add_to(marker)
-            mcg.add_child(marker)
-        mcg.add_to(maps)
-    folium.LayerControl(collapsed=False).add_to(maps)
+    sql_ad = f'''SELECT geo,coordinate,elevation,type,name FROM ad_obstacles'''
+    df_ad = pd.read_sql(sql_ad, con=engine)
+    df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
+    df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
 
-    folium.plugins.MousePosition().add_to(maps)
-    frame = maps.get_root().render()
+    for i in range(df.shape[0]):
 
-    return frame
+        if 'BUILDING' in df.loc[i, 'name'] or 'BULDING' in df.loc[i, 'name']:
+            # kw = {"prefix": "fa", "color": "green", "icon": "building"}
+            # icons = folium.Icon(**kw)
+            path = '/app/static/assets/images/building.png'
+
+
+        elif 'MAST' in df.loc[i, 'name']:
+            if df.loc[i, 'name'] == 'LIGHTING MAST':
+                # kw = {"prefix": "fa", "color": "red", "icon": "shower"}
+                # icons = folium.Icon(**kw)
+                path = '/app/static/assets/images/street-light.png'
+
+            elif df.loc[i, 'name'] == 'APRON LIGHTING MAST' or df.loc[i, 'name'] == 'APRON LIGTHING MAST':
+                # kw = {"prefix": "fa", "color": "red", "icon": "shower"}
+                # icons = folium.Icon(**kw)
+                path = '/app/static/assets/images/apron_lighting.png'
+
+            else:
+                path = icon_image='/app/static/assets/images/mast.png'
+                # folium.CustomIcon(icon_image='/Users/dersim/PycharmProjects/aixm_mapping/icons8-pylon-64.png')
+
+
+
+        elif df.loc[i, 'name'] == 'MOSQUE' or df.loc[i, 'name'] == 'MOSQUE_DOME':
+
+            path = '/app/static/assets/images/mosque.png'
+
+
+        elif df.loc[i, 'name'] == 'MINARET':
+
+            path = '/app/static/assets/images/minaret.png'
+
+        elif 'SURVEILLANCE TOWER' in df.loc[i, 'name'] or 'TWR' in df.loc[i, 'name'] or 'TOWER' in df.loc[
+            i, 'name']:
+            kw = {"prefix": "fa", "color": "pink", "icon": "tower-observation"}
+            path = '/app/static/assets/images/towerr.png'
+
+        elif 'ANTENNA' in df.loc[i, 'name']:
+            if df.loc[i, 'name'] == 'GSM ANTENNA':
+                # kw = {"prefix": "fa", "color": "purple", "icon": "signal"}
+                # icons = folium.Icon(**kw)
+                path = '/app/static/assets/images/gsm_anten.png'
+
+            elif df.loc[i, 'name'] == 'DME ANTENNA' or df.loc[i, 'name'] == 'DME ANTENNA(GP)':
+                path = '/app/static/assets/images/dme_antenna.png'
+
+            elif df.loc[i, 'name'] == 'GLIDE PATH  ANTENNA' or df.loc[i, 'name'] == 'GLIDE PATH ANTENNA' \
+                    or df.loc[i, 'name'] == 'GP ANTENNA' or df.loc[i, 'name'] == 'GLIDE PATH ANTENNA':
+                path = '/app/static/assets/images/glidepath_antenna.png'
+
+            elif df.loc[i, 'name'] == 'LLZ ANTENNA':
+                path = '/app/static/assets/images/llz_ant.png'
+
+            elif df.loc[i, 'name'] == 'NDB ANTENNA':
+                path = '/app/static/assets/images/ndb_antenna.png'
+
+            elif df.loc[i, 'name'] == 'TACAN ANTENNA':
+                path = '/app/static/assets/images/tacan_antenna.png'
+
+            elif df.loc[i, 'name'] == 'VOR ANTENNA':
+                path = '/app/static/assets/images/vor_antenna.png'
+
+            elif df.loc[i, 'name'] == 'NF ANTENNA':
+                path = '/app/static/assets/images/nf_antenna.png'
+
+            else:
+                path = '/app/static/assets/images/antenna.png'
+
+        elif df.loc[i, 'name'] == 'CHIMNEY' or df.loc[i, 'name'] == 'SHAFT':
+            path = '/app/static/assets/images/chimney.png'
+
+        elif df.loc[i, 'name'] == 'ANM' or 'ANEMO' in df.loc[i, 'name']:
+            path = '/app/static/assets/images/anemometer.png'
+
+
+        elif 'WIND' in df.loc[i, 'name']:
+            if 'DIRECTION' in df.loc[i, 'name']:
+                path = '/app/static/assets/images/wind-direction.png'
+
+            elif 'ROSE' in df.loc[i, 'name']:
+                path = '/app/static/assets/images/wind-rose.png'
+
+
+            elif 'TURBINE' in df.loc[i, 'name'] or 'T' in df.loc[i, 'name']:
+                path = '/app/static/assets/images/wind-turbine.png'
+
+
+            else:
+                path = '/app/static/assets/images/windsock.png'
+
+
+        elif 'WDI' in df.loc[i, 'name']:
+            path = '/app/static/assets/images/wind-direction.png'
+
+        elif 'APPROACH' in df.loc[i, 'name']:
+            path = '/app/static/assets/images/landing-track.png'
+
+        elif 'POLE' in df.loc[i, 'name']:
+            path = '/app/static/assets/images/pole.png'
+
+
+        elif df.loc[i, 'name'] == 'LIGHTNING ROD' or df.loc[i, 'name'] == 'PARATONER' or df.loc[
+            i, 'name'] == 'PARATONNERRE':
+            path = '/app/static/assets/images/lightning-rod.png'
+
+
+        elif df.loc[i, 'name'] == 'HOSPITAL':
+            path = '/app/static/assets/images/hospital.png'
+
+
+        elif df.loc[i, 'name'] == 'DME' or df.loc[i, 'name'] == 'DME ILS/GP':
+            path = '/app/static/assets/images/dme.png'
+
+
+        elif df.loc[i, 'name'] == 'NDB':
+            path = '/app/static/assets/images/ndb.png'
+
+
+        elif df.loc[i, 'name'] == 'TACAN' or df.loc[i, 'name'] == 'TACAN CONTAINER':
+            path = '/app/static/assets/images/tacan.png'
+
+
+        elif df.loc[i, 'name'] == 'VOR' or df.loc[i, 'name'] == 'VOR CONTAINER' or df.loc[
+            i, 'name'] == 'VOR STATION':
+            path = '/app/static/assets/images/vor.png'
+
+
+        elif df.loc[i, 'name'] == 'VOR+DME' or df.loc[i, 'name'] == 'VOR/DME':
+            path = '/app/static/assets/images/vor_dme.png'
+
+
+        elif df.loc[i, 'name'] == 'ATC1_AERIAL' or df.loc[i, 'name'] == 'ATC2_AERIAL':
+            path = '/app/static/assets/images/nf_antenna.png'
+
+
+        elif 'LIGHT' in df.loc[i, 'name']:
+            path = '/app/static/assets/images/street-light.png'
+
+
+        elif df.loc[i, 'name'] == 'GREENHOUSE' or df.loc[i, 'name'] == 'GREEN HOUSE' or df.loc[
+            i, 'name'] == 'PLANT-HOUSE' or df.loc[i, 'name'] == 'GARDEN FRAME':
+            path = '/app/static/assets/images/greenhouse.png'
+
+        elif df.loc[i, 'name'] == 'SILO' or df.loc[i, 'name'] == 'GRAIN SILO':
+
+            path = '/app/static/assets/images/silo.png'
+
+
+        elif df.loc[i, 'name'] == 'STADIUM':
+            path = '/app/static/assets/images/stadium.png'
+
+
+        elif 'HOOK BARRIER' in df.loc[i, 'name']:
+            path = '/app/static/assets/images/hook.png'
+
+
+        elif 'NET BARRIER' in df.loc[i, 'name']:
+            path = '/app/static/assets/images/net.png'
+
+
+        elif df.loc[i, 'name'] == 'CONCRETE BARRIER' or df.loc[i, 'name'] == 'CONCRETE BLOCK' or df.loc[
+            i, 'name'] == 'BETON BARIYER':
+            path = '/app/static/assets/images/concrete_barrier.png'
+
+
+        elif 'WALL' in df.loc[i, 'name']:
+            path = '/app/static/assets/images/wall.png'
+
+
+        elif df.loc[i, 'name'] == 'ATC1_AERIAL' or df.loc[i, 'name'] == 'ATC2_AERIAL':
+            path = '/app/static/assets/images/nf_antenna.png'
+
+
+        elif (df.loc[i, 'name'] == 'DVOR' or df.loc[i, 'name'] == 'DVOR_LC' or df.loc[i, 'name'] == 'DVOR_MONITOR'
+              or df.loc[i, 'name'] == 'FFM_18' or df.loc[i, 'name'] == 'FFM_17L' or df.loc[i, 'name'] == 'FFM-35R'
+              or df.loc[i, 'name'] == "FFM_34L" or df.loc[i, 'name'] == 'FFM_36' or df.loc[
+                  i, 'name'] == 'GLIDE PATH'
+              or df.loc[i, 'name'] == 'GLIDEPAT CON.' or df.loc[i, 'name'] == 'GLIDE PATH SHELTER' or df.loc[
+                  i, 'name'] == 'GLIDE PATH CONTAINER'
+              or df.loc[i, 'name'] == 'GP' or df.loc[i, 'name'] == 'GP CABIN' or df.loc[i, 'name'] == 'GP STATION'
+              or df.loc[i, 'name'] == 'GP_16R_MONITOR' or df.loc[i, 'name'] == 'GP/NAVAID' or df.loc[
+                  i, 'name'] == 'GP/DME'
+              or df.loc[i, 'name'] == 'GP_16R_OBS_LT' or df.loc[i, 'name'] == 'GP_17L_MONITOR' or df.loc[
+                  i, 'name'] == 'GP_17L_OBS_LT'
+              or df.loc[i, 'name'] == 'GP_34L_MONITOR' or df.loc[i, 'name'] == 'GP_18_OBS_LT' or df.loc[
+                  i, 'name'] == 'GP_18_MONITOR'
+              or df.loc[i, 'name'] == 'GP_34L_OBS_LT' or df.loc[i, 'name'] == 'GP_35R_MONITOR' or df.loc[
+                  i, 'name'] == 'GP_35R_OBS_LT'
+              or df.loc[i, 'name'] == 'LLZ CON.' or df.loc[i, 'name'] == 'GP_36_OBS_LT' or df.loc[
+                  i, 'name'] == 'GP_36_MONITOR'
+              or df.loc[i, 'name'] == 'LLZ CONTAINER' or df.loc[i, 'name'] == 'LLZ16' or df.loc[
+                  i, 'name'] == 'LLZ_18'
+              or df.loc[i, 'name'] == 'RVR' or df.loc[i, 'name'] == 'PAPI_COVER' or df.loc[
+                  i, 'name'] == 'LOCALIZER' or
+              df.loc[i, 'name'] == 'RAPCON'
+              or df.loc[i, 'name'] == 'RVR-SENSOR') or df.loc[i, 'name'] == 'NDB FIELD' or df.loc[
+            i, 'name'] == 'GCA' or \
+                df.loc[i, 'name'] == 'SENTRY BOX' \
+                or df.loc[i, 'name'] == 'NFM_34L':
+            path = '/app/static/assets/images/other_navigation_aid.png'
+
+        elif df.loc[i, 'name'] == 'GSM BASE STATION' or df.loc[i, 'name'] == 'GSM STATION':
+            path = '/app/static/assets/images/gsm_anten.png'
+
+
+        elif df.loc[i, 'name'] == 'GAS STATION':
+            path = '/app/static/assets/images/gas-station.png'
+
+
+        elif df.loc[i, 'name'] == 'RADAR_STATION':
+            path = '/app/static/assets/images/radar.png'
+
+
+        elif (df.loc[i, 'name'] == 'CABIN' or df.loc[i, 'name'] == 'CONSTRUCTION' or df.loc[i, 'name'] == 'COTTAGE'
+              or df.loc[i, 'name'] == 'GUARD COTTAGE' or df.loc[i, 'name'] == 'STRUCTURE'):
+            path = '/app/static/assets/images/cabin.png'
+
+
+        elif df.loc[i, 'name'] == 'HANGAR':
+            path = '/app/static/assets/images/hangar.png'
+
+
+        elif df.loc[i, 'name'] == 'MILITARY TRENCH':
+            path = '/app/static/assets/images/trench.png'
+
+
+        elif df.loc[i, 'name'] == 'REFLECTOR':
+            path = '/app/static/assets/images/reflector.png'
+
+
+        elif df.loc[i, 'name'] == 'ROCK' or df.loc[i, 'name'] == 'STACK' \
+                or df.loc[i, 'name'] == 'CLIFF':
+            path = '/app/static/assets/images/rock_stack_cliff.png'
+
+
+        elif df.loc[i, 'name'] == 'TREE':
+            path = '/app/static/assets/images/tree.png'
+
+
+        elif df.loc[i, 'name'] == 'VAN CASTLE':
+            path = '/app/static/assets/images/castle.png'
+
+
+        elif df.loc[i, 'name'] == 'BRIDGE_DECK':
+            path = '/app/static/assets/images/bridge_deck.png'
+
+
+        elif df.loc[i, 'name'] == 'TRANSFORMER':
+            path = '/app/static/assets/images/transformer.png'
+
+
+        elif df.loc[i, 'name'] == 'TRAFFIC_SIGN' or df.loc[i, 'name'] == 'TRAFFIC BOARD' \
+                or df.loc[i, 'name'] == 'SIGNBOARD':
+            path = '/app/static/assets/images/sign_board.png'
+
+
+        elif df.loc[i, 'name'] == 'PYLON':
+            path = '/app/static/assets/images/pylon.png'
+
+
+        elif df.loc[i, 'name'] == 'CRANE':
+            path = '/app/static/assets/images/crane.png'
+
+
+        elif df.loc[i, 'name'] == 'ARFF POOL':
+            path = '/app/static/assets/images/arff_pool.png'
+
+
+        elif df.loc[i, 'name'] == 'ENERGY TRANSMISSION LINE' or df.loc[i, 'name'] == 'POWER_TRANSMISSION_LINE':
+            path = '/app/static/assets/images/transmission.png'
+
+        elif df.loc[i, 'name'] == 'CONTAINER':
+            path = '/app/static/assets/images/container.png'
+
+
+        elif 'TERRAIN' in df.loc[i, 'name']:
+            path = '/app/static/assets/images/terrain.png'
+
+
+        elif df.loc[i, 'name'] == 'BASE STATION':
+            path = '/app/static/assets/images/base_station.png'
+
+
+        elif df.loc[i, 'name'] == 'BILLBOARD':
+            path = '/app/static/assets/images/billboard.png'
+
+
+        elif df.loc[i, 'name'] == 'CAMERA PANEL':
+            path = '/app/static/assets/images/panel.png'
+
+
+        elif df.loc[i, 'name'] == 'FENCE' or df.loc[i, 'name'] == 'WIRE FENCE':
+            path = '/app/static/assets/images/fence.png'
+
+
+        elif df.loc[i, 'name'] == 'FUEL_TANK':
+            path = '/app/static/assets/images/fuel_tank.png'
+
+
+        elif df.loc[i, 'name'] == 'WATER TANK':
+            path = '/app/static/assets/images/water_tank.png'
+
+
+        elif df.loc[i, 'name'] == 'WATER ROSERVOIR':
+            path = '/app/static/assets/images/reservoir.png'
+
+
+        elif df.loc[i, 'name'] == 'ENERGY CABIN':
+            path = '/app/static/assets/images/energy_cabin.png'
+
+
+        elif df.loc[i, 'name'] == 'METEOROLOGY DEVICE':
+            path = '/app/static/assets/images/meteo_device.png'
+
+
+        elif df.loc[i, 'name'] == 'OKIS':
+            path = '/app/static/assets/images/okis.png'
+
+
+        elif df.loc[i, 'name'] == 'TERMINAL':
+            path = '/app/static/assets/images/terminal.png'
+
+
+        elif df.loc[i, 'name'] == 'VOICE BIRD SCARING SYSTEM':
+            path = '/app/static/assets/images/vbss.png'
+
+
+        elif df.loc[i, 'name'] == 'WATCH BOX':
+            path = '/app/static/assets/images/watch_box.png'
+
+
+        elif df.loc[i, 'name'] == 'GNSS_MEASUREMENT_POINT':
+            path = '/app/static/assets/images/gnss.png'
+
+        elif df.loc[i, 'name'] == 'OTHER':
+            path = '/app/static/assets/images/other_navigation_aid.png'
+
+        else:
+            path = '/app/static/assets/images/laughing.png'
+
+        coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
+        popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
+                 f"Coordinates: {coor[1]}N, {coor[0]}E")
+        markerz.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup, 'path': path})
+
+    return jsonify({'markers': markerz})
+
+
 
 logging.basicConfig(level=logging.DEBUG)  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+
 
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
@@ -1322,7 +1269,7 @@ logging.basicConfig(level=logging.DEBUG)  # Set the logging level (DEBUG, INFO, 
 @cross_origin()
 def get_markers():
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
-    markerz= []
+    markerz = []
 
     sql_ad = f'''SELECT geo,coordinate,elevation,type FROM ad_obstacles'''
     df_ad = pd.read_sql(sql_ad, con=engine)
@@ -1334,15 +1281,14 @@ def get_markers():
         popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
                  f"Coordinates: {coor[1]}N, {coor[0]}E")
         markerz.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
+    print(jsonify({'markers': markerz}))
+    return jsonify({'markers': markerz})
 
-    return jsonify({'markers':markerz})
+
 @app.route("/", methods=['GET', 'POST'])
-@cache.cached(timeout=30)
+
 def fullscreen():
-    frame = aerodrome_queue()
-
-
-    return render_template('mapping.html', iframe=frame, title='Fullscreen AD Map | Folium')
+    return render_template('aerodrome.html', title='Fullscreen AD Map | Folium')
 
 
 @app.route("/aerodrome", methods=['GET', 'POST'])
@@ -1616,6 +1562,7 @@ def area_4():
     frame = m6.get_root().render()
 
     return render_template('mapping.html', iframe=frame, title='Area 4 Obstacles | Folium')
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
