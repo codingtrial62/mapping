@@ -13,7 +13,7 @@ from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap5
 from flask_caching import Cache
 import logging
-import json
+from flask_cors import CORS
 
 cache = Cache()
 '''
@@ -41,7 +41,7 @@ migrate = Migrate()
 db.init_app(app)
 migrate.init_app(app, db)
 
-
+CORS(app)
 path_list_ad = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
 path_to_enr = '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml'
 path_list_area_2 = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area2a_obstacles').rglob("*.gdb"))
