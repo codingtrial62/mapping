@@ -4,7 +4,7 @@ import folium
 import geopandas
 import pandas as pd
 from shapely import wkt
-from flask import Flask, render_template, url_for, jsonify
+from flask import Flask, render_template, url_for, jsonify,redirect
 from flask_sqlalchemy import SQLAlchemy
 from folium.plugins import FastMarkerCluster, FeatureGroupSubGroup, MarkerCluster, GroupedLayerControl
 from sqlalchemy import create_engine
@@ -1318,23 +1318,22 @@ logging.basicConfig(level=logging.DEBUG)  # Set the logging level (DEBUG, INFO, 
 
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
-@app.route("/get_markers", methods=['GET', 'POST'])
+@app.route("/get_markers", methods=['GET'])
 @cross_origin()
 def get_markers():
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     markerz= []
-    for p in path_list_ad[:]:
-        sql_ad = f'''SELECT geo,coordinate,elevation,type FROM ad_obstacles where ad_obstacles.aerodrome = "{str(p)[64:68].lower()}"'''
-        df_ad = pd.read_sql(sql_ad, con=engine)
-        df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
-        df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
 
-        for i in range(df.shape[0]):
-            path = f'{str(p)[64:68].lower()}_AD_Obst'
-            coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
-            popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
-                     f"Coordinates: {coor[1]}N, {coor[0]}E")
-            markerz.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
+    sql_ad = f'''SELECT geo,coordinate,elevation,type FROM ad_obstacles'''
+    df_ad = pd.read_sql(sql_ad, con=engine)
+    df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
+    df = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
+
+    for i in range(df.shape[0]):
+        coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
+        popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
+                 f"Coordinates: {coor[1]}N, {coor[0]}E")
+        markerz.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
 
     return jsonify({'markers':markerz})
 @app.route("/", methods=['GET', 'POST'])
