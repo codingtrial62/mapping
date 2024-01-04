@@ -233,9 +233,9 @@
 
         // Create a MarkerCluster group
         var markerCluster = L.markerClusterGroup();
-
+        const markerz = {{ url_for('get_markers')|tojson}};
         // Fetch additional markers asynchronously
-        fetch('get_markers')
+        fetch(markerz)
             .then(response => response.json())
             .then(data => {
                 // Add dynamic data to the map
