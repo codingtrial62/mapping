@@ -1282,7 +1282,9 @@ def get_markers():
 @app.route("/", methods=['GET', 'POST'])
 
 def fullscreen():
-    return render_template('aerodrome.html', title='Fullscreen AD Map | Folium')
+    m = folium.Map(location=[39, 35], zoom_start=6)
+    frame = m.get_root().render()
+    return render_template('aerodrome.html',iframe=frame, title='Fullscreen AD Map | Folium')
 
 
 @app.route("/aerodrome", methods=['GET', 'POST'])
