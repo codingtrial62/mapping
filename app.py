@@ -903,6 +903,7 @@ def marker_creator_ad(df, i):
 def marker_c():
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     markerz = []
+    pathz = []
 
     sql_ad = f'''SELECT geo,coordinate,elevation,type,name FROM ad_obstacles'''
     df_ad = pd.read_sql(sql_ad, con=engine)
@@ -1249,8 +1250,8 @@ def marker_c():
         popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
                  f"Coordinates: {coor[1]}N, {coor[0]}E")
         markerz.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup, 'path': path})
-    print(jsonify({'markers': markerz}))
-    return jsonify({'markers': markerz})
+        pathz.append(path)
+    return jsonify({'markers': markerz, 'paths': pathz})
 
 
 
@@ -1274,6 +1275,7 @@ def get_markers():
         coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
         popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
                  f"Coordinates: {coor[1]}N, {coor[0]}E")
+
         markerz.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
 
     return jsonify({'markers': markerz})

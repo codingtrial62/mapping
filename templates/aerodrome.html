@@ -233,18 +233,21 @@
 
         // Create a MarkerCluster group
         var markerCluster = L.markerClusterGroup();
-
+        const SCRIPT_ROOT = {{ request.script_root|tojson }};
+        let marker_c = `${SCRIPT_ROOT}/marker_c`;
 
         // Fetch additional markers asynchronously
-        fetch('/marker_c')
+        fetch(marker_c)
             .then(response => response.json())
             .then(data => {
                 // Add dynamic data to the map
+                var paths = data.paths;
                 var markers = data.markers;
                 for (var i = 0; i < markers.length; i++) {
                     var dataPoint = markers[i];
+                    var pathPoint = paths[i];
                     var customIcon = L.icon({
-                        iconUrl: [dataPoint.path],
+                        iconUrl: pathPoint,
                         iconSize: [64, 64],  // Adjust the size as needed
                         iconAnchor: [16, 32], // Adjust the anchor point as needed
                         popupAnchor: [0, -32]  // Adjust the popup anchor point as needed
