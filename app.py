@@ -1250,7 +1250,7 @@ def marker_c():
         popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
                  f"Coordinates: {coor[1]}N, {coor[0]}E")
         markerz.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup, 'path': path})
-        pathz.append(path)
+        pathz.append({'path': path})
     return jsonify({'markers': markerz, 'paths': pathz})
 
 
