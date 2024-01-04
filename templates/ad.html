@@ -233,11 +233,9 @@
 
         // Create a MarkerCluster group
         var markerCluster = L.markerClusterGroup();
-        const SCRIPT_ROOT = {{ request.script_root|tojson }};
-        let markerss = `${SCRIPT_ROOT}/get_markers`;
 
         // Fetch additional markers asynchronously
-        fetch(markerss)
+        fetch('get_markers')
             .then(response => response.json())
             .then(data => {
                 // Add dynamic data to the map
