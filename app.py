@@ -13,7 +13,7 @@ from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap5
 from flask_caching import Cache
 import logging
-from flask_cors import CORS
+from flask_cors import CORS,cross_origin
 
 cache = Cache()
 '''
@@ -41,7 +41,6 @@ migrate = Migrate()
 db.init_app(app)
 migrate.init_app(app, db)
 
-CORS(app)
 path_list_ad = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
 path_to_enr = '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml'
 path_list_area_2 = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area2a_obstacles').rglob("*.gdb"))
@@ -1320,6 +1319,7 @@ logging.basicConfig(level=logging.DEBUG)  # Set the logging level (DEBUG, INFO, 
 # create_area_3_4_db(path_list_area_3, 3, path_list_area_4_xml)
 # create_area_3_4_db(path_list_area_4,4, path_list_area_4_xml)
 @app.route("/get_markers", methods=['GET', 'POST'])
+@cross_origin()
 def get_markers():
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     markerz= []
