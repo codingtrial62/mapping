@@ -233,7 +233,9 @@
 
         // Create a MarkerCluster group
         var markerCluster = L.markerClusterGroup();
-        const markerss = {{ url_for('get_markers')|tojson }};
+        const SCRIPT_ROOT = {{ request.script_root|tojson }};
+        let markerss = `${SCRIPT_ROOT}/get_markers`;
+
         // Fetch additional markers asynchronously
         fetch(markerss)
             .then(response => response.json())
