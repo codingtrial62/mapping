@@ -234,23 +234,13 @@
         // Create a MarkerCluster group
         var markerCluster = L.markerClusterGroup();
         const SCRIPT_ROOT = {{ request.script_root|tojson }};
-        let marker_c = `${SCRIPT_ROOT}/marker_c`;
-        console.log('Marker: ', marker_c)
+        let markerc= `${SCRIPT_ROOT}/marker_c`;
+
         // Fetch additional markers asynchronously
-        // TODO: Add loading UI code here
-
-        fetch(marker_c)
-            .then(function (response) {
-                return response.text();
-            })
-            .then(function (text) {
-                console.log('Response content:', text);
-                return JSON.parse(text);
-            })
-            .then(function (data) {
-                // Remove loading spinner or message
-                // TODO: Remove loading UI code here
-
+        fetch(markerc)
+            .then(response => response.json())
+            .then(data => {
+                // Add dynamic data to the map
                 var paths = data.paths;
                 var markers = data.markers;
 
@@ -259,20 +249,21 @@
                     var pathPoint = paths[i];
 
                     var customIcon = L.icon({
-                        iconUrl: pathPoint,
-                        iconSize: [64, 64],  // Adjust as needed
-                        iconAnchor: [16, 32], // Adjust as needed
-                        popupAnchor: [0, -32]  // Adjust as needed
+                        iconUrl: pathPoint.path,
+                        iconSize: [64, 64],
+                        iconAnchor: [16, 32],
+                        popupAnchor: [0, -32]
                     });
 
                     var marker = L.marker([dataPoint.lat, dataPoint.lon], { icon: customIcon });
-
                     marker.bindPopup(dataPoint.popup);
                     markerCluster.addLayer(marker);
                 }
 
+                // Add MarkerCluster to the map
                 map.addLayer(markerCluster);
 
+                // Add Layer Control
                 var baseMaps = {
                     "OpenStreetMap": L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                         attribution: '© OpenStreetMap contributors'
@@ -293,13 +284,10 @@
                     return new bootstrap.Offcanvas(offcanvasEl);
                 });
             })
-            .catch(function (error) {
-                console.error('Error fetching data:', error);
-                // Remove loading spinner or message
-                // TODO: Remove loading UI code here
-            });
+            .catch(error => console.error('Fetch error:', error));
     });
 </script>
+
 
 
 <!-- Move Bootstrap script to the bottom -->

@@ -1170,16 +1170,17 @@ def marker_creator_ad(df, i, ):
 
     return icons
 engine = create_engine('sqlite:////Users/dersim/PycharmProjects/mapping/instance/obstacles.db')
-sql_ad = "SELECT * FROM area2a_obstacles"
+sql_ad = "SELECT * FROM ad_obstacles"
 df_ad = pd.read_sql(sql_ad, con=engine)
-df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
-gdf = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
-dict_area2 = {}
-for p in path_list_area_2[:]:
-    dict_area2[str(p)[61:65].lower() + '_Area2a_Obstacles'] = folium.plugins.MarkerCluster(name=str(p)[61:65] + '_Area2a_Obstacles', control=True)
-print(dict_area2)
+print(df_ad.groupby('type').count())
+# df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
+# gdf = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
+# dict_area2 = {}
+# for p in path_list_area_2[:]:
+#     dict_area2[str(p)[61:65].lower() + '_Area2a_Obstacles'] = folium.plugins.MarkerCluster(name=str(p)[61:65] + '_Area2a_Obstacles', control=True)
+# print(dict_area2)
 
-print(dict_area2['ltac_Area2a_Obstacles'])
+
 
 # def create_ad_obstacles_db(path_list):
 #     """
