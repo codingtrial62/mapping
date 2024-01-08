@@ -1,4 +1,5 @@
-<html lang="en" data-bs-theme="light"><head><script src="/docs/5.3/assets/js/color-modes.js"></script>
+<head>
+    <script src="/docs/5.3/assets/js/color-modes.js"></script>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,14 +9,195 @@
     <title>MAPHOME</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbars-offcanvas/">
 
-
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css" />
 
-    <link href="/docs/5.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster.js"></script>
 
     <!-- Favicons -->
     <style>
+        :root,
+        [data-bs-theme=light] {
+            --bs-blue: #0d6efd;
+            --bs-indigo: #6610f2;
+            --bs-purple: #6f42c1;
+            --bs-pink: #d63384;
+            --bs-red: #dc3545;
+            --bs-orange: #fd7e14;
+            --bs-yellow: #ffc107;
+            --bs-green: #198754;
+            --bs-teal: #20c997;
+            --bs-cyan: #0dcaf0;
+            --bs-black: #000;
+            --bs-white: #fff;
+            --bs-gray: #6c757d;
+            --bs-gray-dark: #343a40;
+            --bs-gray-100: #f8f9fa;
+            --bs-gray-200: #e9ecef;
+            --bs-gray-300: #dee2e6;
+            --bs-gray-400: #ced4da;
+            --bs-gray-500: #adb5bd;
+            --bs-gray-600: #6c757d;
+            --bs-gray-700: #495057;
+            --bs-gray-800: #343a40;
+            --bs-gray-900: #212529;
+            --bs-primary: #0d6efd;
+            --bs-secondary: #6c757d;
+            --bs-success: #198754;
+            --bs-info: #0dcaf0;
+            --bs-warning: #ffc107;
+            --bs-danger: #dc3545;
+            --bs-light: #f8f9fa;
+            --bs-dark: #212529;
+            --bs-primary-rgb: 13, 110, 253;
+            --bs-secondary-rgb: 108, 117, 125;
+            --bs-success-rgb: 25, 135, 84;
+            --bs-info-rgb: 13, 202, 240;
+            --bs-warning-rgb: 255, 193, 7;
+            --bs-danger-rgb: 220, 53, 69;
+            --bs-light-rgb: 248, 249, 250;
+            --bs-dark-rgb: 33, 37, 41;
+            --bs-primary-text-emphasis: #052c65;
+            --bs-secondary-text-emphasis: #2b2f32;
+            --bs-success-text-emphasis: #0a3622;
+            --bs-info-text-emphasis: #055160;
+            --bs-warning-text-emphasis: #664d03;
+            --bs-danger-text-emphasis: #58151c;
+            --bs-light-text-emphasis: #495057;
+            --bs-dark-text-emphasis: #495057;
+            --bs-primary-bg-subtle: #cfe2ff;
+            --bs-secondary-bg-subtle: #e2e3e5;
+            --bs-success-bg-subtle: #d1e7dd;
+            --bs-info-bg-subtle: #cff4fc;
+            --bs-warning-bg-subtle: #fff3cd;
+            --bs-danger-bg-subtle: #f8d7da;
+            --bs-light-bg-subtle: #fcfcfd;
+            --bs-dark-bg-subtle: #ced4da;
+            --bs-primary-border-subtle: #9ec5fe;
+            --bs-secondary-border-subtle: #c4c8cb;
+            --bs-success-border-subtle: #a3cfbb;
+            --bs-info-border-subtle: #9eeaf9;
+            --bs-warning-border-subtle: #ffe69c;
+            --bs-danger-border-subtle: #f1aeb5;
+            --bs-light-border-subtle: #e9ecef;
+            --bs-dark-border-subtle: #adb5bd;
+            --bs-white-rgb: 255, 255, 255;
+            --bs-black-rgb: 0, 0, 0;
+            --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+            --bs-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+            --bs-body-font-family: var(--bs-font-sans-serif);
+            --bs-body-font-size: 1rem;
+            --bs-body-font-weight: 400;
+            --bs-body-line-height: 1.5;
+            --bs-body-color: #212529;
+            --bs-body-color-rgb: 33, 37, 41;
+            --bs-body-bg: #fff;
+            --bs-body-bg-rgb: 255, 255, 255;
+            --bs-emphasis-color: #000;
+            --bs-emphasis-color-rgb: 0, 0, 0;
+            --bs-secondary-color: rgba(33, 37, 41, 0.75);
+            --bs-secondary-color-rgb: 33, 37, 41;
+            --bs-secondary-bg: #e9ecef;
+            --bs-secondary-bg-rgb: 233, 236, 239;
+            --bs-tertiary-color: rgba(33, 37, 41, 0.5);
+            --bs-tertiary-color-rgb: 33, 37, 41;
+            --bs-tertiary-bg: #f8f9fa;
+            --bs-tertiary-bg-rgb: 248, 249, 250;
+            --bs-heading-color: inherit;
+            --bs-link-color: #0d6efd;
+            --bs-link-color-rgb: 13, 110, 253;
+            --bs-link-decoration: underline;
+            --bs-link-hover-color: #0a58ca;
+            --bs-link-hover-color-rgb: 10, 88, 202;
+            --bs-code-color: #d63384;
+            --bs-highlight-color: #212529;
+            --bs-highlight-bg: #fff3cd;
+            --bs-border-width: 1px;
+            --bs-border-style: solid;
+            --bs-border-color: #dee2e6;
+            --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+            --bs-border-radius: 0.375rem;
+            --bs-border-radius-sm: 0.25rem;
+            --bs-border-radius-lg: 0.5rem;
+            --bs-border-radius-xl: 1rem;
+            --bs-border-radius-xxl: 2rem;
+            --bs-border-radius-2xl: var(--bs-border-radius-xxl);
+            --bs-border-radius-pill: 50rem;
+            --bs-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            --bs-box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+            --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+            --bs-focus-ring-width: 0.25rem;
+            --bs-focus-ring-opacity: 0.25;
+            --bs-focus-ring-color: rgba(13, 110, 253, 0.25);
+            --bs-form-valid-color: #198754;
+            --bs-form-valid-border-color: #198754;
+            --bs-form-invalid-color: #dc3545;
+            --bs-form-invalid-border-color: #dc3545;
+        }
+
+        [data-bs-theme=dark] {
+            color-scheme: dark;
+            --bs-body-color: #dee2e6;
+            --bs-body-color-rgb: 222, 226, 230;
+            --bs-body-bg: #212529;
+            --bs-body-bg-rgb: 33, 37, 41;
+            --bs-emphasis-color: #fff;
+            --bs-emphasis-color-rgb: 255, 255, 255;
+            --bs-secondary-color: rgba(222, 226, 230, 0.75);
+            --bs-secondary-color-rgb: 222, 226, 230;
+            --bs-secondary-bg: #343a40;
+            --bs-secondary-bg-rgb: 52, 58, 64;
+            --bs-tertiary-color: rgba(222, 226, 230, 0.5);
+            --bs-tertiary-color-rgb: 222, 226, 230;
+            --bs-tertiary-bg: #2b3035;
+            --bs-tertiary-bg-rgb: 43, 48, 53;
+            --bs-primary-text-emphasis: #6ea8fe;
+            --bs-secondary-text-emphasis: #a7acb1;
+            --bs-success-text-emphasis: #75b798;
+            --bs-info-text-emphasis: #6edff6;
+            --bs-warning-text-emphasis: #ffda6a;
+            --bs-danger-text-emphasis: #ea868f;
+            --bs-light-text-emphasis: #f8f9fa;
+            --bs-dark-text-emphasis: #dee2e6;
+            --bs-primary-bg-subtle: #031633;
+            --bs-secondary-bg-subtle: #161719;
+            --bs-success-bg-subtle: #051b11;
+            --bs-info-bg-subtle: #032830;
+            --bs-warning-bg-subtle: #332701;
+            --bs-danger-bg-subtle: #2c0b0e;
+            --bs-light-bg-subtle: #343a40;
+            --bs-dark-bg-subtle: #1a1d20;
+            --bs-primary-border-subtle: #084298;
+            --bs-secondary-border-subtle: #41464b;
+            --bs-success-border-subtle: #0f5132;
+            --bs-info-border-subtle: #087990;
+            --bs-warning-border-subtle: #997404;
+            --bs-danger-border-subtle: #842029;
+            --bs-light-border-subtle: #495057;
+            --bs-dark-border-subtle: #343a40;
+            --bs-heading-color: inherit;
+            --bs-link-color: #6ea8fe;
+            --bs-link-hover-color: #8bb9fe;
+            --bs-link-color-rgb: 110, 168, 254;
+            --bs-link-hover-color-rgb: 139, 185, 254;
+            --bs-code-color: #e685b5;
+            --bs-highlight-color: #dee2e6;
+            --bs-highlight-bg: #664d03;
+            --bs-border-color: #495057;
+            --bs-border-color-translucent: rgba(255, 255, 255, 0.15);
+            --bs-form-valid-color: #75b798;
+            --bs-form-valid-border-color: #75b798;
+            --bs-form-invalid-color: #ea868f;
+            --bs-form-invalid-border-color: #ea868f;
+        }
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -92,6 +274,30 @@
         .bd-mode-toggle .dropdown-menu .active .bi {
             display: block !important;
         }
+
+        .text-success {
+            --bs-text-opacity: 1;
+            color: rgba(var(--bs-success-rgb),var(--bs-text-opacity))!important;
+        }
+        .spinner-border {
+            --bs-spinner-width: 2rem;
+            --bs-spinner-height: 2rem;
+            --bs-spinner-vertical-align: -0.125em;
+            --bs-spinner-border-width: 0.25em;
+            --bs-spinner-animation-speed: 0.75s;
+            --bs-spinner-animation-name: spinner-border;
+            border: var(--bs-spinner-border-width) solid currentcolor;
+            border-right-color: transparent;
+        }
+
+        .spinner-border, .spinner-grow {
+            display: inline-block;
+            width: var(--bs-spinner-width);
+            height: var(--bs-spinner-height);
+            vertical-align: var(--bs-spinner-vertical-align);
+            border-radius: 50%;
+            animation: var(--bs-spinner-animation-speed) linear infinite var(--bs-spinner-animation-name);
+        }
     </style>
 
 
@@ -155,62 +361,171 @@
                             </ul>
                         </li>
                     </ul>
-{#                    <form class="d-flex mt-3" role="search">#}
-{#                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">#}
-{#                        <button class="btn btn-outline-success" type="submit">Search</button>#}
-{#                    </form>#}
+                    {#                    <form class="d-flex mt-3" role="search">#}
+                    {#                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">#}
+                    {#                        <button class="btn btn-outline-success" type="submit">Search</button>#}
+                    {#                    </form>#}
                 </div>
             </div>
         </div>
     </nav>
-{#    <nav class="navbar bg-success bg-gradient" aria-label="Light offcanvas navbar">#}
-{#        <div class="container-fluid">#}
-{#            <a class="navbar-brand" href="#">Light offcanvas navbar</a>#}
-{#            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight" aria-label="Toggle navigation">#}
-{#                <span class="navbar-toggler-icon"></span>#}
-{#            </button>#}
-{#            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbarLight" aria-labelledby="offcanvasNavbarLightLabel">#}
-{#                <div class="offcanvas-header">#}
-{#                    <h5 class="offcanvas-title" id="offcanvasNavbarLightLabel">Offcanvas</h5>#}
-{#                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>#}
-{#                </div>#}
-{#                <div class="offcanvas-body">#}
-{#                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">#}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link active" aria-current="page" href="#">Home</a>#}
-{#                        </li>#}
-{#                        <li class="nav-item">#}
-{#                            <a class="nav-link" href="#">Link</a>#}
-{#                        </li>#}
-{#                        <li class="nav-item dropdown">#}
-{#                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">#}
-{#                                Dropdown#}
-{#                            </a>#}
-{#                            <ul class="dropdown-menu">#}
-{#                                <li><a class="dropdown-item" href="#">Action</a></li>#}
-{#                                <li><a class="dropdown-item" href="#">Another action</a></li>#}
-{#                                <li>#}
-{#                                    <hr class="dropdown-divider">#}
-{#                                </li>#}
-{#                                <li><a class="dropdown-item" href="#">Something else here</a></li>#}
-{#                            </ul>#}
-{#                        </li>#}
-{#                    </ul>#}
-{#                    <form class="d-flex mt-3" role="search">#}
-{#                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">#}
-{#                        <button class="btn btn-outline-success" type="submit">Search</button>#}
-{#                    </form>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </nav>#}
+    {#    <nav class="navbar bg-success bg-gradient" aria-label="Light offcanvas navbar">#}
+    {#        <div class="container-fluid">#}
+    {#            <a class="navbar-brand" href="#">Light offcanvas navbar</a>#}
+    {#            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbarLight" aria-controls="offcanvasNavbarLight" aria-label="Toggle navigation">#}
+    {#                <span class="navbar-toggler-icon"></span>#}
+    {#            </button>#}
+    {#            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbarLight" aria-labelledby="offcanvasNavbarLightLabel">#}
+    {#                <div class="offcanvas-header">#}
+    {#                    <h5 class="offcanvas-title" id="offcanvasNavbarLightLabel">Offcanvas</h5>#}
+    {#                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>#}
+    {#                </div>#}
+    {#                <div class="offcanvas-body">#}
+    {#                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">#}
+    {#                        <li class="nav-item">#}
+    {#                            <a class="nav-link active" aria-current="page" href="#">Home</a>#}
+    {#                        </li>#}
+    {#                        <li class="nav-item">#}
+    {#                            <a class="nav-link" href="#">Link</a>#}
+    {#                        </li>#}
+    {#                        <li class="nav-item dropdown">#}
+    {#                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">#}
+    {#                                Dropdown#}
+    {#                            </a>#}
+    {#                            <ul class="dropdown-menu">#}
+    {#                                <li><a class="dropdown-item" href="#">Action</a></li>#}
+    {#                                <li><a class="dropdown-item" href="#">Another action</a></li>#}
+    {#                                <li>#}
+    {#                                    <hr class="dropdown-divider">#}
+    {#                                </li>#}
+    {#                                <li><a class="dropdown-item" href="#">Something else here</a></li>#}
+    {#                            </ul>#}
+    {#                        </li>#}
+    {#                    </ul>#}
+    {#                    <form class="d-flex mt-3" role="search">#}
+    {#                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">#}
+    {#                        <button class="btn btn-outline-success" type="submit">Search</button>#}
+    {#                    </form>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </nav>#}
 
 </main>
 
 
-{{iframe|safe}}
+<br>
+<br>
+<br>
 
 
+<div id="map" style="height: 640px; z-index: 0;"></div>
+<div class="spinner-border text-success"  style="position: relative; left: 600px; bottom: 350px;" role="status" id="mapSpinner">
+    Loading Obstacles...
+</div>
 
+<!-- Add this script block after the map container and before the Bootstrap script -->
+<!-- Add this script block after the map container -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Create a new map instance
+        document.getElementById('mapSpinner').style.display = 'block';
+        var map = L.map('map').setView([39, 35], 6);
+
+        // Add a base tile layer (e.g., OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Create a MarkerCluster group
+        var markerCluster = L.markerClusterGroup();
+        var polylineGroup = L.layerGroup().addTo(map);
+        // Create a Polygon group
+        var polygonGroup = L.layerGroup().addTo(map);
+        const SCRIPT_ROOT = {{ request.script_root|tojson }};
+        let all = `${SCRIPT_ROOT}/get_all`;
+
+        // Fetch additional markers asynchronously
+        fetch(all)
+            .then(response => response.json())
+            .then(data => {
+                // Add dynamic data to the map
+
+
+                var markers = data.points;
+                for (var i = 0; i < markers.length; i++) {
+                    var dataPoint = markers[i];
+                    var circleMarker = L.circleMarker([dataPoint.lat, dataPoint.lon]);
+
+                    // You can customize circleMarker properties here
+                    circleMarker.setStyle({
+                        radius: 3,
+                        color: 'purple',
+                        fillColor: 'magenta',
+                        fillOpacity: 1
+                    });
+
+                    circleMarker.bindPopup(dataPoint.popup);
+                    markerCluster.addLayer(circleMarker);
+                }
+                var polylines = data.polylines;
+                for (var j = 0; j < polylines.length; j++) {
+                    var polyPoint = polylines[j];
+                    var polyLine = L.polyline(polyPoint.latlngs, {color: 'darkgreen'}).addTo(polylineGroup);
+
+
+                    polyLine.bindPopup(polyPoint.popup);
+                }
+                var polygons = data.polygons;
+                for (var k = 0; k < polygons.length; k++) {
+                    var polygonPoint = polygons[k];
+                    var polygon = L.polygon(polygonPoint.latlngs, { color: 'darkpurple'  }).addTo(polygonGroup);
+                    polygon.bindPopup(polygonPoint.popup);
+                }
+
+                // Add MarkerCluster to the map
+                map.addLayer(markerCluster);
+
+                // Add Layer Control
+                var baseMaps = {
+                    "OpenStreetMap": L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        attribution: '© OpenStreetMap contributors'
+                    })
+                    // Add other base layers if needed
+                };
+
+                var overlayMaps = {
+                    "All Point Obst": markerCluster,
+                    "All Polylines": polylineGroup,
+                    "All Polygons": polygonGroup
+                    // Add other overlay layers if needed
+                };
+
+                L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+
+                // Initialize offcanvas after adding data to the map
+                var offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
+                var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
+                    return new bootstrap.Offcanvas(offcanvasEl);
+                });
+                document.getElementById('mapSpinner').style.display = 'none';
+
+            })
+            .catch(error => console.error('Fetch error:', error));
+
+    });
+</script>
+
+
+<!-- Move Bootstrap script to the bottom -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script>
+    var offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
+    var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
+        return new bootstrap.Offcanvas(offcanvasEl)
+    });
+</script>
 </body>
-<script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+</html>

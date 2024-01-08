@@ -15,11 +15,9 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.1/dist/MarkerCluster.Default.css" />
 
-
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script src="https://unpkg.com/leaflet.markercluster@1.5.1/dist/leaflet.markercluster.js"></script>
-
     <!-- Favicons -->
     <style>
         .bd-placeholder-img {
@@ -240,10 +238,10 @@
         // Create a MarkerCluster group
         var markerCluster = L.markerClusterGroup();
         const SCRIPT_ROOT = {{ request.script_root|tojson }};
-        let markerss = `${SCRIPT_ROOT}/get_markers`;
+        let enr = `${SCRIPT_ROOT}/get_enr`;
 
         // Fetch additional markers asynchronously
-        fetch(markerss)
+        fetch(enr)
             .then(response => response.json())
             .then(data => {
                 // Add dynamic data to the map
@@ -255,8 +253,8 @@
                     // You can customize circleMarker properties here
                     circleMarker.setStyle({
                         radius: 3,
-                        color: 'red',
-                        fillColor: 'black',
+                        color: 'purple',
+                        fillColor: 'purple',
                         fillOpacity: 1
                     });
 
@@ -276,12 +274,11 @@
                 };
 
                 var overlayMaps = {
-                    "Aerodrome Obst": markerCluster
+                    "En-Route Obst": markerCluster
                     // Add other overlay layers if needed
                 };
 
                 L.control.layers(baseMaps, overlayMaps).addTo(map);
-
 
                 // Initialize offcanvas after adding data to the map
                 var offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
