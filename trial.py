@@ -1378,3 +1378,201 @@ print(df_ad.groupby('type').count())
 #     folium.plugins.MousePosition().add_to(m4)
 #     folium.LayerControl(collapsed=False).add_to(m4)
 #     frame = m4.get_root().render()
+
+
+# def read_all_area():
+#     """
+#     This function creates a database from .gdb files for area3a and area4a obstacles for every airport other than
+#     LTFM. For LTFM we use the aixm format and different path. If data has crs type other than WGS84 transforms it to
+#     WGS84. Also caution for file paths especially having space in it.
+#
+#     """
+#     maps = folium.Map(location=[39, 35], zoom_start=6)
+#     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
+#     fg = MarkerCluster(control=False)
+#     maps.add_child(fg)
+#     # g1 = folium.plugins.FeatureGroupSubGroup(fg, 'Ad_Obst')
+#     # maps.add_child(g1)
+#     g2 = FeatureGroupSubGroup(fg, 'Area 2a Obst')
+#     maps.add_child(g2)
+#     g3 = FeatureGroupSubGroup(fg, 'Area3_Obst')
+#     maps.add_child(g3)
+#     g5 = FeatureGroupSubGroup(fg, 'Area4_Obst')
+#     maps.add_child(g5)
+#
+#     # for p in path_list_ad[:]:
+#     #     ad = str(p)[64:68]
+#     #     sql_ad = f'''SELECT geo,coordinate,elevation,type FROM ad_obstacles  where ad_obstacles.aerodrome="{str(p)[64:68].lower()}"'''
+#     #     df_ad = pd.read_sql(sql_ad, con=engine)
+#     #     df_ad['geometry'] = df_ad['geo'].apply(wkt.loads)
+#     #     cdf = geopandas.GeoDataFrame(df_ad, crs='EPSG:4326')
+#     #
+#     #     for o in range(cdf.shape[0]):
+#     #         coor = cdf.get_coordinates(ignore_index=True)
+#     #         # icons = folium.CustomIcon(
+#     #         #     icon_image='/Users/dersim/PycharmProjects/mapping/static/assets/images/marker_dot.png')
+#     #         marker = folium.CircleMarker(location=[coor.loc[o, 'y'], coor.loc[o, 'x']], radius=3, color='purple', fill_opacity=1, fill=True)
+#     #         popup = (f"Elevation: {cdf.loc[o, 'elevation']} FT Type: {cdf.loc[o, 'type']} "
+#     #                  f" Coordinates: {coor.loc[o, 'y']}N, {coor.loc[o, 'x']}E")
+#     #
+#     #         folium.Popup(popup).add_to(marker)
+#     #         marker.add_to(g1)
+#
+#     sql_a2 = f'''SELECT geo, coordinate, elevation, obstacle_type  FROM area2a_obstacles'''
+#     df_a2 = pd.read_sql(sql_a2, con=engine)
+#     df_a2['geometry'] = df_a2['geo'].apply(wkt.loads)
+#     bdf = geopandas.GeoDataFrame(df_a2, crs='EPSG:4326')
+#
+#     for o in range(bdf.shape[0]):
+#         coor = bdf.get_coordinates(ignore_index=True)
+#
+#         if bdf.loc[o, 'geometry'].geom_type == 'Point':
+#             yy = bdf.loc[o, 'coordinate'].replace(',', '.').split(' ')
+#             # icons = folium.CustomIcon(
+#             #     icon_image='/app/static/assets/images/marker_dot.png')
+#             marker = folium.CircleMarker(location=[yy[0], yy[1]], radius=3, color='blue',
+#                                          fill_opacity=1, fill=True)
+#             popup = (f"Elevation: {bdf.loc[o, 'elevation']} FT  Type: {bdf.loc[o, 'obstacle_type']} "
+#                      f" Coordinates: {coor.loc[o, 'y']}N, {coor.loc[o, 'x']}E")
+#
+#             folium.Popup(popup).add_to(marker)
+#             marker.add_to(g2)
+#         elif bdf.loc[o, 'geometry'].geom_type == 'MultiLineString':
+#             folium.PolyLine(locations=chunks2(bdf.loc[o, 'coordinate'].replace(',', '.').split(' '), 2),
+#                             color='red',
+#                             popup=f"Elevation: {bdf.loc[o, 'elevation']} FT  Type: {bdf.loc[o, 'obstacle_type']} "
+#                                   f" Coordinates(..N..E): {chunks2(bdf.loc[o, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+#                 g2)
+#
+#     sql_a3 = f'''SELECT geo, coordinate, elevation, obstacle_type   FROM area3_obstacles'''
+#     df_a3 = pd.read_sql(sql_a3, con=engine)
+#     df_a3['geometry'] = df_a3['geo'].apply(wkt.loads)
+#     gdf = geopandas.GeoDataFrame(df_a3, crs='EPSG:4326')
+#
+#     coords = gdf.get_coordinates(ignore_index=True)
+#     for t in range(gdf.shape[0]):
+#
+#         if gdf.loc[t, 'geometry'].geom_type == 'Point':
+#             oo = gdf.loc[t, 'coordinate'].replace(',', '.').split(' ')
+#             # icons = folium.CustomIcon(
+#             #     icon_image='/app/static/assets/images/marker_dot.png')
+#             marker = folium.CircleMarker(location=[oo[0], oo[1]], radius=3, color='magenta',
+#                                          fill_opacity=1, fill=True)
+#             popup = (f"Elevation: {gdf.loc[t, 'elevation']} FT  Type: {gdf.loc[t, 'obstacle_type']} "
+#                      f" Coordinates: {coords.loc[t, 'y']}N, {coords.loc[t, 'x']}E")
+#
+#             folium.Popup(popup).add_to(marker)
+#             marker.add_to(g3)
+#
+#         elif gdf.loc[t, 'geometry'].geom_type == 'MultiLineString':
+#             folium.PolyLine(locations=chunks2(gdf.loc[t, 'coordinate'].replace(',', '.').split(' '), 2),
+#                             color='purple',
+#                             popup=f"Elevation: {gdf.loc[t, 'elevation']} FT  Type: {gdf.loc[t, 'obstacle_type']} "
+#                                   f" Coordinates(..N..E): {chunks2(gdf.loc[t, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+#                 g3)
+#
+#     sql_ltac = "SELECT geo, Coordinate, Elevation, Obstacle_type  FROM ltac_area3_obstacles"
+#     df_ltac = pd.read_sql(sql_ltac, con=engine)
+#     df_ltac['geometry'] = df_ltac['geo'].apply(wkt.loads)
+#     ltac = geopandas.GeoDataFrame(df_ltac, crs='EPSG:4326')
+#
+#     coord = ltac.get_coordinates(ignore_index=True)
+#     for e in range(ltac.shape[0]):
+#
+#         if ltac.loc[e, 'geometry'].geom_type == 'Point':
+#             uu = ltac.loc[e, 'Coordinate'].replace(',', '.').split(' ')
+#             # icons = folium.CustomIcon(
+#             #     icon_image='/app/static/assets/images/marker_dot.png')
+#             marker = folium.CircleMarker(location=[uu[0], uu[1]], radius=3, color='pink',
+#                                          fill_opacity=1, fill=True)
+#             popup = (f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']}"
+#                      f" Coordinates: {coord.loc[e, 'y']}N, {coord.loc[e, 'x']}E")
+#
+#             folium.Popup(popup).add_to(marker)
+#             marker.add_to(g3)
+#
+#         elif ltac.loc[e, 'geometry'].geom_type == 'LineString':
+#             folium.PolyLine(locations=chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2),
+#                             color='brown',
+#                             popup=f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']} "
+#                                   f" Coordinates(..N..E): {chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+#                 g3)
+#
+#
+#         elif ltac.loc[e, 'geometry'].geom_type == 'Polygon':
+#             folium.Polygon(locations=chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2),
+#                            color='brown',
+#                            popup=f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']} "
+#                                  f" Coordinates(..N..E): {chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+#                 g3)
+#
+#     sql_a4 = f'''SELECT geo, coordinate, elevation, obstacle_type  FROM area4_obstacles'''
+#     df_a4 = pd.read_sql(sql_a4, con=engine)
+#     df_a4['geometry'] = df_a4['geo'].apply(wkt.loads)
+#     hdf = geopandas.GeoDataFrame(df_a4, crs='EPSG:4326')
+#
+#     for l in range(hdf.shape[0]):
+#         coordss = hdf.get_coordinates(ignore_index=True)
+#         if len(hdf.loc[l, 'coordinate']) % 2 != 0:
+#             hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
+#
+#         if hdf.loc[l, 'coordinate'][-4::1] == ' 38*':
+#             hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-4]
+#
+#         if hdf.loc[l, 'geometry'].geom_type == 'Point':
+#             c = hdf.loc[l, 'coordinate'].replace(',', '.').split(' ')
+#             # icons = folium.CustomIcon(
+#             #     icon_image='/app/static/assets/images/marker_dot.png')
+#             marker = folium.CircleMarker(location=[c[0], c[1]], radius=3, color='black',
+#                                          fill_opacity=1, fill=True)
+#             popup = (f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
+#                      f" Coordinates: {coordss.loc[l, 'y']}N, {coordss.loc[l, 'x']}E")
+#
+#             folium.Popup(popup).add_to(marker)
+#             marker.add_to(g5)
+#
+#         elif hdf.loc[l, 'geometry'].geom_type == 'MultiLineString':
+#             folium.PolyLine(locations=chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+#                             color='green',
+#                             popup=f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
+#                                   f" Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+#                 g5)
+#
+#     sql_fm = "SELECT geo, coordinate, elevation,type  FROM ltfm_area4_obstacles"
+#     df_fm = pd.read_sql(sql_fm, con=engine)
+#     df_fm['geometry'] = df_fm['geo'].apply(wkt.loads)
+#     xdf = geopandas.GeoDataFrame(df_fm, crs='EPSG:4326')
+#
+#     for u in range(xdf.shape[0]):
+#         coorddss = xdf.get_coordinates(ignore_index=True)
+#         if xdf.loc[u, 'geometry'].geom_type == 'Point':
+#             gg = xdf.loc[u, 'coordinate'].replace(',', '.').split(' ')
+#             # icons = folium.CustomIcon(
+#             #     icon_image='/app/static/assets/images/marker_dot.png')
+#             marker = folium.CircleMarker(location=[gg[1], gg[0]], radius=3,
+#                                          color='yellow', fill_opacity=1, fill=True)
+#             popup = (f"Elevation: {xdf.loc[u, 'elevation']} FT  Type: {xdf.loc[u, 'type']}"
+#                      f" Coordinates: {coorddss.loc[u, 'y']}N, {coorddss.loc[u, 'x']}E")
+#
+#             folium.Popup(popup).add_to(marker)
+#             marker.add_to(g5)
+#
+#         elif xdf.loc[u, 'geometry'].geom_type == 'MultiLineString':
+#             folium.PolyLine(locations=chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2),
+#                             color='brown',
+#                             popup=f"Elevation: {xdf.loc[u, 'elevation']} FT  Type: {xdf.loc[u, 'type']} "
+#                                   f" Coordinates(..N..E): {chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+#                 g5)
+#
+#
+#         elif xdf.loc[u, 'geometry'].geom_type == 'MultiPolygon':
+#             folium.Polygon(locations=chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2),
+#                            color='brown',
+#                            popup=f"Elevation: {xdf.loc[u, 'elevation']} FT  Type: {xdf.loc[u, 'type']} "
+#                                  f" Coordinates(..N..E): {chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2)}").add_to(
+#                 g5)
+#
+#     folium.LayerControl(collapsed=False).add_to(maps)
+#     folium.plugins.MousePosition().add_to(maps)
+#     frame = maps.get_root().render()
+#     return frame
