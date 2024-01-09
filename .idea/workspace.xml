@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d043c1f-a2e7-477f-9065-613e7213b8d5" name="Changes" comment="engine change">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autoconf" beforeDir="false" afterPath="$PROJECT_DIR$/autoconf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autoconf/build-aux/gendocs.sh" beforeDir="false" afterPath="$PROJECT_DIR$/autoconf/build-aux/gendocs.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/automake" beforeDir="false" afterPath="$PROJECT_DIR$/automake" afterDir="false" />
@@ -14,15 +12,6 @@
       <change beforePath="$PROJECT_DIR$/bison" beforeDir="false" afterPath="$PROJECT_DIR$/bison" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flex" beforeDir="false" afterPath="$PROJECT_DIR$/flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mdbtools" beforeDir="false" afterPath="$PROJECT_DIR$/mdbtools" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdfdsf.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ad.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ad.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/aerodrome.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aerodrome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/area2a.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/area2a.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/area3.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/area3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/area4.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/area4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/enr.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/enr.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mapping.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mapping.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/trial.py" beforeDir="false" afterPath="$PROJECT_DIR$/trial.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +119,7 @@
       <recent name="$PROJECT_DIR$/instance" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app">
+  <component name="RunManager" selected="Flask server.mapping">
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="mapping" />
       <option name="ENV_FILES" value="" />
@@ -252,7 +241,7 @@
       <workItem from="1704632061866" duration="6236000" />
       <workItem from="1704693907054" duration="3140000" />
       <workItem from="1704714130174" duration="6728000" />
-      <workItem from="1704802123662" duration="3869000" />
+      <workItem from="1704802123662" duration="4322000" />
     </task>
     <task id="LOCAL-00001" summary="last revision from other branch">
       <option name="closed" value="true" />
@@ -466,7 +455,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>33</line>
+          <line>32</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>
