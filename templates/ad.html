@@ -1,6 +1,4 @@
 <head>
-    <script src="/docs/5.3/assets/js/color-modes.js"></script>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -233,8 +231,10 @@
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
-        // Create a MarkerCluster group
-        var markerCluster = L.markerClusterGroup();
+        // Create an object to store Marker Clusters and Feature Groups
+        var markerClusters = {};
+        var featureGroups = {};
+
         const SCRIPT_ROOT = {{ request.script_root|tojson }};
         let markerss = `${SCRIPT_ROOT}/get_markers`;
 
@@ -242,26 +242,34 @@
         fetch(markerss)
             .then(response => response.json())
             .then(data => {
-                // Add dynamic data to the map
-                var markers = data.markers;
-                for (var i = 0; i < markers.length; i++) {
-                    var dataPoint = markers[i];
-                    var circleMarker = L.circleMarker([dataPoint.lat, dataPoint.lon]);
+                // Iterate through markers and create clusters and feature groups
+                data.markers.forEach(function (marker) {
+                    var ad = marker.ad;
 
-                    // You can customize circleMarker properties here
-                    circleMarker.setStyle({
+                    // Create Marker Cluster if it doesn't exist
+                    if (!markerClusters[ad]) {
+                        markerClusters[ad] = L.markerClusterGroup();
+                    }
+
+
+                    // Create circle marker
+                    var circleMarker = L.circleMarker([marker.lat, marker.lon], {
                         radius: 3,
                         color: 'red',
                         fillColor: 'black',
                         fillOpacity: 1
                     });
 
-                    circleMarker.bindPopup(dataPoint.popup);
-                    markerCluster.addLayer(circleMarker);
-                }
+                    circleMarker.bindPopup(marker.popup);
 
-                // Add MarkerCluster to the map
-                map.addLayer(markerCluster);
+                    // Add circle marker to the specific Marker Cluster and Feature Group
+                    markerClusters[ad].addLayer(circleMarker);
+                });
+
+                // Add each Marker Cluster and Feature Group to the map
+                for (var ad in markerClusters) {
+                    map.addLayer(markerClusters[ad]);
+                }
 
                 // Add Layer Control
                 var baseMaps = {
@@ -271,13 +279,12 @@
                     // Add other base layers if needed
                 };
 
-                var overlayMaps = {
-                    "Aerodrome Obst": markerCluster
-                    // Add other overlay layers if needed
-                };
+                var overlayMaps = {};
+                for (var ad in markerClusters) {
+                    overlayMaps[ad] = markerClusters[ad];
+                }
 
-                L.control.layers(baseMaps, overlayMaps).addTo(map);
-
+                L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
 
                 // Initialize offcanvas after adding data to the map
                 var offcanvasElementList = [].slice.call(document.querySelectorAll('.offcanvas'))
