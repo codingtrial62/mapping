@@ -2,7 +2,7 @@
 
 
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
@@ -451,10 +451,11 @@
         }).addTo(map);
 
         // Create a MarkerCluster group
-        var markerCluster = L.markerClusterGroup();
+        var markerClusters = {};
         var polylineGroup = L.layerGroup().addTo(map);
         // Create a Polygon group
         var polygonGroup = L.layerGroup().addTo(map);
+        var aerodromes = {}
         const SCRIPT_ROOT = {{ request.script_root|tojson }};
         let area4 = `${SCRIPT_ROOT}/get_area4`;
 
@@ -463,41 +464,61 @@
             .then(response => response.json())
             .then(data => {
                 // Add dynamic data to the map
+                data.points.forEach(function (marker) {
+                    var ad = marker.ad;
+
+                    // Create Marker Cluster if it doesn't exist
+                    if (!aerodromes[ad]) {
+                        aerodromes[ad] = new L.LayerGroup();
+                    }
 
 
-                var markers = data.points;
-                for (var i = 0; i < markers.length; i++) {
-                    var dataPoint = markers[i];
-                    var circleMarker = L.circleMarker([dataPoint.lat, dataPoint.lon]);
-
-                    // You can customize circleMarker properties here
-                    circleMarker.setStyle({
+                    // Create circle marker
+                    var circleMarker = L.circleMarker([marker.lat, marker.lon], {
                         radius: 3,
-                        color: 'purple',
-                        fillColor: 'magenta',
+                        color: 'red',
+                        fillColor: 'black',
                         fillOpacity: 1
                     });
 
-                    circleMarker.bindPopup(dataPoint.popup);
-                    markerCluster.addLayer(circleMarker);
-                }
+                    circleMarker.bindPopup(marker.popup);
+
+                    // Add circle marker to the specific Marker Cluster and Feature Group
+                    aerodromes[ad].addLayer(circleMarker);
+                });
+
+                // Add each Marker Cluster and Feature Group to the map
+
+
                 var polylines = data.polylines;
                 for (var j = 0; j < polylines.length; j++) {
                     var polyPoint = polylines[j];
-                    var polyLine = L.polyline(polyPoint.latlngs, {color: 'darkgreen'}).addTo(polylineGroup);
-
+                    var aad = polyPoint.ad
+                    if (!aerodromes[aad]) {
+                        aerodromes[aad] = new L.LayerGroup();
+                    }
+                    var polyLine = L.polyline(polyPoint.latlngs, {color: 'magenta'});
 
                     polyLine.bindPopup(polyPoint.popup);
+                    aerodromes[aad].addLayer(polyLine);
                 }
                 var polygons = data.polygons;
                 for (var k = 0; k < polygons.length; k++) {
                     var polygonPoint = polygons[k];
-                    var polygon = L.polygon(polygonPoint.latlngs, { color: 'beige'  }).addTo(polygonGroup);
+                    var abd = polygonPoint.ad
+                    if (!aerodromes[abd]) {
+                        aerodromes[abd] = new L.LayerGroup();
+                    }
+                    var polygon = L.polygon(polygonPoint.latlngs, { color: 'blue'  });
                     polygon.bindPopup(polygonPoint.popup);
+                    aerodromes[abd].addLayer(polygon)
+
                 }
 
                 // Add MarkerCluster to the map
-                map.addLayer(markerCluster);
+                for (var ad in aerodromes) {
+                    map.addLayer(aerodromes[ad]);
+                }
 
                 // Add Layer Control
                 var baseMaps = {
@@ -507,12 +528,11 @@
                     // Add other base layers if needed
                 };
 
-                var overlayMaps = {
-                    "Area 4 Point Obst": markerCluster,
-                    "Polylines": polylineGroup,
-                    "Polygons": polygonGroup
-                    // Add other overlay layers if needed
-                };
+                var overlayMaps = {};
+                for (var ad in aerodromes) {
+                    overlayMaps[ad] = aerodromes[ad];
+                }
+
 
                 L.control.layers(baseMaps, overlayMaps).addTo(map);
 
@@ -522,7 +542,7 @@
                 var offcanvasList = offcanvasElementList.map(function (offcanvasEl) {
                     return new bootstrap.Offcanvas(offcanvasEl);
                 });
-
+                document.getElementById('mapSpinner').style.display = 'none';
             })
             .catch(error => console.error('Fetch error:', error));
 
