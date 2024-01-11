@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d043c1f-a2e7-477f-9065-613e7213b8d5" name="Changes" comment="last version ready to deployment">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autoconf" beforeDir="false" afterPath="$PROJECT_DIR$/autoconf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/automake" beforeDir="false" afterPath="$PROJECT_DIR$/automake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bison" beforeDir="false" afterPath="$PROJECT_DIR$/bison" afterDir="false" />
@@ -250,7 +249,7 @@
       <workItem from="1704802123662" duration="4322000" />
       <workItem from="1704810680146" duration="509000" />
       <workItem from="1704875522095" duration="20400000" />
-      <workItem from="1704978049718" duration="1400000" />
+      <workItem from="1704978049718" duration="1642000" />
     </task>
     <task id="LOCAL-00001" summary="last revision from other branch">
       <option name="closed" value="true" />
