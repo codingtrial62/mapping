@@ -766,7 +766,7 @@ def get_area4():
 
 @app.route('/area4')
 def area_4():
-    return render_template('trial.html', title='Area 4 Obstacles | Folium')
+    return render_template('area4.html', title='Area 4 Obstacles | Folium')
 
 
 if __name__ == '__main__':
