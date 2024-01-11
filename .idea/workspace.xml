@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d043c1f-a2e7-477f-9065-613e7213b8d5" name="Changes" comment="last version ready to deployment">
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autoconf" beforeDir="false" afterPath="$PROJECT_DIR$/autoconf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/automake" beforeDir="false" afterPath="$PROJECT_DIR$/automake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bison" beforeDir="false" afterPath="$PROJECT_DIR$/bison" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/flex" beforeDir="false" afterPath="$PROJECT_DIR$/flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mdbtools" beforeDir="false" afterPath="$PROJECT_DIR$/mdbtools" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/ad.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ad.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/aerodrome.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aerodrome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/area2a.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/area2a.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/area3.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/area3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/area4.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/area4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/enr.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/enr.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/mapping.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mapping.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -249,7 +243,7 @@
       <workItem from="1704802123662" duration="4322000" />
       <workItem from="1704810680146" duration="509000" />
       <workItem from="1704875522095" duration="20400000" />
-      <workItem from="1704978049718" duration="1642000" />
+      <workItem from="1704978049718" duration="1983000" />
     </task>
     <task id="LOCAL-00001" summary="last revision from other branch">
       <option name="closed" value="true" />

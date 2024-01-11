@@ -732,7 +732,8 @@ def get_area4():
             if hdf.loc[l, 'coordinate'][-4::1] == ' 38*':
                 hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-4]
 
-            if hdf.loc[l, 'aerodrome'] == 'ltfe_area_4_area_4_28r_area_4_28r_Area4_Obstacles':
+            if hdf.loc[l, 'aerodrome'] == 'ltfe_area_4_area_4_28r_area_4_28r_Area4_Obstacles' or hdf.loc[
+                l, 'aerodrome'] == 'ltfe_area_4_area_4_10l_area_4_10l_Area4_Obstacles':
                 polylines.append({'ad':ad,'latlngs': chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
                                   'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
             else:
