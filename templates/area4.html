@@ -311,10 +311,9 @@
             }
         }
 
-        html, body,#map {
+        #map {
             width: 100%;
-            height: 100%;
-            position: relative;
+            height: 85%;
         }
     </style>
 
@@ -436,7 +435,13 @@
 <br>
 
 
-<div id="map" style="height: 640px; z-index: 0;"></div>
+<div class="container-fluid ">
+    <div id="map" style="z-index: 0;"></div>
+    <div class="spinner-border text-success"  style="position: relative; left: 300px; bottom: 350px;" role="status" id="mapSpinner">
+        Loading Obstacles...
+    </div>
+
+</div>
 
 <!-- Add this script block after the map container and before the Bootstrap script -->
 <!-- Add this script block after the map container -->
