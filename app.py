@@ -12,6 +12,7 @@ from flask_bootstrap import Bootstrap5
 import logging
 from flask_cors import cross_origin
 from pathlib import Path
+pathfile = os.environ.get('pathfile')
 '''
 ltfh_area2 and 4 coordinates column manually changed to coordinate on dbviewer.
 792-35-A1-R1-40-5047.   Coordinates end with 38* manually changed on dbviewer. 
@@ -220,13 +221,14 @@ class LtfmArea4Obstacles(db.Model):
 # with app.app_context():
 #     db.create_all()
 
-path_list_ad = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
-path_to_enr = '/Users/dersim/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml'
-path_list_area_2 = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area2a_obstacles').rglob("*.gdb"))
-path_list_area_3 = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area_3_terrain_obstacles').rglob("*.gdb"))
-path_list_area_4 = sorted(Path('/Users/dersim/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles').rglob("*.gdb"))
+path_list_ad = sorted(Path(pathfile +'/PycharmProjects/mapping/aixm_/aerodrome obstacles').rglob("*.xml"))
+path_to_enr = pathfile +'/PycharmProjects/mapping/aixm_/ENR 5.4 Obstacles/LT_ENR_5_4_Obstacles_AIXM_5_1.xml'
+path_list_area_2 = sorted(Path(pathfile +'/PycharmProjects/mapping/aixm_/area2a_obstacles').rglob("*.gdb"))
+path_list_area_3 = sorted(Path(pathfile +'/PycharmProjects/mapping/aixm_/area_3_terrain_obstacles').rglob("*.gdb"))
+path_list_area_4 = sorted(Path(pathfile +'/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles').rglob("*.gdb"))
 path_list_area_4_xml = sorted(
-    Path('/Users/dersim/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles/LTFM_AREA_4').rglob("*.xml"))
+    Path(pathfile +'/PycharmProjects/mapping/aixm_/area_4_terrain_obstacles/LTFM_AREA_4').rglob("*.xml"))
+
 
 def chunks(xs, n):
     """
@@ -286,7 +288,7 @@ def get_all():
         popup = (f"Elevation: {df.loc[q, 'elevation']} FT Type: {df.loc[q, 'type']} "
                  f"Coordinates: {coor[1]}N, {coor[0]}E")
 
-        point.append({'ad':ad, 'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
+        point.append({'ad': ad, 'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
 
     sql_enr = f'''SELECT geo,coordinate,elevation,type FROM enr_obstacles'''
     df_enr = pd.read_sql(sql_enr, con=engine)
@@ -298,7 +300,7 @@ def get_all():
         popup = (f"Elevation: {df_enr.loc[w, 'elevation']} FT Type: {df_enr.loc[w, 'type']} "
                  f"Coordinates: {coor.y}N, {coor.x}E")
 
-        point.append({'ad':'ENR','lat': float(coor.y), 'lon': float(coor.x), 'popup': popup})
+        point.append({'ad': 'ENR', 'lat': float(coor.y), 'lon': float(coor.x), 'popup': popup})
 
     sql_a2 = f'''SELECT geo,coordinate,elevation, obstacle_type, aerodrome FROM area2a_obstacles'''
     df_a2 = pd.read_sql(sql_a2, con=engine)
@@ -311,17 +313,19 @@ def get_all():
             hh = wdf.loc[i, 'coordinate'].replace(',', '.').split(' ')
             popup = (f"Elevation: {wdf.loc[i, 'elevation']} FT Type: {wdf.loc[i, 'obstacle_type']} "
                      f" Coordinates: {coor.loc[i, 'y']}N, {coor.loc[i, 'x']}E")
-            point.append({'ad':ad2,'lat': float(hh[0]), 'lon': float(hh[1]), 'popup': popup})
+            point.append({'ad': ad2, 'lat': float(hh[0]), 'lon': float(hh[1]), 'popup': popup})
 
         elif wdf.loc[i, 'geometry'].geom_type == 'MultiLineString':
             if wdf.loc[i, 'aerodrome'] == 'ltfe_Area2a_Obstacles':
-                polylines.append({'ad':ad2,'latlngs': chunks3(wdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
-                                  'popup': f"Elevation: {wdf.loc[i, 'elevation']} FT  Type: {wdf.loc[i, 'obstacle_type']} Coordinates(..N..E): {chunks3(wdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}"})
+                polylines.append(
+                    {'ad': ad2, 'latlngs': chunks3(wdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
+                     'popup': f"Elevation: {wdf.loc[i, 'elevation']} FT  Type: {wdf.loc[i, 'obstacle_type']} Coordinates(..N..E): {chunks3(wdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}"})
             elif wdf.loc[i, 'aerodrome'] != 'ltfe_Area2a_Obstacles':
-                polylines.append({'ad':ad2,'latlngs': chunks2(wdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
-                                  'popup': f"Elevation: {wdf.loc[i, 'elevation']} FT  Type: {wdf.loc[i, 'obstacle_type']} Coordinates(..N..E): {chunks2(wdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}"})
+                polylines.append(
+                    {'ad': ad2, 'latlngs': chunks2(wdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
+                     'popup': f"Elevation: {wdf.loc[i, 'elevation']} FT  Type: {wdf.loc[i, 'obstacle_type']} Coordinates(..N..E): {chunks2(wdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}"})
         elif wdf.loc[i, 'geometry'].geom_type == 'MultiPolygon':
-            polygons.append({'ad':ad2,'latlngs': chunks2(wdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
+            polygons.append({'ad': ad2, 'latlngs': chunks2(wdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
                              'popup': f"Elevation: {wdf.loc[i, 'elevation']} FT  Type: {wdf.loc[i, 'obstacle_type']}  Coordinates(..N..E): {chunks2(wdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}"})
 
     sql_ltac = "SELECT geo,Elevation,Obstacle_Type,Coordinate FROM ltac_area3_obstacles"
@@ -334,22 +338,24 @@ def get_all():
             popup = (f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']}"
                      f" Coordinates: {coor.loc[e, 'x']}N, {coor.loc[e, 'y']}E")
 
-            point.append({'ad':'LTAC','lat': coor.loc[e, 'x'], 'lon': coor.loc[e, 'y'], 'popup': popup})
+            point.append({'ad': 'LTAC', 'lat': coor.loc[e, 'x'], 'lon': coor.loc[e, 'y'], 'popup': popup})
 
         elif ltac.loc[e, 'geometry'].geom_type == 'LineString':
-            polylines.append({'ad':'LTAC','latlngs': chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2),
-                              'popup': f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']}  Coordinates(..N..E): {chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2)}"})
+            polylines.append(
+                {'ad': 'LTAC', 'latlngs': chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2),
+                 'popup': f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']}  Coordinates(..N..E): {chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2)}"})
 
         elif ltac.loc[e, 'geometry'].geom_type == 'Polygon':
-            polygons.append({'ad': 'LTAC','latlngs': chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2),
-                             'popup': f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']}  Coordinates(..N..E): {chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2)}"})
+            polygons.append(
+                {'ad': 'LTAC', 'latlngs': chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2),
+                 'popup': f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']}  Coordinates(..N..E): {chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2)}"})
 
     sql_a3 = f'''SELECT geo,elevation,coordinate,obstacle_type, aerodrome FROM area3_obstacles'''
     df_a3 = pd.read_sql(sql_a3, con=engine)
     df_a3['geometry'] = df_a3['geo'].apply(wkt.loads)
     gdf = geopandas.GeoDataFrame(df_a3, crs='EPSG:4326')
     for t in range(gdf.shape[0]):
-        ad3 = gdf.loc[t,'aerodrome'][:4].upper()
+        ad3 = gdf.loc[t, 'aerodrome'][:4].upper()
         coor = gdf.get_coordinates(ignore_index=True)
         # icons = folium.CustomIcon(icon_image='/app/static/assets/images/marker_dot.png')
         if gdf.loc[t, 'geometry'].geom_type == 'Point':
@@ -357,7 +363,7 @@ def get_all():
             popup = (f"Elevation: {gdf.loc[t, 'elevation']} FT  Type: {gdf.loc[t, 'obstacle_type']} "
                      f" Coordinates: {coor.loc[t, 'y']}N, {coor.loc[t, 'x']}E")
 
-            point.append({'ad':ad3,'lat': coordddd[0], 'lon': coordddd[1], 'popup': popup})
+            point.append({'ad': ad3, 'lat': coordddd[0], 'lon': coordddd[1], 'popup': popup})
 
 
         elif gdf.loc[t, 'geometry'].geom_type == 'MultiLineString':
@@ -365,7 +371,7 @@ def get_all():
                             color='purple',
                             popup=f"Elevation: {gdf.loc[t, 'elevation']} FT  Type: {gdf.loc[t, 'obstacle_type']} "
                                   f" Coordinates(..N..E): {chunks2(gdf.loc[t, 'coordinate'].replace(',', '.').split(' '), 2)}")
-            polylines.append({'ad':ad3,'latlngs': chunks2(gdf.loc[t, 'coordinate'].replace(',', '.').split(' '), 2),
+            polylines.append({'ad': ad3, 'latlngs': chunks2(gdf.loc[t, 'coordinate'].replace(',', '.').split(' '), 2),
                               'popup': f"Elevation: {gdf.loc[t, 'elevation']} FT  Type: {gdf.loc[t, 'obstacle_type']}  Coordinates(..N..E): {chunks2(gdf.loc[t, 'coordinate'].replace(',', '.').split(' '), 2)}"})
 
     sql_fm = "SELECT geo,coordinate,elevation,type FROM ltfm_area4_obstacles"
@@ -378,14 +384,15 @@ def get_all():
             popup = (f"Elevation: {xdf.loc[u, 'elevation']} FT  Type: {xdf.loc[u, 'type']}"
                      f" Coordinates: {coor.loc[u, 'y']}N, {coor.loc[u, 'x']}E")
 
-            point.append({'ad':'LTFM','lat': coor.loc[u, 'y'], 'lon': coor.loc[u, 'x'], 'popup': popup})
+            point.append({'ad': 'LTFM', 'lat': coor.loc[u, 'y'], 'lon': coor.loc[u, 'x'], 'popup': popup})
 
         elif xdf.loc[u, 'geometry'].geom_type == 'MultiLineString':
-            polylines.append({'ad':'LTFM','latlngs': chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2),
-                              'popup': f"Elevation: {xdf.loc[u, 'elevation']} FT  Type: {xdf.loc[u, 'type']}  Coordinates(..N..E): {chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2)}"})
+            polylines.append(
+                {'ad': 'LTFM', 'latlngs': chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2),
+                 'popup': f"Elevation: {xdf.loc[u, 'elevation']} FT  Type: {xdf.loc[u, 'type']}  Coordinates(..N..E): {chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2)}"})
 
         elif xdf.loc[u, 'geometry'].geom_type == 'MultiPolygon':
-            polygons.append({'ad':'LTFM','latlngs': chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2),
+            polygons.append({'ad': 'LTFM', 'latlngs': chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2),
                              'popup': f"Elevation: {xdf.loc[u, 'elevation']} FT  Type: {xdf.loc[u, 'type']}  Coordinates(..N..E): {chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2)}"})
 
     sql_a4 = f'''SELECT geo,coordinate,elevation,obstacle_type,obstacle_identifier,aerodrome FROM area4_obstacles'''
@@ -410,11 +417,13 @@ def get_all():
 
             if hdf.loc[l, 'aerodrome'] == 'ltfe_area_4_area_4_28r_area_4_28r_Area4_Obstacles' or hdf.loc[
                 l, 'aerodrome'] == 'ltfe_area_4_area_4_10l_area_4_10l_Area4_Obstacles':
-                polylines.append({'ad':ad4,'latlngs': chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
-                                  'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
+                polylines.append(
+                    {'ad': ad4, 'latlngs': chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+                     'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
             else:
-                polylines.append({'ad':ad4,'latlngs': chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
-                                  'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
+                polylines.append(
+                    {'ad': ad4, 'latlngs': chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+                     'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
 
 
 
@@ -423,12 +432,14 @@ def get_all():
                 hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
 
             if hdf.loc[l, 'aerodrome'] == 'ltfe_area_4_area_4_28r_area_4_28r_Area4_Obstacles':
-                polygons.append({'ad':ad4,'latlngs': chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
-                                 'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
+                polygons.append(
+                    {'ad': ad4, 'latlngs': chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+                     'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
             else:
 
-                polygons.append({'ad':ad4,'latlngs': chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
-                                 'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
+                polygons.append(
+                    {'ad': ad4, 'latlngs': chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+                     'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
 
         elif hdf.loc[l, 'geometry'].geom_type == 'Point':
 
@@ -436,14 +447,14 @@ def get_all():
 
             popup = (f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
                      f" Coordinates: {coor[0]}N, {coor[1]}E")
-            point.append({'ad':ad4,'lat': coor[0], 'lon': coor[1], 'popup': popup})
+            point.append({'ad': ad4, 'lat': coor[0], 'lon': coor[1], 'popup': popup})
 
     return jsonify({'points': point, 'polylines': polylines, 'polygons': polygons})
 
 
 @app.route('/all', methods=['GET', 'POST'])
 def all():
-    return render_template('mapping.html', title='All Obstacles | Folium')
+    return render_template('mapping.html', title='All Obstacles Map | Leaflet')
 
 
 @app.route('/marker_c', methods=['GET'])
@@ -451,7 +462,6 @@ def all():
 def marker_c():
     engine = create_engine('sqlite:///' + os.path.join(app.instance_path, 'obstacles.db'), echo=False)
     markerz = []
-    pathz = []
     sql_ad = f'''SELECT geo, coordinate, elevation, type, name, aerodrome FROM ad_obstacles'''
 
     df_ad = pd.read_sql(sql_ad, con=engine)
@@ -529,10 +539,9 @@ def marker_c():
         coor = df.loc[i, 'coordinate'].replace(',', '.').split(' ')
         popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
                  f"Coordinates: {coor[1]}N, {coor[0]}E")
-        markerz.append({'ad':ad,'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
-        pathz.append({'path': path})
+        markerz.append({'path': path, 'ad': ad, 'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup})
 
-    return jsonify({'markers': markerz, 'paths': pathz})
+    return jsonify({'markers': markerz})
 
 
 logging.basicConfig(level=logging.DEBUG)  # Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
@@ -540,7 +549,7 @@ logging.basicConfig(level=logging.DEBUG)  # Set the logging level (DEBUG, INFO, 
 
 @app.route("/", methods=['GET', 'POST'])
 def fullscreen():
-    return render_template('trial.html', title='Fullscreen AD Map | Folium')
+    return render_template('aerodrome.html', title='Aerodrome Obstacles Map with Custom Icons | Leaflet')
 
 
 @app.route("/get_markers", methods=['GET'])
@@ -558,14 +567,14 @@ def get_markers():
         popup = (f"Elevation: {df.loc[i, 'elevation']} FT Type: {df.loc[i, 'type']} "
                  f"Coordinates: {coor[1]}N, {coor[0]}E")
 
-        markerz.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup, 'ad':ad.upper()})
+        markerz.append({'lat': float(coor[1]), 'lon': float(coor[0]), 'popup': popup, 'ad': ad.upper()})
 
     return jsonify({'markers': markerz})
 
 
 @app.route("/aerodrome", methods=['GET', 'POST'])
 def ad():
-    return render_template('ad.html', title=' AD Map | Folium')
+    return render_template('ad.html', title=' AD Obstacles Map | Leaflet')
 
 
 @app.route("/get_enr", methods=['GET'])
@@ -591,7 +600,7 @@ def get_enr():
 
 @app.route("/enrobs", methods=['GET', 'POST'])
 def enr_obstacles():
-    return render_template('enr.html', title='ENR Obstacles | Folium')
+    return render_template('enr.html', title='ENR Obstacles Map | Leaflet')
 
 
 @app.route("/get_area2a", methods=['GET'])
@@ -612,24 +621,26 @@ def get_area2a():
             hh = gdf.loc[i, 'coordinate'].replace(',', '.').split(' ')
             popup = (f"Elevation: {gdf.loc[i, 'elevation']} FT Type: {gdf.loc[i, 'obstacle_type']} "
                      f" Coordinates: {coor.loc[i, 'y']}N, {coor.loc[i, 'x']}E")
-            point.append({'lat': float(hh[0]), 'lon': float(hh[1]), 'popup': popup, 'ad':ad})
+            point.append({'lat': float(hh[0]), 'lon': float(hh[1]), 'popup': popup, 'ad': ad})
 
         elif gdf.loc[i, 'geometry'].geom_type == 'MultiLineString':
             if gdf.loc[i, 'aerodrome'] == 'ltfe_Area2a_Obstacles':
-                polylines.append({'ad':ad,'latlngs': chunks3(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
-                                  'popup': f"Elevation: {gdf.loc[i, 'elevation']} FT  Type: {gdf.loc[i, 'obstacle_type']} Coordinates(..N..E): {chunks3(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}"})
+                polylines.append(
+                    {'ad': ad, 'latlngs': chunks3(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
+                     'popup': f"Elevation: {gdf.loc[i, 'elevation']} FT  Type: {gdf.loc[i, 'obstacle_type']} Coordinates(..N..E): {chunks3(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}"})
             else:
-                polylines.append({'ad':ad,'latlngs': chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
-                                  'popup': f"Elevation: {gdf.loc[i, 'elevation']} FT  Type: {gdf.loc[i, 'obstacle_type']} Coordinates(..N..E): {chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}"})
+                polylines.append(
+                    {'ad': ad, 'latlngs': chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
+                     'popup': f"Elevation: {gdf.loc[i, 'elevation']} FT  Type: {gdf.loc[i, 'obstacle_type']} Coordinates(..N..E): {chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}"})
         elif gdf.loc[i, 'geometry'].geom_type == 'MultiPolygon':
-            polygons.append({'ad':ad,'latlngs': chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
+            polygons.append({'ad': ad, 'latlngs': chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2),
                              'popup': f"Elevation: {gdf.loc[i, 'elevation']} FT  Type: {gdf.loc[i, 'obstacle_type']}  Coordinates(..N..E): {chunks2(gdf.loc[i, 'coordinate'].replace(',', '.').split(' '), 2)}"})
     return jsonify({'points': point, 'polylines': polylines, 'polygons': polygons})
 
 
 @app.route('/area2a', methods=['GET', 'POST'])
 def area_2a_obstacles():
-    return render_template('area2a.html', title='Area 2A Obstacles | Folium')
+    return render_template('area2a.html', title='Area 2A Obstacles Map | Leaflet')
 
 
 @app.route("/get_area3", methods=['GET'])
@@ -652,12 +663,14 @@ def get_area3():
             point.append({'lat': coor.loc[e, 'x'], 'lon': coor.loc[e, 'y'], 'popup': popup, 'ad': 'LTAC'})
 
         elif ltac.loc[e, 'geometry'].geom_type == 'LineString':
-            polylines.append({'ad': 'LTAC','latlngs': chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2),
-                              'popup': f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']}  Coordinates(..N..E): {chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2)}"})
+            polylines.append(
+                {'ad': 'LTAC', 'latlngs': chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2),
+                 'popup': f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']}  Coordinates(..N..E): {chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2)}"})
 
         elif ltac.loc[e, 'geometry'].geom_type == 'Polygon':
-            polygons.append({'ad': 'LTAC','latlngs': chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2),
-                             'popup': f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']}  Coordinates(..N..E): {chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2)}"})
+            polygons.append(
+                {'ad': 'LTAC', 'latlngs': chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2),
+                 'popup': f"Elevation: {ltac.loc[e, 'Elevation']} FT  Type: {ltac.loc[e, 'Obstacle_Type']}  Coordinates(..N..E): {chunks2(ltac.loc[e, 'Coordinate'].replace(',', '.').split(' '), 2)}"})
 
     sql_a3 = f'''SELECT geo,elevation,coordinate,obstacle_type,aerodrome FROM area3_obstacles'''
     df_a3 = pd.read_sql(sql_a3, con=engine)
@@ -671,10 +684,10 @@ def get_area3():
             popup = (f"Elevation: {gdf.loc[t, 'elevation']} FT  Type: {gdf.loc[t, 'obstacle_type']} "
                      f" Coordinates: {coor.loc[t, 'y']}N, {coor.loc[t, 'x']}E")
 
-            point.append({'lat': coordddd[0], 'lon': coordddd[1], 'popup': popup, 'ad':ad})
+            point.append({'lat': coordddd[0], 'lon': coordddd[1], 'popup': popup, 'ad': ad})
 
         elif gdf.loc[t, 'geometry'].geom_type == 'MultiLineString':
-            polylines.append({'ad':ad,'latlngs': chunks2(gdf.loc[t, 'coordinate'].replace(',', '.').split(' '), 2),
+            polylines.append({'ad': ad, 'latlngs': chunks2(gdf.loc[t, 'coordinate'].replace(',', '.').split(' '), 2),
                               'popup': f"Elevation: {gdf.loc[t, 'elevation']} FT  Type: {gdf.loc[t, 'obstacle_type']}  Coordinates(..N..E): {chunks2(gdf.loc[t, 'coordinate'].replace(',', '.').split(' '), 2)}"})
 
     return jsonify({'points': point, 'polylines': polylines, 'polygons': polygons})
@@ -682,7 +695,7 @@ def get_area3():
 
 @app.route('/area3', methods=['GET', 'POST'])
 def area_3():
-    return render_template('area3.html', title='Area 3 Obstacles | Folium')
+    return render_template('area3.html', title='Area 3 Obstacles Map | Leaflet')
 
 
 @app.route("/get_area4", methods=['GET'])
@@ -702,14 +715,15 @@ def get_area4():
             popup = (f"Elevation: {xdf.loc[u, 'elevation']} FT  Type: {xdf.loc[u, 'type']}"
                      f" Coordinates: {coor.loc[u, 'y']}N, {coor.loc[u, 'x']}E")
 
-            point.append({'lat': coor.loc[u, 'y'], 'lon': coor.loc[u, 'x'], 'popup': popup, 'ad':'LTFM'})
+            point.append({'lat': coor.loc[u, 'y'], 'lon': coor.loc[u, 'x'], 'popup': popup, 'ad': 'LTFM'})
 
         elif xdf.loc[u, 'geometry'].geom_type == 'MultiLineString':
-            polylines.append({'ad':'LTFM','latlngs': chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2),
-                              'popup': f"Elevation: {xdf.loc[u, 'elevation']} FT  Type: {xdf.loc[u, 'type']}  Coordinates(..N..E): {chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2)}"})
+            polylines.append(
+                {'ad': 'LTFM', 'latlngs': chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2),
+                 'popup': f"Elevation: {xdf.loc[u, 'elevation']} FT  Type: {xdf.loc[u, 'type']}  Coordinates(..N..E): {chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2)}"})
 
         elif xdf.loc[u, 'geometry'].geom_type == 'MultiPolygon':
-            polygons.append({'ad':'LTFM','latlngs': chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2),
+            polygons.append({'ad': 'LTFM', 'latlngs': chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2),
                              'popup': f"Elevation: {xdf.loc[u, 'elevation']} FT  Type: {xdf.loc[u, 'type']}  Coordinates(..N..E): {chunks2(xdf.loc[u, 'coordinate'].replace(',', '.').split(' '), 2)}"})
 
     sql_a4 = f'''SELECT geo,coordinate,elevation,obstacle_type,obstacle_identifier,aerodrome FROM area4_obstacles'''
@@ -734,11 +748,13 @@ def get_area4():
 
             if hdf.loc[l, 'aerodrome'] == 'ltfe_area_4_area_4_28r_area_4_28r_Area4_Obstacles' or hdf.loc[
                 l, 'aerodrome'] == 'ltfe_area_4_area_4_10l_area_4_10l_Area4_Obstacles':
-                polylines.append({'ad':ad,'latlngs': chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
-                                  'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
+                polylines.append(
+                    {'ad': ad, 'latlngs': chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+                     'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
             else:
-                polylines.append({'ad':ad,'latlngs': chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
-                                  'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
+                polylines.append(
+                    {'ad': ad, 'latlngs': chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+                     'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
 
 
 
@@ -747,11 +763,11 @@ def get_area4():
                 hdf.loc[l, 'coordinate'] = hdf.loc[l, 'coordinate'][:-1]
 
             if hdf.loc[l, 'aerodrome'] == 'ltfe_area_4_area_4_28r_area_4_28r_Area4_Obstacles':
-                polygons.append({'ad':ad,'latlngs': chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+                polygons.append({'ad': ad, 'latlngs': chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
                                  'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks3(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
             else:
 
-                polygons.append({'ad':ad,'latlngs': chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
+                polygons.append({'ad': ad, 'latlngs': chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2),
                                  'popup': f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']}  Coordinates(..N..E): {chunks2(hdf.loc[l, 'coordinate'].replace(',', '.').split(' '), 2)}"})
 
         elif hdf.loc[l, 'geometry'].geom_type == 'Point':
@@ -760,14 +776,14 @@ def get_area4():
 
             popup = (f"Elevation: {hdf.loc[l, 'elevation']} FT  Type: {hdf.loc[l, 'obstacle_type']} "
                      f" Coordinates: {coor[0]}N, {coor[1]}E")
-            point.append({'ad':ad,'lat': coor[0], 'lon': coor[1], 'popup': popup})
+            point.append({'ad': ad, 'lat': coor[0], 'lon': coor[1], 'popup': popup})
 
     return jsonify({'points': point, 'polylines': polylines, 'polygons': polygons})
 
 
 @app.route('/area4')
 def area_4():
-    return render_template('area4.html', title='Area 4 Obstacles | Folium')
+    return render_template('area4.html', title='Area 4 Obstacles Map | Leaflet')
 
 
 if __name__ == '__main__':

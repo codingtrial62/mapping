@@ -5,7 +5,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>MAPHOME</title>
+    <title>Turkey AIP Obstacles Visualization</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbars-offcanvas/">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
@@ -340,7 +340,7 @@
 <main>
     <nav class="navbar bg-success bg-gradient fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Turkey AIP Obstacles Visualization</a>
+            <a class="navbar-brand" href="#">{{ title|safe }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -373,6 +373,9 @@
                                 </li>
                                 <li><a class="dropdown-item" href="{{url_for('all')}}">All</a></li>
                             </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link passive" aria-current="page" style="padding-top:400px" href="#">Contact: codingtrial62@gmail.com</a>
                         </li>
                     </ul>
                     {#                    <form class="d-flex mt-3" role="search">#}

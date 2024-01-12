@@ -5,12 +5,96 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d043c1f-a2e7-477f-9065-613e7213b8d5" name="Changes" comment="last version ready to deployment">
+      <change afterPath="$PROJECT_DIR$/db_models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/autoconf" beforeDir="false" afterPath="$PROJECT_DIR$/autoconf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/automake" beforeDir="false" afterPath="$PROJECT_DIR$/automake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bison" beforeDir="false" afterPath="$PROJECT_DIR$/bison" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dump.rdb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/flex" beforeDir="false" afterPath="$PROJECT_DIR$/flex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mdbtools" beforeDir="false" afterPath="$PROJECT_DIR$/mdbtools" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/abutment.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/anemometer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/apron_lighting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/arff_pool.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/base_station.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/billboard.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/bridge_deck.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/bridge_mast.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/bridge_tower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/bridge_tower2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/bridge_tower_line.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/cabin.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/camlica_tv.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/castle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/chimney.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/concrete_barrier.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/container.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/dam.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/dme.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/dme_antenna.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/electric-pole.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/flag_turkey.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/gas-station.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/glidepath_antenna.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/gnss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/greenhouse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/gsm_anten.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/gsm_tower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/hangar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/hook.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/hospital.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/icons8-pylon-64.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/landing-track.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/lightning-rod.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/llz_ant.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/marker_dot_orange.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/mast.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/meteo_device.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/minaret.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/mosque.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/ndb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/ndb_antenna.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/net.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/nf_antenna.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/okis.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/panel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/power-line.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/pylon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/radar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/radio_tower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/reflector.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/rope_bridge.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/silo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/stadium.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/steel_line.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/street-light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/tacan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/tacan_antenna.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/telegraph.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/terminal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/terrain.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/torch_mast.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/towerr.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/transformer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/trench.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/tv-tower.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/tv_transmitter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/vbss.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/vor.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/vor_antenna.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/vor_dme.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/vortac.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/watch_box.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/weather-balloon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/wind-direction.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/wind-farm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/wind-rose.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/wind_measure.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/windsock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assets/images/zipline.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/ad.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ad.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/aerodrome.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/aerodrome.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/area2a.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/area2a.html" afterDir="false" />
@@ -18,6 +102,9 @@
       <change beforePath="$PROJECT_DIR$/templates/area4.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/area4.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/enr.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/enr.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/mapping.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/mapping.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/trial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/venv/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/worker.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +183,7 @@
           <env key="FLASK_APP" value="app" />
           <env key="FLASK_ENV" value="development" />
           <env key="SECRET_KEY" value="alinidos" />
+          <env key="pathfile" value="$USER_HOME$" />
         </envs>
         <option name="myUseModuleSdk" value="true" />
         <option name="myModuleName" value="mapping" />
@@ -105,6 +193,7 @@
             <entry key="FLASK_APP" value="app" />
             <entry key="FLASK_ENV" value="development" />
             <entry key="SECRET_KEY" value="alinidos" />
+            <entry key="pathfile" value="$USER_HOME$" />
           </map>
         </option>
       </console-settings>
@@ -134,6 +223,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
         <env name="DATABASE_URL" value="postgres://ijycthkvyinpxi:567e51cc7ee8a72bc01df1f10b87b53b717329385f383ec2d2d88b00791df26c@ec2-35-169-9-79.compute-1.amazonaws.com:5432/d2a91h17qeudjt" />
+        <env name="pathfile" value="$USER_HOME$" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -252,7 +342,8 @@
       <workItem from="1704875522095" duration="20400000" />
       <workItem from="1704978049718" duration="2088000" />
       <workItem from="1704993919021" duration="3341000" />
-      <workItem from="1705039382919" duration="2815000" />
+      <workItem from="1705039382919" duration="8803000" />
+      <workItem from="1705059477695" duration="311000" />
     </task>
     <task id="LOCAL-00001" summary="last revision from other branch">
       <option name="closed" value="true" />
@@ -475,13 +566,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/app.py</url>
-          <line>32</line>
+          <line>33</line>
           <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/templates/aerodrome.html</url>
-          <line>276</line>
-          <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -493,7 +579,7 @@
     <SUITE FILE_PATH="coverage/mapping$worker.coverage" NAME="worker Coverage Results" MODIFIED="1704226280479" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mapping$main.coverage" NAME="main Coverage Results" MODIFIED="1703512359306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mapping$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1704453945748" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/mapping$app.coverage" NAME="app Coverage Results" MODIFIED="1705039422191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/mapping$app.coverage" NAME="app Coverage Results" MODIFIED="1705059500085" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/mapping$Flask__trial_py_.coverage" NAME="Flask (trial.py) Coverage Results" MODIFIED="1704876819199" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
